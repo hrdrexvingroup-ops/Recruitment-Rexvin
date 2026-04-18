@@ -1,0 +1,1680 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rexvin · HR Recruitment Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --brown:  #4a3728;
+  --brown2: #6b4f3a;
+  --orange: #e8920a;
+  --amber:  #f5a623;
+  --gold:   #f0c040;
+  --cream:  #faf6f0;
+  --paper:  #ffffff;
+  --border: #e8ddd2;
+  --muted:  #9a8778;
+  --ink:    #2d1f14;
+  --green:  #2d6a4f;
+  --red:    #c0392b;
+  --blue:   #2471a3;
+  --shadow: 0 4px 16px rgba(74,55,40,0.12);
+  --radius: 10px;
+}
+
+* { box-sizing:border-box; margin:0; padding:0; }
+body {
+  font-family:'DM Sans',sans-serif;
+  background:var(--cream);
+  color:var(--ink);
+  min-height:100vh;
+}
+
+/* ── HEADER ── */
+.header {
+  background:var(--brown);
+  display:flex;
+  align-items:center;
+  height:56px;
+  position:sticky;
+  top:0;
+  z-index:100;
+  box-shadow:0 2px 12px rgba(0,0,0,0.2);
+}
+.logo-area {
+  background:#fff;
+  padding:8px 20px;
+  height:100%;
+  display:flex;
+  align-items:center;
+  border-right:3px solid var(--orange);
+}
+.logo-svg { height:32px; width:auto; }
+.nav-tabs {
+  display:flex;
+  align-items:center;
+  height:100%;
+  padding:0 8px;
+  gap:2px;
+  flex:1;
+}
+.nav-tab {
+  padding:0 18px;
+  height:100%;
+  border:none;
+  background:none;
+  color:rgba(255,255,255,0.65);
+  font-family:'DM Sans',sans-serif;
+  font-size:0.8rem;
+  font-weight:500;
+  cursor:pointer;
+  position:relative;
+  white-space:nowrap;
+  transition:all 0.15s;
+}
+.nav-tab:hover { color:#fff; background:rgba(255,255,255,0.08); }
+.nav-tab.active { color:#fff; background:rgba(255,255,255,0.12); }
+.nav-tab.active::after {
+  content:'';
+  position:absolute;
+  bottom:0; left:0; right:0;
+  height:3px;
+  background:var(--amber);
+  border-radius:2px 2px 0 0;
+}
+.header-right {
+  padding:0 20px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.sync-badge { font-size:0.72rem; color:rgba(255,255,255,0.5); }
+.btn-print {
+  padding:6px 14px;
+  background:var(--amber);
+  color:var(--brown);
+  border:none;
+  border-radius:6px;
+  font-family:'DM Sans',sans-serif;
+  font-size:0.76rem;
+  font-weight:700;
+  cursor:pointer;
+}
+
+/* ── CONN BAR ── */
+.conn-bar {
+  background:var(--brown2);
+  padding:8px 24px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+  font-size:0.78rem;
+  color:rgba(255,255,255,0.8);
+}
+.conn-bar input {
+  flex:1; min-width:300px; max-width:500px;
+  padding:6px 12px;
+  background:rgba(255,255,255,0.1);
+  border:1px solid rgba(255,255,255,0.2);
+  border-radius:5px;
+  color:#fff; font-size:0.78rem; font-family:inherit;
+}
+.conn-btn {
+  padding:6px 16px;
+  background:var(--amber);
+  color:var(--brown);
+  border:none; border-radius:5px;
+  font-weight:700; font-size:0.76rem; cursor:pointer;
+}
+.conn-status {
+  font-size:0.73rem; padding:3px 10px;
+  border-radius:20px; font-weight:600; display:none;
+}
+.conn-status.ok  { background:#d4edda; color:#155724; }
+.conn-status.err { background:#fde8e4; color:#7a2010; }
+.conn-status.loading { background:#fff3cd; color:#856404; }
+
+/* ── VIEWS ── */
+.view { display:none; }
+.view.active { display:block; }
+
+/* ── TABLE COMMON ── */
+.table-view { padding:24px 32px; }
+.view-header {
+  display:flex; align-items:center;
+  justify-content:space-between;
+  margin-bottom:20px; flex-wrap:wrap; gap:12px;
+}
+.view-title {
+  font-family:'Playfair Display',serif;
+  font-size:1.4rem; color:var(--brown);
+}
+.toolbar {
+  display:flex; gap:10px; margin-bottom:16px;
+  flex-wrap:wrap; align-items:center;
+}
+.toolbar select, .toolbar input {
+  padding:7px 12px;
+  border:1.5px solid var(--border);
+  border-radius:6px;
+  font-family:'DM Sans',sans-serif;
+  font-size:0.8rem;
+  background:var(--paper);
+  color:var(--ink);
+}
+.data-table {
+  width:100%;
+  border-collapse:collapse;
+  font-size:0.8rem;
+  background:var(--paper);
+  border-radius:var(--radius);
+  overflow:hidden;
+  box-shadow:var(--shadow);
+  border:1px solid var(--border);
+}
+.data-table th {
+  background:var(--brown);
+  color:rgba(255,255,255,0.85);
+  padding:11px 14px;
+  text-align:left;
+  font-size:0.67rem;
+  font-weight:600;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  white-space:nowrap;
+}
+.data-table td {
+  padding:10px 14px;
+  border-bottom:1px solid var(--border);
+  vertical-align:middle;
+}
+.data-table tbody tr:hover { background:var(--cream); }
+.data-table tbody tr:last-child td { border-bottom:none; }
+
+/* ── BADGES ── */
+.badge {
+  display:inline-block; padding:3px 9px;
+  border-radius:20px; font-size:0.68rem; font-weight:700;
+}
+.badge-green  { background:#d4edda; color:#155724; }
+.badge-yellow { background:#fff3cd; color:#856404; }
+.badge-red    { background:#fde8e4; color:#7a2010; }
+.badge-blue   { background:#dbeafe; color:#1e40af; }
+.badge-gray   { background:#f0f0f0; color:#666; }
+.badge-brown  { background:#ede0d4; color:var(--brown); }
+
+/* ── DASHBOARD ── */
+.dash-wrap { padding:28px 32px; max-width:1400px; margin:0 auto; }
+.kpi-row {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:16px;
+  margin-bottom:28px;
+}
+.kpi-card {
+  background:var(--paper);
+  border-radius:var(--radius);
+  padding:20px 22px;
+  box-shadow:var(--shadow);
+  border:1px solid var(--border);
+  position:relative; overflow:hidden;
+}
+.kpi-card::before {
+  content:'';
+  position:absolute;
+  top:0; left:0; right:0; height:3px;
+  background:var(--amber);
+}
+.kpi-card.green::before { background:var(--green); }
+.kpi-card.red::before   { background:var(--red); }
+.kpi-label {
+  font-size:0.67rem; font-weight:600;
+  letter-spacing:0.08em; text-transform:uppercase;
+  color:var(--muted); margin-bottom:10px;
+}
+.kpi-val {
+  font-family:'Playfair Display',serif;
+  font-size:2.2rem; font-weight:700;
+  color:var(--brown); line-height:1;
+}
+.kpi-card.green .kpi-val { color:var(--green); }
+.kpi-card.red .kpi-val   { color:var(--red); }
+.kpi-sub { font-size:0.72rem; color:var(--muted); margin-top:6px; }
+
+/* ── SCORING TAB ── */
+.scoring-wrap { padding:28px 32px; max-width:900px; }
+.form-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+  margin-bottom:20px;
+}
+.form-group label {
+  display:block;
+  font-size:0.72rem; font-weight:600;
+  color:var(--muted); text-transform:uppercase;
+  letter-spacing:0.06em; margin-bottom:4px;
+}
+.form-group input,
+.form-group select {
+  width:100%; padding:8px 12px;
+  border:1.5px solid var(--border);
+  border-radius:6px;
+  font-family:'DM Sans',sans-serif;
+  font-size:0.83rem;
+  background:var(--cream); color:var(--ink);
+}
+.form-group input:focus,
+.form-group select:focus {
+  border-color:var(--orange); outline:none;
+}
+.papi-grid {
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:10px;
+  margin-bottom:20px;
+}
+.papi-item label {
+  display:block;
+  font-size:0.7rem; font-weight:700;
+  color:var(--brown); margin-bottom:3px;
+}
+.papi-item input {
+  width:100%; padding:6px 8px;
+  border:1.5px solid var(--border);
+  border-radius:5px; text-align:center;
+  font-size:0.85rem; font-weight:700;
+  font-family:'DM Sans',sans-serif;
+}
+.papi-item input:focus {
+  border-color:var(--orange); outline:none;
+}
+.btn-score {
+  padding:10px 28px;
+  background:var(--brown); color:#fff;
+  border:none; border-radius:8px;
+  font-family:'DM Sans',sans-serif;
+  font-size:0.9rem; font-weight:700;
+  cursor:pointer; transition:all 0.2s;
+}
+.btn-score:hover { background:var(--brown2); }
+
+/* ── SCORING RESULT ── */
+.score-result {
+  display:none;
+  background:var(--paper);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:24px;
+  box-shadow:var(--shadow);
+  margin-top:20px;
+}
+.score-result.show { display:block; }
+.result-header {
+  display:flex; align-items:center;
+  justify-content:space-between;
+  margin-bottom:20px;
+  padding-bottom:16px;
+  border-bottom:2px solid var(--border);
+}
+.result-name {
+  font-family:'Playfair Display',serif;
+  font-size:1.3rem; color:var(--brown);
+}
+.verdict-badge {
+  padding:8px 20px;
+  border-radius:8px;
+  font-size:0.9rem; font-weight:700;
+}
+.verdict-sangat  { background:#d4edda; color:#155724; }
+.verdict-dis     { background:#cce5ff; color:#004085; }
+.verdict-ber     { background:#fff3cd; color:#856404; }
+.verdict-tidak   { background:#fde8e4; color:#7a2010; }
+.verdict-gugur   { background:#f8d7da; color:#721c24; }
+
+.filter-table {
+  width:100%; border-collapse:collapse;
+  margin-bottom:20px; font-size:0.82rem;
+}
+.filter-table th {
+  background:var(--cream); padding:8px 12px;
+  text-align:left; font-size:0.68rem;
+  font-weight:700; letter-spacing:0.06em;
+  text-transform:uppercase; color:var(--muted);
+  border-bottom:2px solid var(--border);
+}
+.filter-table td {
+  padding:8px 12px;
+  border-bottom:1px solid var(--border);
+}
+.filter-ok  { color:var(--green); font-weight:700; }
+.filter-fail{ color:var(--red);   font-weight:700; }
+
+.score-table {
+  width:100%; border-collapse:collapse;
+  font-size:0.8rem; margin-bottom:16px;
+}
+.score-table th {
+  background:var(--brown); color:#fff;
+  padding:9px 12px; text-align:left;
+  font-size:0.67rem; font-weight:600;
+  letter-spacing:0.06em; text-transform:uppercase;
+}
+.score-table td {
+  padding:8px 12px;
+  border-bottom:1px solid var(--border);
+}
+.score-table tbody tr:nth-child(even) {
+  background:var(--cream);
+}
+.total-row td {
+  font-weight:700; background:#1a3c5e !important;
+  color:#fff;
+}
+
+/* ── MODAL ── */
+.modal-overlay {
+  display:none; position:fixed; inset:0;
+  background:rgba(0,0,0,0.5);
+  z-index:9000; align-items:center;
+  justify-content:center;
+}
+.modal-overlay.open { display:flex; }
+.modal {
+  background:var(--paper);
+  border-radius:var(--radius);
+  padding:28px 32px;
+  max-width:420px; width:90%;
+  box-shadow:0 24px 60px rgba(0,0,0,0.25);
+}
+.modal h3 {
+  font-family:'Playfair Display',serif;
+  font-size:1.1rem; color:var(--brown);
+  margin-bottom:16px;
+}
+.modal-actions {
+  display:flex; gap:10px;
+  margin-top:20px; justify-content:flex-end;
+}
+.btn-cancel {
+  padding:8px 18px; background:var(--cream);
+  color:var(--muted); border:1.5px solid var(--border);
+  border-radius:6px; font-size:0.8rem; cursor:pointer;
+}
+.btn-save {
+  padding:8px 20px; background:var(--brown);
+  color:#fff; border:none; border-radius:6px;
+  font-size:0.8rem; font-weight:600; cursor:pointer;
+}
+
+/* ── TOAST ── */
+.toast {
+  position:fixed; bottom:24px; right:24px;
+  background:var(--brown); color:#fff;
+  padding:10px 20px; border-radius:8px;
+  font-size:0.82rem; font-weight:600;
+  box-shadow:0 4px 16px rgba(0,0,0,0.2);
+  z-index:99999; opacity:0;
+  transform:translateY(20px);
+  transition:all 0.3s; pointer-events:none;
+}
+.toast.show { opacity:1; transform:translateY(0); }
+
+/* ── UTIL ── */
+.text-muted { color:var(--muted); font-size:0.75rem; }
+.fw6 { font-weight:600; }
+.nowrap { white-space:nowrap; }
+.empty-state {
+  text-align:center; padding:60px 24px;
+  color:var(--muted);
+}
+.empty-icon { font-size:2.5rem; margin-bottom:12px; }
+
+@media print {
+  .header,.conn-bar,.toolbar { display:none !important; }
+  body { background:white; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="logo-area">
+    <img src="logo.png" class="logo-svg" alt="Rexvin">
+  </div>
+  <nav class="nav-tabs">
+    <button class="nav-tab active" onclick="switchView('dashboard')">📊 Dashboard</button>
+    <button class="nav-tab" onclick="switchView('kandidat')">👥 Kandidat</button>
+    <button class="nav-tab" onclick="switchView('jobtest')">📝 Job Test</button>
+    <button class="nav-tab" onclick="switchView('psikotest')">🧠 Psikotest</button>
+    <button class="nav-tab" onclick="switchView('interview')">🗣 Interview</button>
+    <button class="nav-tab" onclick="switchView('scoring')">🎯 Scoring Card</button>
+  </nav>
+  <div class="header-right">
+    <span class="sync-badge" id="sync-badge">—</span>
+    <button class="btn-print" onclick="window.print()">⬇ Print</button>
+  </div>
+</div>
+
+<!-- CONN BAR -->
+<div class="conn-bar">
+  <span style="font-weight:600">🔗 Google Sheet</span>
+  <input type="text" id="api-url"
+    placeholder="Paste URL Google Apps Script...">
+  <button class="conn-btn" onclick="connectSheet()">Sambungkan</button>
+  <span class="conn-status" id="conn-status"></span>
+</div>
+
+<!-- ══ DASHBOARD ══ -->
+<div class="view active" id="view-dashboard">
+<div class="dash-wrap">
+  <div class="kpi-row" id="kpi-row">
+    <div class="kpi-card">
+      <div class="kpi-label">Total Kandidat</div>
+      <div class="kpi-val" id="kpi-total">—</div>
+      <div class="kpi-sub">CV masuk</div>
+    </div>
+    <div class="kpi-card green">
+      <div class="kpi-label">Join / Hired</div>
+      <div class="kpi-val" id="kpi-hired">—</div>
+      <div class="kpi-sub">Berhasil bergabung</div>
+    </div>
+    <div class="kpi-card red">
+      <div class="kpi-label">Rejected</div>
+      <div class="kpi-val" id="kpi-rejected">—</div>
+      <div class="kpi-sub">Tidak lolos</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Dalam Proses</div>
+      <div class="kpi-val" id="kpi-proses">—</div>
+      <div class="kpi-sub">Sedang diproses</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Konversi</div>
+      <div class="kpi-val" id="kpi-konversi">—</div>
+      <div class="kpi-sub">CV → Join</div>
+    </div>
+  </div>
+
+  <div style="background:var(--paper);border-radius:var(--radius);
+              padding:22px 24px;box-shadow:var(--shadow);
+              border:1px solid var(--border)">
+    <div style="font-family:'Playfair Display',serif;
+                font-size:1rem;color:var(--brown);margin-bottom:16px">
+      Pipeline Rekrutmen
+    </div>
+    <div id="pipeline-bars"></div>
+  </div>
+</div>
+</div>
+
+<!-- ══ KANDIDAT ══ -->
+<div class="view" id="view-kandidat">
+<div class="table-view">
+  <div class="view-header">
+    <div class="view-title">👥 Kandidat</div>
+  </div>
+  <div class="toolbar">
+    <select id="k-filter-posisi" onchange="renderKandidat()">
+      <option value="">Semua Posisi</option>
+    </select>
+    <select id="k-filter-stage" onchange="renderKandidat()">
+      <option value="">Semua Status</option>
+      <option value="Baru">Baru</option>
+      <option value="Screening">Screening</option>
+      <option value="Job Test">Job Test</option>
+      <option value="Psikotest">Psikotest</option>
+      <option value="Interview">Interview</option>
+      <option value="Hired">Hired</option>
+      <option value="Rejected">Rejected</option>
+    </select>
+    <input type="text" id="k-search"
+      placeholder="🔍 Cari nama..."
+      oninput="renderKandidat()">
+  </div>
+  <div style="overflow-x:auto">
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Nama</th>
+        <th>Posisi</th>
+        <th>No. WA</th>
+        <th>Pendidikan</th>
+        <th>Tgl Daftar</th>
+        <th>Status</th>
+        <th>Tindakan</th>
+      </tr>
+    </thead>
+    <tbody id="kandidat-body"></tbody>
+  </table>
+  </div>
+</div>
+</div>
+
+<!-- ══ JOB TEST ══ -->
+<div class="view" id="view-jobtest">
+<div class="table-view">
+  <div class="view-header">
+    <div class="view-title">📝 Job Test</div>
+  </div>
+  <div style="overflow-x:auto">
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Nama</th><th>Posisi</th><th>No. WA</th>
+        <th>Kehadiran</th><th>Nilai</th>
+        <th>Hasil</th><th>Tindakan</th><th>Simpan</th>
+      </tr>
+    </thead>
+    <tbody id="jobtest-body"></tbody>
+  </table>
+  </div>
+</div>
+</div>
+
+<!-- ══ PSIKOTEST ══ -->
+<div class="view" id="view-psikotest">
+<div class="table-view">
+  <div class="view-header">
+    <div class="view-title">🧠 Psikotest</div>
+  </div>
+  <div style="overflow-x:auto">
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Nama</th><th>Posisi</th>
+        <th>IQ</th><th>Kategori</th>
+        <th>DISC</th><th>Aksi</th>
+      </tr>
+    </thead>
+    <tbody id="psikotest-body"></tbody>
+  </table>
+  </div>
+</div>
+</div>
+
+<!-- ══ INTERVIEW ══ -->
+<div class="view" id="view-interview">
+<div class="table-view">
+  <div class="view-header">
+    <div class="view-title">🗣 Interview</div>
+  </div>
+  <div style="overflow-x:auto">
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Nama</th><th>Posisi</th><th>No. WA</th>
+        <th>Hasil</th><th>Catatan</th>
+        <th>Tindak Lanjut</th><th>Simpan</th>
+      </tr>
+    </thead>
+    <tbody id="interview-body"></tbody>
+  </table>
+  </div>
+</div>
+</div>
+
+<!-- ══ SCORING CARD ══ -->
+<div class="view" id="view-scoring">
+<div class="scoring-wrap">
+  <div class="view-title" style="margin-bottom:20px">
+    🎯 Scoring Card
+  </div>
+
+  <!-- Form Input -->
+  <div style="background:var(--paper);border:1px solid var(--border);
+              border-radius:var(--radius);padding:24px;
+              box-shadow:var(--shadow);margin-bottom:20px">
+
+    <div style="font-size:0.85rem;font-weight:600;
+                color:var(--brown);margin-bottom:16px">
+      Data Kandidat
+    </div>
+
+    <div class="form-grid">
+      <div class="form-group">
+        <label>Nama Kandidat</label>
+        <input type="text" id="sc-nama" placeholder="Nama lengkap">
+      </div>
+      <div class="form-group">
+        <label>Usia</label>
+        <input type="number" id="sc-usia" placeholder="Usia" min="18" max="60">
+      </div>
+      <div class="form-group">
+        <label>Posisi Dilamar</label>
+        <select id="sc-posisi" onchange="onPosisiChange()">
+          <option value="">Pilih Posisi</option>
+          <option value="Sales Property">Sales Property</option>
+          <option value="Site Project Coordinator">Site Project Coordinator</option>
+          <option value="Manager / Dept Head">Manager / Dept Head</option>
+          <option value="Finance / Accounting">Finance / Accounting</option>
+          <option value="HR">HR</option>
+          <option value="IT">IT</option>
+          <option value="Admin / Operasional">Admin / Operasional</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Skor IQ</label>
+        <input type="number" id="sc-iq" placeholder="Skor IQ (min 90)">
+      </div>
+    </div>
+
+    <div style="font-size:0.85rem;font-weight:600;
+                color:var(--brown);margin-bottom:12px;
+                margin-top:8px">
+      Skor Papikostick (1–9)
+    </div>
+
+    <div class="papi-grid">
+      <div class="papi-item">
+        <label>N — Ketekunan</label>
+        <input type="number" id="papi-N" min="1" max="9" placeholder="1-9">
+      </div>
+      <div class="papi-item">
+        <label>G — Kerja Keras</label>
+        <input type="number" id="papi-G" min="1" max="9" placeholder="1-9">
+      </div>
+      <div class="papi-item">
+        <label>A — Ambisi</label>
+        <input type="number" id="papi-A" min="1" max="9" placeholder="1-9">
+      </div>
+      <div class="papi-item">
+        <label>L — Leadership</label>
+        <input type="number" id="papi-L" min="1" max="9" placeholder="1-9">
+      </div>
+      <div class="papi-item">
+        <label>P — Kontrol</label>
+        <input type="number" id="papi-P" min="1" max="9" placeholder="1-9">
+      </div>
+      <div class="papi-item">
+        <label>I — Keputusan</label>
+        <input type="number" id="papi-I" min="1" max="9" placeholder="1-9">
+      </div>
+      <div class="papi-item">
+        <label>T — Aktif</label>
+        <input type="number" id="papi-T" min="1" max="9" placeholder="1-9">
+      </div>
+      <div class="papi-item">
+        <label>V — Energik</label>
+        <input type="number" id="papi-V" min="1" max="9" placeholder="1-9">
+      </div>
+      <div class="papi-item">
+        <label>X — Noticed</label>
+        <input type="number" id="papi-X" min="1" max="9" placeholder="1-9">
+      </div>
+      <div class="papi-item">
+        <label>S — Sosial</label>
+        <input type="number" id="papi-S" min="1" max="9" placeholder="1-9">
+      </div>
+      <div class="papi-item">
+        <label>B — Belong</label>
+        <input type="number" id="papi-B" min="1" max="9" placeholder="1-9">
+      </div>
+      <div class="papi-item">
+        <label>O — Closeness</label>
+        <input type="number" id="papi-O" min="1" max="9" placeholder="1-9">
+      </div>
+      <div class="papi-item">
+        <label>F — Authority</label>
+        <input type="number" id="papi-F" min="1" max="9" placeholder="1-9">
+      </div>
+      <div class="papi-item">
+        <label>W — Supervision</label>
+        <input type="number" id="papi-W" min="1" max="9" placeholder="1-9">
+      </div>
+      <div class="papi-item">
+        <label>R — Teoritis</label>
+        <input type="number" id="papi-R" min="1" max="9" placeholder="1-9">
+      </div>
+      <div class="papi-item">
+        <label>D — Detail</label>
+        <input type="number" id="papi-D" min="1" max="9" placeholder="1-9">
+      </div>
+      <div class="papi-item">
+        <label>C — Organized</label>
+        <input type="number" id="papi-C" min="1" max="9" placeholder="1-9">
+      </div>
+      <div class="papi-item">
+        <label>Z — Visioner</label>
+        <input type="number" id="papi-Z" min="1" max="9" placeholder="1-9">
+      </div>
+      <div class="papi-item">
+        <label>E — Emosi</label>
+        <input type="number" id="papi-E" min="1" max="9" placeholder="1-9">
+      </div>
+      <div class="papi-item">
+        <label>K — Forceful</label>
+        <input type="number" id="papi-K" min="1" max="9" placeholder="1-9">
+      </div>
+    </div>
+
+    <button class="btn-score" onclick="runScoring()">
+      🎯 Hitung Scoring
+    </button>
+  </div>
+
+  <!-- Result -->
+  <div class="score-result" id="score-result"></div>
+</div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ═══════════════════════════════════════════
+// CONFIG & STATE
+// ═══════════════════════════════════════════
+let apiUrl  = localStorage.getItem('apiUrl') || '';
+let allData = [];
+
+if (apiUrl) {
+  document.getElementById('api-url').value = apiUrl;
+  loadData();
+}
+
+// ═══════════════════════════════════════════
+// SCORING CONFIG — SEMUA POSISI
+// ═══════════════════════════════════════════
+const SCORING_CONFIG = {
+  'Sales Property': {
+    label      : 'Sales Property',
+    hardFilter : [
+      {factor:'IQ',  min:90,  label:'IQ Minimum'},
+      {factor:'N',   min:5,   label:'N (Ketekunan)'},
+      {factor:'G',   min:5,   label:'G (Kerja Keras)'},
+      {factor:'A',   min:6,   label:'A (Ambisi)'},
+      {factor:'K',   min:5,   label:'K (Semangat Bersaing)'},
+    ],
+    weights: [
+      {factor:'IQ', min:90,  ideal:120, weight:0.25, label:'IQ'},
+      {factor:'A',  min:6,   ideal:9,   weight:0.25, label:'A — Ambisi'},
+      {factor:'K',  min:5,   ideal:8,   weight:0.20, label:'K — Bersaing'},
+      {factor:'S',  min:5,   ideal:8,   weight:0.15, label:'S — Sosial'},
+      {factor:'N',  min:5,   ideal:7,   weight:0.10, label:'N — Ketekunan'},
+      {factor:'G',  min:5,   ideal:7,   weight:0.05, label:'G — Kerja Keras'},
+    ],
+  },
+  'Site Project Coordinator': {
+    label      : 'Site Project Coordinator',
+    hardFilter : [
+      {factor:'IQ', min:90, label:'IQ Minimum'},
+      {factor:'N',  min:6,  label:'N (Ketekunan)'},
+      {factor:'G',  min:6,  label:'G (Kerja Keras)'},
+      {factor:'C',  min:6,  label:'C (Organized)'},
+      {factor:'D',  min:5,  label:'D (Detail)'},
+      {factor:'A',  min:5,  label:'A (Ambisi)'},
+    ],
+    weights: [
+      {factor:'IQ', min:90, ideal:115, weight:0.20, label:'IQ'},
+      {factor:'N',  min:6,  ideal:9,   weight:0.20, label:'N — Ketekunan'},
+      {factor:'G',  min:6,  ideal:9,   weight:0.20, label:'G — Kerja Keras'},
+      {factor:'C',  min:6,  ideal:8,   weight:0.15, label:'C — Organized'},
+      {factor:'D',  min:5,  ideal:8,   weight:0.15, label:'D — Detail'},
+      {factor:'S',  min:4,  ideal:7,   weight:0.05, label:'S — Sosial'},
+      {factor:'A',  min:5,  ideal:7,   weight:0.05, label:'A — Ambisi'},
+    ],
+  },
+  'Manager / Dept Head': {
+    label      : 'Manager / Dept Head',
+    hardFilter : [
+      {factor:'IQ', min:100, label:'IQ Minimum'},
+      {factor:'A',  min:7,   label:'A (Ambisi)'},
+      {factor:'I',  min:6,   label:'I (Keputusan)'},
+      {factor:'N',  min:6,   label:'N (Ketekunan)'},
+      {factor:'G',  min:6,   label:'G (Kerja Keras)'},
+    ],
+    weights: [
+      {factor:'IQ', min:100, ideal:125, weight:0.25, label:'IQ'},
+      {factor:'A',  min:7,   ideal:9,   weight:0.25, label:'A — Ambisi'},
+      {factor:'I',  min:6,   ideal:9,   weight:0.20, label:'I — Keputusan'},
+      {factor:'N',  min:6,   ideal:8,   weight:0.10, label:'N — Ketekunan'},
+      {factor:'G',  min:6,   ideal:8,   weight:0.10, label:'G — Kerja Keras'},
+      {factor:'R',  min:5,   ideal:7,   weight:0.05, label:'R — Teoritis'},
+      {factor:'C',  min:5,   ideal:7,   weight:0.05, label:'C — Organized'},
+    ],
+  },
+  'Finance / Accounting': {
+    label      : 'Finance / Accounting',
+    hardFilter : [
+      {factor:'IQ', min:100, label:'IQ Minimum'},
+      {factor:'D',  min:6,   label:'D (Detail)'},
+      {factor:'C',  min:5,   label:'C (Organized)'},
+      {factor:'N',  min:4,   label:'N (Ketekunan)'},
+      {factor:'G',  min:4,   label:'G (Kerja Keras)'},
+    ],
+    weights: [
+      {factor:'IQ', min:100, ideal:125, weight:0.35, label:'IQ'},
+      {factor:'D',  min:6,   ideal:9,   weight:0.25, label:'D — Detail'},
+      {factor:'C',  min:5,   ideal:8,   weight:0.20, label:'C — Organized'},
+      {factor:'N',  min:5,   ideal:7,   weight:0.10, label:'N — Ketekunan'},
+      {factor:'G',  min:5,   ideal:7,   weight:0.10, label:'G — Kerja Keras'},
+    ],
+  },
+  'HR': {
+    label      : 'HR',
+    hardFilter : [
+      {factor:'IQ', min:90, label:'IQ Minimum'},
+      {factor:'S',  min:6,  label:'S (Sosial)'},
+      {factor:'I',  min:5,  label:'I (Keputusan)'},
+      {factor:'N',  min:5,  label:'N (Ketekunan)'},
+    ],
+    weights: [
+      {factor:'IQ', min:90,  ideal:115, weight:0.20, label:'IQ'},
+      {factor:'S',  min:6,   ideal:9,   weight:0.25, label:'S — Sosial'},
+      {factor:'I',  min:5,   ideal:8,   weight:0.20, label:'I — Keputusan'},
+      {factor:'N',  min:5,   ideal:7,   weight:0.15, label:'N — Ketekunan'},
+      {factor:'C',  min:5,   ideal:7,   weight:0.10, label:'C — Organized'},
+      {factor:'G',  min:4,   ideal:7,   weight:0.10, label:'G — Kerja Keras'},
+    ],
+  },
+  'IT': {
+    label      : 'IT',
+    hardFilter : [
+      {factor:'IQ', min:100, label:'IQ Minimum'},
+      {factor:'R',  min:6,   label:'R (Teoritis)'},
+      {factor:'D',  min:5,   label:'D (Detail)'},
+      {factor:'N',  min:5,   label:'N (Ketekunan)'},
+    ],
+    weights: [
+      {factor:'IQ', min:100, ideal:130, weight:0.35, label:'IQ'},
+      {factor:'R',  min:6,   ideal:9,   weight:0.25, label:'R — Teoritis'},
+      {factor:'D',  min:5,   ideal:8,   weight:0.20, label:'D — Detail'},
+      {factor:'N',  min:5,   ideal:8,   weight:0.10, label:'N — Ketekunan'},
+      {factor:'C',  min:4,   ideal:7,   weight:0.10, label:'C — Organized'},
+    ],
+  },
+  'Admin / Operasional': {
+    label      : 'Admin / Operasional',
+    hardFilter : [
+      {factor:'IQ', min:90, label:'IQ Minimum'},
+      {factor:'C',  min:5,  label:'C (Organized)'},
+      {factor:'D',  min:5,  label:'D (Detail)'},
+      {factor:'N',  min:4,  label:'N (Ketekunan)'},
+      {factor:'G',  min:4,  label:'G (Kerja Keras)'},
+    ],
+    weights: [
+      {factor:'IQ', min:90, ideal:115, weight:0.30, label:'IQ'},
+      {factor:'C',  min:5,  ideal:8,   weight:0.25, label:'C — Organized'},
+      {factor:'D',  min:5,  ideal:8,   weight:0.20, label:'D — Detail'},
+      {factor:'N',  min:5,  ideal:7,   weight:0.15, label:'N — Ketekunan'},
+      {factor:'G',  min:4,  ideal:7,   weight:0.10, label:'G — Kerja Keras'},
+    ],
+  },
+};
+
+// ═══════════════════════════════════════════
+// SCORING ENGINE
+// ═══════════════════════════════════════════
+function getFactorValue(factor, inputs) {
+  if (factor === 'IQ') return inputs.iq;
+  return inputs.papi[factor] || 0;
+}
+
+function calcComponentScore(raw, min, ideal) {
+  if (raw >= ideal) return 100;
+  if (raw >= min)   return 60 + ((raw-min)/(ideal-min))*40;
+  return (raw/min)*60;
+}
+
+function checkToleranceNG(papi) {
+  const N = papi['N'] || 0;
+  const G = papi['G'] || 0;
+  return (N+G)/2 >= 5;
+}
+
+function runScoring() {
+  const nama   = document.getElementById('sc-nama').value.trim();
+  const usia   = parseInt(document.getElementById('sc-usia').value)||0;
+  const posisi = document.getElementById('sc-posisi').value;
+  const iq     = parseInt(document.getElementById('sc-iq').value)||0;
+
+  if (!nama || !posisi || !iq) {
+    showToast('Lengkapi nama, posisi, dan IQ dulu');
+    return;
+  }
+
+  const config = SCORING_CONFIG[posisi];
+  if (!config) {
+    showToast('Posisi tidak dikenali');
+    return;
+  }
+
+  // Kumpulkan PAPI
+  const papi = {};
+  const codes = ['N','G','A','L','P','I','T','V',
+                 'X','S','B','O','F','W','R','D',
+                 'C','Z','E','K'];
+  codes.forEach(c => {
+    papi[c] = parseInt(document.getElementById('papi-'+c).value)||0;
+  });
+
+  const inputs = {iq, papi};
+
+  // ── Universal Gate ──
+  const univGate = [
+    {factor:'IQ', min:90,  label:'IQ Universal'},
+    {factor:'N',  min:4,   label:'N Universal'},
+    {factor:'G',  min:4,   label:'G Universal'},
+  ];
+
+  // ── Hard Filter Check ──
+  const allFilters = [...config.hardFilter];
+  let gugur        = false;
+  let gugurReason  = '';
+
+  // Cek universal gate dulu
+  for (const f of univGate) {
+    const val = getFactorValue(f.factor, inputs);
+    if (val < f.min) {
+      // Cek toleransi N+G
+      if ((f.factor==='N'||f.factor==='G') && checkToleranceNG(papi)) {
+        continue; // toleransi aktif
+      }
+      gugur       = true;
+      gugurReason = f.label + ' = ' + val + ' (min ' + f.min + ')';
+      break;
+    }
+  }
+
+  // Cek position-specific hard filter
+  if (!gugur) {
+    for (const f of config.hardFilter) {
+      if (f.factor === 'IQ') continue; // sudah dicek di universal
+      const val = getFactorValue(f.factor, inputs);
+      if (val < f.min) {
+        // Toleransi N+G
+        if ((f.factor==='N'||f.factor==='G') && checkToleranceNG(papi)) {
+          continue;
+        }
+        gugur       = true;
+        gugurReason = f.label + ' = ' + val + ' (min ' + f.min + ')';
+        break;
+      }
+    }
+  }
+
+  // ── Scoring ──
+  let totalScore = 0;
+  const scoreRows = [];
+
+  if (!gugur) {
+    config.weights.forEach(w => {
+      const raw  = getFactorValue(w.factor, inputs);
+      let comp   = calcComponentScore(raw, w.min, w.ideal);
+
+      // Toleransi N+G
+      if ((w.factor==='N'||w.factor==='G') &&
+          raw < w.min && checkToleranceNG(papi)) {
+        comp = 60;
+      }
+
+      const contrib = comp * w.weight;
+      totalScore   += contrib;
+
+      scoreRows.push({
+        factor : w.label,
+        min    : w.min,
+        ideal  : w.ideal,
+        weight : Math.round(w.weight*100) + '%',
+        raw    : raw,
+        comp   : Math.round(comp*10)/10,
+        contrib: Math.round(contrib*10)/10,
+      });
+    });
+  }
+
+  // ── Verdict ──
+  let verdict, vClass;
+  if (gugur) {
+    verdict = 'GUGUR';
+    vClass  = 'verdict-gugur';
+  } else if (totalScore >= 80) {
+    verdict = 'SANGAT DISARANKAN';
+    vClass  = 'verdict-sangat';
+  } else if (totalScore >= 70) {
+    verdict = 'DISARANKAN';
+    vClass  = 'verdict-dis';
+  } else if (totalScore >= 60) {
+    verdict = 'BERSYARAT';
+    vClass  = 'verdict-ber';
+  } else {
+    verdict = 'TIDAK DISARANKAN';
+    vClass  = 'verdict-tidak';
+  }
+
+  // ── Render ──
+  renderScoringResult({
+    nama, usia, posisi, iq, papi,
+    gugur, gugurReason,
+    filters: config.hardFilter,
+    scoreRows, totalScore,
+    verdict, vClass,
+    toleransiNG: checkToleranceNG(papi),
+  });
+}
+
+function renderScoringResult(d) {
+  const el = document.getElementById('score-result');
+
+  // Filter table
+  let filterRows = '';
+  const allF = [
+    {factor:'IQ', min:90,  label:'IQ Universal'},
+    {factor:'N',  min:4,   label:'N Universal'},
+    {factor:'G',  min:4,   label:'G Universal'},
+    ...d.filters,
+  ];
+  const seenF = new Set();
+  allF.forEach(f => {
+    if (seenF.has(f.factor)) return;
+    seenF.add(f.factor);
+    const val  = f.factor==='IQ' ? d.iq : (d.papi[f.factor]||0);
+    const ok   = val >= f.min;
+    const tolNG= (f.factor==='N'||f.factor==='G') && d.toleransiNG;
+    const status = ok ? '✅ LOLOS' : tolNG ? '⚠️ TOLERANSI' : '❌ GUGUR';
+    const cls    = ok ? 'filter-ok' : tolNG ? '' : 'filter-fail';
+    filterRows  += `<tr>
+      <td>${f.label}</td>
+      <td>${f.min}</td>
+      <td>${val}</td>
+      <td class="${cls}">${status}</td>
+    </tr>`;
+  });
+
+  // Score table
+  let scoreRows = '';
+  if (!d.gugur) {
+    d.scoreRows.forEach(r => {
+      scoreRows += `<tr>
+        <td>${r.factor}</td>
+        <td>${r.min}</td>
+        <td>${r.ideal}</td>
+        <td>${r.weight}</td>
+        <td><strong>${r.raw}</strong></td>
+        <td>${r.comp}%</td>
+        <td>${r.contrib}%</td>
+      </tr>`;
+    });
+    scoreRows += `<tr class="total-row">
+      <td colspan="6"><strong>TOTAL SKOR</strong></td>
+      <td><strong>${Math.round(d.totalScore*10)/10}%</strong></td>
+    </tr>`;
+  }
+
+  el.innerHTML = `
+    <div class="result-header">
+      <div>
+        <div class="result-name">${d.nama}</div>
+        <div class="text-muted">${d.posisi} · Usia ${d.usia} · IQ ${d.iq}</div>
+      </div>
+      <div class="verdict-badge ${d.vClass}">${d.verdict}</div>
+    </div>
+
+    ${d.gugur ? `
+    <div style="background:#fde8e4;border-radius:8px;padding:12px 16px;
+                margin-bottom:16px;color:#7a2010;font-weight:600">
+      ❌ GUGUR: ${d.gugurReason}
+    </div>` : ''}
+
+    ${d.toleransiNG ? `
+    <div style="background:#fff3cd;border-radius:8px;padding:10px 16px;
+                margin-bottom:16px;color:#856404;font-size:0.82rem">
+      ⚠️ Toleransi N+G aktif — avg(N,G) ≥ 5
+    </div>` : ''}
+
+    <div style="font-size:0.8rem;font-weight:700;color:var(--brown);
+                margin-bottom:8px">HARD FILTER CHECK</div>
+    <table class="filter-table">
+      <thead>
+        <tr>
+          <th>Faktor</th>
+          <th>Minimum</th>
+          <th>Nilai</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>${filterRows}</tbody>
+    </table>
+
+    ${!d.gugur ? `
+    <div style="font-size:0.8rem;font-weight:700;color:var(--brown);
+                margin-bottom:8px;margin-top:16px">SCORING DETAIL</div>
+    <table class="score-table">
+      <thead>
+        <tr>
+          <th>Faktor</th>
+          <th>Min</th>
+          <th>Ideal</th>
+          <th>Bobot</th>
+          <th>Raw</th>
+          <th>Skor Komponen</th>
+          <th>Kontribusi</th>
+        </tr>
+      </thead>
+      <tbody>${scoreRows}</tbody>
+    </table>` : ''}
+
+    <div style="display:flex;gap:10px;margin-top:16px">
+      <button class="btn-score" style="background:#2d6a4f"
+        onclick="window.print()">🖨 Print</button>
+      <button class="btn-score" style="background:#2471a3"
+        onclick="saveScoringToSheet()">💾 Simpan ke Sheet</button>
+    </div>
+  `;
+
+  el.classList.add('show');
+  el.scrollIntoView({behavior:'smooth'});
+}
+
+function onPosisiChange() {
+  // Reset field saat posisi berubah
+}
+
+function saveScoringToSheet() {
+  showToast('Fitur simpan ke sheet segera hadir');
+}
+
+// ═══════════════════════════════════════════
+// CONNECTION & DATA
+// ═══════════════════════════════════════════
+function connectSheet() {
+  const url = document.getElementById('api-url').value.trim();
+  if (!url || !url.includes('script.google.com')) {
+    showToast('URL tidak valid');
+    return;
+  }
+  apiUrl = url;
+  localStorage.setItem('apiUrl', url);
+  loadData();
+}
+
+function setStatus(type, msg) {
+  const el = document.getElementById('conn-status');
+  el.style.display = 'inline-block';
+  el.textContent   = msg;
+  el.className     = 'conn-status ' + type;
+}
+
+function jsonp(url, onOk, onErr) {
+  const cb  = 'cb_' + Date.now();
+  const tag = document.createElement('script');
+  let done  = false;
+  window[cb] = function(data) {
+    done = true; cleanup(); onOk(data);
+  };
+  function cleanup() {
+    delete window[cb];
+    if (tag.parentNode) tag.parentNode.removeChild(tag);
+  }
+  tag.onerror = function() {
+    if (!done) { done=true; cleanup(); if(onErr) onErr(); }
+  };
+  setTimeout(function() {
+    if (!done) { done=true; cleanup(); if(onErr) onErr(); }
+  }, 15000);
+  tag.src = url + (url.includes('?')?'&':'?') + 'callback=' + cb;
+  document.head.appendChild(tag);
+}
+
+function loadData() {
+  if (!apiUrl) return;
+  setStatus('loading','⏳ Memuat...');
+  jsonp(apiUrl+'?action=listRekrutmen&t='+Date.now(),
+    function(data) {
+      if (data.error) { setStatus('err','❌ '+data.error); return; }
+      allData = data.data || [];
+      setStatus('ok','✓ '+allData.length+' kandidat');
+      document.getElementById('sync-badge').textContent =
+        'Sync: '+new Date().toLocaleTimeString('id-ID');
+      renderAll();
+    },
+    function() { setStatus('err','❌ Gagal. Cek URL'); }
+  );
+}
+
+function renderAll() {
+  renderDashboard();
+  renderKandidat();
+  renderJobTest();
+  renderPsikotest();
+  renderInterview();
+  populateFilters();
+}
+
+function populateFilters() {
+  const positions = [...new Set(
+    allData.map(k=>k.posisi).filter(Boolean)
+  )].sort();
+  const el = document.getElementById('k-filter-posisi');
+  const cur = el.value;
+  el.innerHTML = '<option value="">Semua Posisi</option>' +
+    positions.map(p=>`<option value="${p}" ${p===cur?'selected':''}>${p}</option>`).join('');
+}
+
+// ═══════════════════════════════════════════
+// DASHBOARD
+// ═══════════════════════════════════════════
+function renderDashboard() {
+  const total    = allData.length;
+  const hired    = allData.filter(k=>k.rekStage==='Hired').length;
+  const rejected = allData.filter(k=>k.rekStage==='Rejected').length;
+  const proses   = allData.filter(k=>
+    !['Hired','Rejected'].includes(k.rekStage||'Baru')
+  ).length;
+  const konversi = total ? Math.round(hired/total*100)+'%' : '—';
+
+  setText('kpi-total',    total    || '—');
+  setText('kpi-hired',    hired    || '—');
+  setText('kpi-rejected', rejected || '—');
+  setText('kpi-proses',   proses   || '—');
+  setText('kpi-konversi', konversi);
+
+  // Pipeline bars
+  const stages = [
+    {label:'Baru',      key:'Baru',      color:'#4a3728'},
+    {label:'Job Test',  key:'Job Test',  color:'#e8920a'},
+    {label:'Psikotest', key:'Psikotest', color:'#2471a3'},
+    {label:'Interview', key:'Interview', color:'#8e44ad'},
+    {label:'Hired',     key:'Hired',     color:'#2d6a4f'},
+  ];
+  const max = total || 1;
+  let html  = '';
+  stages.forEach(s => {
+    const cnt = allData.filter(k=>(k.rekStage||'Baru')===s.key).length;
+    const pct = Math.round(cnt/max*100);
+    html += `<div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+      <div style="width:100px;font-size:0.75rem;color:var(--muted);text-align:right">
+        ${s.label}
+      </div>
+      <div style="flex:1;height:24px;background:var(--cream);border-radius:4px;overflow:hidden">
+        <div style="width:${Math.max(pct,2)}%;height:100%;background:${s.color};
+                    display:flex;align-items:center;padding-left:8px;
+                    font-size:0.7rem;color:#fff;font-weight:700">
+          ${cnt}
+        </div>
+      </div>
+      <div style="width:40px;font-size:0.72rem;color:var(--muted)">${pct}%</div>
+    </div>`;
+  });
+  document.getElementById('pipeline-bars').innerHTML = html;
+}
+
+// ═══════════════════════════════════════════
+// KANDIDAT
+// ═══════════════════════════════════════════
+function renderKandidat() {
+  const posFilter   = document.getElementById('k-filter-posisi')?.value || '';
+  const stageFilter = document.getElementById('k-filter-stage')?.value  || '';
+  const search      = (document.getElementById('k-search')?.value       || '').toLowerCase();
+
+  let data = allData.filter(k => {
+    const st  = k.rekStage || 'Baru';
+    const pos = k.posisi   || '';
+    if (posFilter   && pos!==posFilter)                          return false;
+    if (stageFilter && st!==stageFilter)                         return false;
+    if (search && !(k.nama||'').toLowerCase().includes(search))  return false;
+    return true;
+  });
+
+  const tbody = document.getElementById('kandidat-body');
+  if (!data.length) {
+    tbody.innerHTML = '<tr><td colspan="7"><div class="empty-state"><div class="empty-icon">📭</div>Tidak ada kandidat</div></td></tr>';
+    return;
+  }
+
+  tbody.innerHTML = data.map(k => {
+    const stage    = k.rekStage || 'Baru';
+    const badgeCls = stageBadge(stage);
+    const wa       = k.wa ? `<a href="https://wa.me/${k.wa.replace(/\D/g,'')}"
+      target="_blank" style="color:var(--green)">📱 ${k.wa}</a>` : '—';
+    return `<tr>
+      <td class="fw6">${k.nama||'—'}</td>
+      <td>${k.posisi||'—'}</td>
+      <td class="nowrap">${wa}</td>
+      <td style="font-size:0.76rem">${k.pendidikan||'—'}</td>
+      <td class="text-muted">${k.timestamp||'—'}</td>
+      <td><span class="badge ${badgeCls}">${stage}</span></td>
+      <td>
+        <select class="action-sel"
+          onchange="handleKandidatAction(this,${k.row})"
+          style="padding:5px 8px;border:1.5px solid var(--border);
+                 border-radius:5px;font-size:0.74rem;
+                 font-family:inherit;background:var(--cream);
+                 color:var(--ink);cursor:pointer;min-width:140px">
+          <option value="">— Tindakan —</option>
+          <option value="Job Test">→ Job Test</option>
+          <option value="Psikotest">→ Psikotest</option>
+          <option value="Interview">→ Interview</option>
+          <option value="Hired">✅ Hired</option>
+          <option value="Rejected">✕ Reject</option>
+        </select>
+      </td>
+    </tr>`;
+  }).join('');
+}
+
+function handleKandidatAction(sel, row) {
+  const action = sel.value;
+  if (!action) return;
+  if (action==='Rejected' && !confirm('Yakin reject?')) {
+    sel.value=''; return;
+  }
+  updateStage(row, action, function() {
+    const k = allData.find(x=>x.row===row);
+    if (k) k.rekStage = action;
+    sel.value = '';
+    renderAll();
+  });
+}
+
+// ═══════════════════════════════════════════
+// JOB TEST
+// ═══════════════════════════════════════════
+function renderJobTest() {
+  const data  = allData.filter(k=>(k.rekStage||'Baru')==='Job Test');
+  const tbody = document.getElementById('jobtest-body');
+
+  if (!data.length) {
+    tbody.innerHTML = '<tr><td colspan="8"><div class="empty-state"><div class="empty-icon">📝</div>Belum ada kandidat di Job Test</div></td></tr>';
+    return;
+  }
+
+  tbody.innerHTML = data.map(k => {
+    const score  = k.jobScore || '';
+    const hadir  = k.jobHadir || '';
+    const pass   = score!=='' ? parseFloat(score)>=60 : null;
+    const hasil  = pass===null ? '—' : pass
+      ? '<span class="badge badge-green">LULUS</span>'
+      : '<span class="badge badge-red">TIDAK LULUS</span>';
+
+    return `<tr>
+      <td class="fw6">${k.nama||'—'}</td>
+      <td>${k.posisi||'—'}</td>
+      <td>${k.wa||'—'}</td>
+      <td>
+        <select onchange="saveJTHadir(this,${k.row})"
+          style="padding:4px 8px;border:1.5px solid var(--border);
+                 border-radius:5px;font-size:0.74rem;font-family:inherit">
+          <option value="" ${!hadir?'selected':''}>— Kehadiran —</option>
+          <option value="Hadir"       ${hadir==='Hadir'?'selected':''}>✅ Hadir</option>
+          <option value="Tidak Hadir" ${hadir==='Tidak Hadir'?'selected':''}>❌ Tidak Hadir</option>
+        </select>
+      </td>
+      <td>
+        <input type="number" value="${score}" min="0" max="100"
+          style="width:70px;padding:4px 8px;border:1.5px solid var(--border);
+                 border-radius:5px;font-size:0.78rem;text-align:center"
+          onchange="saveJTScore(this,${k.row})">
+      </td>
+      <td>${hasil}</td>
+      <td>
+        <select onchange="handleJTAction(this,${k.row})"
+          style="padding:4px 8px;border:1.5px solid var(--border);
+                 border-radius:5px;font-size:0.74rem;font-family:inherit;min-width:120px">
+          <option value="">— Tindak Lanjut —</option>
+          <option value="Psikotest">→ Psikotest</option>
+          <option value="Interview">→ Interview</option>
+          <option value="Rejected">✕ Reject</option>
+        </select>
+      </td>
+      <td>
+        <button onclick="saveJTAll(${k.row})"
+          style="padding:4px 10px;background:var(--brown);color:#fff;
+                 border:none;border-radius:5px;font-size:0.72rem;cursor:pointer">
+          💾
+        </button>
+      </td>
+    </tr>`;
+  }).join('');
+}
+
+function saveJTHadir(sel, row) {
+  const k = allData.find(x=>x.row===row);
+  if (k) k.jobHadir = sel.value;
+}
+function saveJTScore(input, row) {
+  const k = allData.find(x=>x.row===row);
+  if (k) k.jobScore = parseFloat(input.value)||0;
+}
+function saveJTAll(row) {
+  const k = allData.find(x=>x.row===row);
+  if (!k || !apiUrl) return;
+  jsonp(apiUrl+'?action=updateJobTest&row='+row+
+    '&score='+(k.jobScore||'')+
+    '&hadir='+encodeURIComponent(k.jobHadir||'')+'&t='+Date.now(),
+    function(res) {
+      if (res.error) { showToast('❌ '+res.error); return; }
+      showToast('Job Test tersimpan ✓');
+    }, function() { showToast('❌ Gagal menyimpan'); }
+  );
+}
+function handleJTAction(sel, row) {
+  const action = sel.value;
+  if (!action) return;
+  const k = allData.find(x=>x.row===row);
+  if (!k) return;
+  if (action==='Rejected'&&!confirm('Reject '+k.nama+'?')) {
+    sel.value=''; return;
+  }
+  updateStage(row, action, function() {
+    k.rekStage=action; sel.value=''; renderAll();
+  });
+}
+
+// ═══════════════════════════════════════════
+// PSIKOTEST
+// ═══════════════════════════════════════════
+function renderPsikotest() {
+  const data  = allData.filter(k=>(k.rekStage||'Baru')==='Psikotest');
+  const tbody = document.getElementById('psikotest-body');
+
+  if (!data.length) {
+    tbody.innerHTML = '<tr><td colspan="6"><div class="empty-state"><div class="empty-icon">🧠</div>Belum ada kandidat di Psikotest</div></td></tr>';
+    return;
+  }
+
+  tbody.innerHTML = data.map(k => {
+    const iq      = k.psiIQ     || '—';
+    const iqNum   = parseFloat(iq);
+    const kat     = k.psiKat    || '—';
+    const disc    = k.psiDisc   || '—';
+    const hadir   = k.psiHadir  || '';
+    const iqColor = !isNaN(iqNum)
+      ? (iqNum>=110?'#155724':iqNum>=90?'#856404':'#7a2010')
+      : '#999';
+
+    return `<tr>
+      <td class="fw6">${k.nama||'—'}</td>
+      <td>${k.posisi||'—'}</td>
+      <td><span style="font-family:'Playfair Display',serif;
+                       font-size:1.1rem;font-weight:700;color:${iqColor}">
+        ${iq}</span></td>
+      <td><span style="font-size:0.75rem;color:#888">${kat}</span></td>
+      <td>${disc}</td>
+      <td class="nowrap" style="display:flex;gap:4px">
+        <button onclick="advancePsikotest(${k.row})"
+          style="padding:4px 10px;background:var(--green);color:#fff;
+                 border:none;border-radius:5px;font-size:0.72rem;cursor:pointer">
+          → Interview
+        </button>
+        <button onclick="rejectPs(${k.row})"
+          style="padding:4px 10px;background:var(--red);color:#fff;
+                 border:none;border-radius:5px;font-size:0.72rem;cursor:pointer">
+          ✕
+        </button>
+      </td>
+    </tr>`;
+  }).join('');
+}
+
+function advancePsikotest(row) {
+  const k = allData.find(x=>x.row===row);
+  if (!k) return;
+  updateStage(row,'Interview',function() {
+    k.rekStage='Interview'; renderAll();
+    showToast(k.nama+' → Interview ✓');
+  });
+}
+function rejectPs(row) {
+  const k = allData.find(x=>x.row===row);
+  if (!k||!confirm('Reject '+k.nama+'?')) return;
+  updateStage(row,'Rejected',function() {
+    k.rekStage='Rejected'; renderAll();
+  });
+}
+
+// ═══════════════════════════════════════════
+// INTERVIEW
+// ═══════════════════════════════════════════
+function renderInterview() {
+  const data  = allData.filter(k=>(k.rekStage||'Baru')==='Interview');
+  const tbody = document.getElementById('interview-body');
+
+  if (!data.length) {
+    tbody.innerHTML = '<tr><td colspan="7"><div class="empty-state"><div class="empty-icon">🗣</div>Belum ada kandidat di Interview</div></td></tr>';
+    return;
+  }
+
+  tbody.innerHTML = data.map(k => {
+    const hasil   = k.ivHasil   || '';
+    const catatan = k.ivCatatan || '';
+    return `<tr>
+      <td class="fw6">${k.nama||'—'}</td>
+      <td>${k.posisi||'—'}</td>
+      <td>${k.wa||'—'}</td>
+      <td>
+        <select onchange="saveIVHasil(this,${k.row})"
+          style="padding:4px 8px;border:1.5px solid var(--border);
+                 border-radius:5px;font-size:0.74rem;font-family:inherit;min-width:150px">
+          <option value="" ${!hasil?'selected':''}>— Hasil —</option>
+          <option value="Lolos"           ${hasil==='Lolos'?'selected':''}>✅ Lolos</option>
+          <option value="Dipertimbangkan" ${hasil==='Dipertimbangkan'?'selected':''}>🟡 Dipertimbangkan</option>
+          <option value="Gagal"           ${hasil==='Gagal'?'selected':''}>❌ Gagal</option>
+        </select>
+      </td>
+      <td>
+        <input type="text" value="${escQ(catatan)}" placeholder="Catatan..."
+          style="width:160px;padding:4px 8px;border:1.5px solid var(--border);
+                 border-radius:5px;font-size:0.78rem"
+          onchange="saveIVCatatan(this,${k.row})">
+      </td>
+      <td>
+        <select onchange="handleIVAction(this,${k.row})"
+          style="padding:4px 8px;border:1.5px solid var(--border);
+                 border-radius:5px;font-size:0.74rem;font-family:inherit;min-width:130px">
+          <option value="">— Tindak Lanjut —</option>
+          <option value="Hired">✅ Hired</option>
+          <option value="Rejected">✕ Reject</option>
+        </select>
+      </td>
+      <td>
+        <button onclick="saveIVAll(${k.row})"
+          style="padding:4px 10px;background:var(--brown);color:#fff;
+                 border:none;border-radius:5px;font-size:0.72rem;cursor:pointer">
+          💾 Simpan
+        </button>
+      </td>
+    </tr>`;
+  }).join('');
+}
+
+function saveIVHasil(sel, row) {
+  const k = allData.find(x=>x.row===row);
+  if (k) k.ivHasil = sel.value;
+}
+function saveIVCatatan(input, row) {
+  const k = allData.find(x=>x.row===row);
+  if (k) k.ivCatatan = input.value;
+}
+function saveIVAll(row) {
+  const k = allData.find(x=>x.row===row);
+  if (!k||!apiUrl) return;
+  jsonp(apiUrl+'?action=updateInterview&row='+row+
+    '&hasil='+encodeURIComponent(k.ivHasil||'')+
+    '&catatan='+encodeURIComponent(k.ivCatatan||'')+'&t='+Date.now(),
+    function(res) {
+      if (res.error) { showToast('❌ '+res.error); return; }
+      showToast('Interview tersimpan ✓');
+    }, function() { showToast('❌ Gagal'); }
+  );
+}
+function handleIVAction(sel, row) {
+  const action = sel.value;
+  if (!action) return;
+  const k = allData.find(x=>x.row===row);
+  if (!k) return;
+  const msg = action==='Hired'
+    ? 'Konfirmasi: '+k.nama+' HIRED?'
+    : 'Reject '+k.nama+'?';
+  if (!confirm(msg)) { sel.value=''; return; }
+  updateStage(row, action, function() {
+    k.rekStage=action; sel.value=''; renderAll();
+    if (action==='Hired') showToast('🎉 '+k.nama+' HIRED!');
+  });
+}
+
+// ═══════════════════════════════════════════
+// API CALLS
+// ═══════════════════════════════════════════
+function updateStage(row, stage, cb) {
+  if (!apiUrl) { showToast('Sambungkan sheet dulu'); return; }
+  jsonp(apiUrl+'?action=updateRekStage&row='+row+
+    '&stage='+encodeURIComponent(stage)+'&t='+Date.now(),
+    function(res) {
+      if (res.error) { showToast('❌ '+res.error); return; }
+      if (cb) cb();
+    }, function() { showToast('❌ Gagal'); }
+  );
+}
+
+// ═══════════════════════════════════════════
+// UTILS
+// ═══════════════════════════════════════════
+function switchView(v) {
+  document.querySelectorAll('.view')
+    .forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.nav-tab')
+    .forEach(el => el.classList.remove('active'));
+  document.getElementById('view-'+v).classList.add('active');
+  const tabs = ['dashboard','kandidat','jobtest',
+                'psikotest','interview','scoring'];
+  const tabEl = document.querySelectorAll('.nav-tab')[tabs.indexOf(v)];
+  if (tabEl) tabEl.classList.add('active');
+}
+
+function stageBadge(stage) {
+  const map = {
+    'Baru'     :'badge-brown',
+    'Job Test' :'badge-yellow',
+    'Psikotest':'badge-blue',
+    'Interview':'badge-blue',
+    'Hired'    :'badge-green',
+    'Rejected' :'badge-red',
+  };
+  return map[stage] || 'badge-gray';
+}
+
+function setText(id, val) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = val;
+}
+
+function escQ(s) {
+  return (s||'').replace(/'/g,"&#39;").replace(/"/g,'&quot;');
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+</script>
+</body>
+</html>
