@@ -8,197 +8,221 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
-  --brown:  #4a3728;
-  --brown2: #6b4f3a;
-  --orange: #e8920a;
-  --amber:  #f5a623;
-  --gold:   #f0c040;
-  --cream:  #faf6f0;
-  --paper:  #ffffff;
-  --border: #e8ddd2;
-  --muted:  #9a8778;
-  --ink:    #2d1f14;
-  --green:  #2d6a4f;
-  --red:    #c0392b;
-  --blue:   #2471a3;
-  --shadow: 0 4px 16px rgba(74,55,40,0.12);
-  --radius: 10px;
+  --brown:    #4a3728;
+  --brown2:   #6b4f3a;
+  --orange:   #e8920a;
+  --amber:    #f5a623;
+  --gold:     #f0c040;
+  --cream:    #faf6f0;
+  --paper:    #ffffff;
+  --border:   #e8ddd2;
+  --muted:    #9a8778;
+  --ink:      #2d1f14;
+  --green:    #2d6a4f;
+  --yellow:   #f5a623;
+  --red:      #c0392b;
+  --blue:     #2471a3;
+  --shadow-sm: 0 1px 4px rgba(74,55,40,0.08);
+  --shadow:    0 4px 16px rgba(74,55,40,0.12);
+  --radius:    10px;
 }
-
 * { box-sizing:border-box; margin:0; padding:0; }
-body {
-  font-family:'DM Sans',sans-serif;
-  background:var(--cream);
-  color:var(--ink);
-  min-height:100vh;
-}
+body { font-family:'DM Sans',sans-serif; background:var(--cream); color:var(--ink); min-height:100vh; }
 
-/* ── HEADER ── */
+/* HEADER */
 .header {
-  background:var(--brown);
-  display:flex;
-  align-items:center;
-  height:56px;
-  position:sticky;
-  top:0;
-  z-index:100;
+  background:var(--brown); display:flex; align-items:center;
+  height:56px; position:sticky; top:0; z-index:100;
   box-shadow:0 2px 12px rgba(0,0,0,0.2);
 }
 .logo-area {
-  background:#fff;
-  padding:8px 20px;
-  height:100%;
-  display:flex;
-  align-items:center;
-  border-right:3px solid var(--orange);
+  background:#fff; padding:8px 20px; height:100%;
+  display:flex; align-items:center; border-right:3px solid var(--orange);
 }
 .logo-svg { height:32px; width:auto; }
-.nav-tabs {
-  display:flex;
-  align-items:center;
-  height:100%;
-  padding:0 8px;
-  gap:2px;
-  flex:1;
-}
+.nav-tabs { display:flex; align-items:center; height:100%; padding:0 8px; gap:2px; flex:1; }
 .nav-tab {
-  padding:0 18px;
-  height:100%;
-  border:none;
-  background:none;
-  color:rgba(255,255,255,0.65);
-  font-family:'DM Sans',sans-serif;
-  font-size:0.8rem;
-  font-weight:500;
-  cursor:pointer;
-  position:relative;
-  white-space:nowrap;
-  transition:all 0.15s;
+  padding:0 18px; height:100%; border:none; background:none;
+  color:rgba(255,255,255,0.65); font-family:'DM Sans',sans-serif;
+  font-size:0.8rem; font-weight:500; cursor:pointer;
+  transition:all 0.15s; position:relative; white-space:nowrap;
 }
 .nav-tab:hover { color:#fff; background:rgba(255,255,255,0.08); }
 .nav-tab.active { color:#fff; background:rgba(255,255,255,0.12); }
 .nav-tab.active::after {
-  content:'';
-  position:absolute;
-  bottom:0; left:0; right:0;
-  height:3px;
-  background:var(--amber);
-  border-radius:2px 2px 0 0;
+  content:''; position:absolute; bottom:0; left:0; right:0;
+  height:3px; background:var(--amber); border-radius:2px 2px 0 0;
 }
-.header-right {
-  padding:0 20px;
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
+.header-right { padding:0 20px; display:flex; align-items:center; gap:12px; }
 .sync-badge { font-size:0.72rem; color:rgba(255,255,255,0.5); }
 .btn-print {
-  padding:6px 14px;
-  background:var(--amber);
-  color:var(--brown);
-  border:none;
-  border-radius:6px;
-  font-family:'DM Sans',sans-serif;
-  font-size:0.76rem;
-  font-weight:700;
-  cursor:pointer;
+  padding:6px 14px; background:var(--amber); color:var(--brown);
+  border:none; border-radius:6px; font-family:'DM Sans',sans-serif;
+  font-size:0.76rem; font-weight:700; cursor:pointer;
 }
 
-/* ── CONN BAR ── */
+/* CONN BAR */
 .conn-bar {
-  background:var(--brown2);
-  padding:8px 24px;
-  display:flex;
-  align-items:center;
-  gap:10px;
-  flex-wrap:wrap;
-  font-size:0.78rem;
-  color:rgba(255,255,255,0.8);
+  background:var(--brown2); padding:8px 24px;
+  display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+  font-size:0.78rem; color:rgba(255,255,255,0.8);
 }
 .conn-bar input {
-  flex:1; min-width:300px; max-width:500px;
-  padding:6px 12px;
-  background:rgba(255,255,255,0.1);
-  border:1px solid rgba(255,255,255,0.2);
-  border-radius:5px;
-  color:#fff; font-size:0.78rem; font-family:inherit;
+  flex:1; min-width:300px; max-width:500px; padding:6px 12px;
+  background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2);
+  border-radius:5px; color:#fff; font-size:0.78rem; font-family:inherit;
 }
+.conn-bar input::placeholder { color:rgba(255,255,255,0.4); }
 .conn-btn {
-  padding:6px 16px;
-  background:var(--amber);
-  color:var(--brown);
-  border:none; border-radius:5px;
-  font-weight:700; font-size:0.76rem; cursor:pointer;
+  padding:6px 16px; background:var(--amber); color:var(--brown);
+  border:none; border-radius:5px; font-weight:700; font-size:0.76rem; cursor:pointer;
 }
 .conn-status {
-  font-size:0.73rem; padding:3px 10px;
-  border-radius:20px; font-weight:600; display:none;
+  font-size:0.73rem; padding:3px 10px; border-radius:20px; font-weight:600; display:none;
 }
-.conn-status.ok  { background:#d4edda; color:#155724; }
-.conn-status.err { background:#fde8e4; color:#7a2010; }
+.conn-status.ok      { background:#d4edda; color:#155724; }
+.conn-status.err     { background:#fde8e4; color:#7a2010; }
 .conn-status.loading { background:#fff3cd; color:#856404; }
 
-/* ── VIEWS ── */
+/* VIEWS */
 .view { display:none; }
 .view.active { display:block; }
 
-/* ── TABLE COMMON ── */
+/* DASHBOARD */
+.dash-wrap { padding:28px 32px; max-width:1400px; margin:0 auto; }
+.kpi-row {
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:16px; margin-bottom:28px;
+}
+.kpi-card {
+  background:var(--paper); border-radius:var(--radius);
+  padding:20px 22px; box-shadow:var(--shadow-sm);
+  border:1px solid var(--border); position:relative; overflow:hidden;
+}
+.kpi-card::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:3px; background:var(--amber);
+}
+.kpi-card.highlight::before { background:var(--green); }
+.kpi-card.highlight .kpi-val { color:var(--green); }
+.kpi-card.warn::before { background:var(--red); }
+.kpi-card.warn .kpi-val { color:var(--red); }
+.kpi-label {
+  font-size:0.67rem; font-weight:600; letter-spacing:0.08em;
+  text-transform:uppercase; color:var(--muted); margin-bottom:10px;
+}
+.kpi-val {
+  font-family:'Playfair Display',serif; font-size:2.2rem;
+  font-weight:700; color:var(--brown); line-height:1;
+}
+.kpi-sub { font-size:0.72rem; color:var(--muted); margin-top:6px; }
+
+.dash-grid { display:grid; grid-template-columns:1fr 380px; gap:20px; }
+@media(max-width:900px){ .dash-grid{ grid-template-columns:1fr; } }
+
+.card {
+  background:var(--paper); border-radius:var(--radius);
+  padding:22px 24px; box-shadow:var(--shadow-sm); border:1px solid var(--border);
+}
+.card-title { font-family:'Playfair Display',serif; font-size:1rem; color:var(--brown); margin-bottom:4px; }
+.card-sub { font-size:0.72rem; color:var(--muted); margin-bottom:18px; letter-spacing:0.04em; text-transform:uppercase; }
+
+.funnel-select-wrap { display:flex; align-items:center; gap:10px; margin-bottom:12px; flex-wrap:wrap; }
+.funnel-select-wrap label { font-size:0.75rem; color:var(--muted); font-weight:600; text-transform:uppercase; letter-spacing:0.06em; }
+.funnel-select-wrap select {
+  padding:6px 12px; border:1.5px solid var(--border); border-radius:6px;
+  font-family:inherit; font-size:0.82rem; background:var(--cream); color:var(--ink); min-width:220px;
+}
+.funnel-date-info {
+  font-size:0.72rem; color:var(--muted); background:var(--cream);
+  padding:3px 10px; border-radius:20px; border:1px solid var(--border);
+}
+.funnel-stages { display:flex; flex-direction:column; gap:10px; }
+.funnel-row { display:flex; align-items:center; gap:10px; }
+.funnel-lbl { width:130px; font-size:0.76rem; color:var(--muted); text-align:right; flex-shrink:0; }
+.funnel-track { flex:1; height:28px; background:var(--cream); border-radius:4px; overflow:hidden; }
+.funnel-fill {
+  height:100%; border-radius:4px; display:flex; align-items:center;
+  padding-left:10px; font-size:0.72rem; font-weight:700; color:#fff;
+  transition:width 0.4s ease; min-width:30px;
+}
+.funnel-pct { width:40px; font-size:0.72rem; color:var(--muted); text-align:right; }
+.funnel-drop { font-size:0.68rem; color:var(--red); width:40px; }
+
+.open-list { display:flex; flex-direction:column; gap:10px; }
+.open-item {
+  display:flex; justify-content:space-between; align-items:center;
+  padding:12px 14px; border:1px solid var(--border); border-radius:8px; background:var(--cream);
+}
+.open-name { font-size:0.83rem; font-weight:600; color:var(--brown); }
+.open-meta { font-size:0.7rem; color:var(--muted); margin-top:2px; }
+.days-badge { font-family:'Playfair Display',serif; font-size:1.3rem; font-weight:700; text-align:center; }
+.days-lbl { font-size:0.62rem; color:var(--muted); text-transform:uppercase; }
+.days-ok   { color:var(--green); }
+.days-warn { color:var(--yellow); }
+.days-bad  { color:var(--red); }
+
+/* POSISI PANEL */
+.posisi-panel {
+  background:var(--paper); border:1px solid var(--border);
+  border-radius:var(--radius); padding:20px 24px; margin-bottom:20px; box-shadow:var(--shadow-sm);
+}
+.posisi-panel-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; }
+.posisi-panel-title { font-family:'Playfair Display',serif; font-size:0.95rem; color:var(--brown); }
+.btn-add-posisi {
+  padding:6px 14px; background:var(--brown); color:#fff;
+  border:none; border-radius:5px; font-size:0.76rem; font-weight:600; cursor:pointer;
+}
+.posisi-table { width:100%; border-collapse:collapse; font-size:0.8rem; }
+.posisi-table th {
+  padding:7px 12px; background:var(--cream); font-size:0.66rem; font-weight:700;
+  letter-spacing:0.07em; text-transform:uppercase; color:var(--muted);
+  border-bottom:2px solid var(--border); text-align:left;
+}
+.posisi-table td { padding:8px 12px; border-bottom:1px solid var(--border); vertical-align:middle; }
+.posisi-table tbody tr:hover { background:var(--cream); }
+.posisi-table tbody tr:last-child td { border-bottom:none; }
+.btn-del { background:none; border:none; color:var(--red); cursor:pointer; font-size:0.8rem; padding:2px 6px; }
+.fulfil-btn {
+  padding:3px 10px; background:var(--green); color:#fff;
+  border:none; border-radius:4px; font-size:0.7rem; font-weight:600; cursor:pointer;
+}
+
+/* TABLE VIEWS */
 .table-view { padding:24px 32px; }
 .view-header {
-  display:flex; align-items:center;
-  justify-content:space-between;
+  display:flex; align-items:center; justify-content:space-between;
   margin-bottom:20px; flex-wrap:wrap; gap:12px;
 }
-.view-title {
-  font-family:'Playfair Display',serif;
-  font-size:1.4rem; color:var(--brown);
+.view-title { font-family:'Playfair Display',serif; font-size:1.4rem; color:var(--brown); }
+.view-count {
+  font-size:0.78rem; color:var(--muted); background:var(--cream);
+  padding:4px 12px; border-radius:20px; border:1px solid var(--border);
 }
-.toolbar {
-  display:flex; gap:10px; margin-bottom:16px;
-  flex-wrap:wrap; align-items:center;
-}
+.toolbar { display:flex; gap:10px; margin-bottom:16px; flex-wrap:wrap; align-items:center; }
 .toolbar select, .toolbar input {
-  padding:7px 12px;
-  border:1.5px solid var(--border);
-  border-radius:6px;
-  font-family:'DM Sans',sans-serif;
-  font-size:0.8rem;
-  background:var(--paper);
-  color:var(--ink);
+  padding:7px 12px; border:1.5px solid var(--border); border-radius:6px;
+  font-family:'DM Sans',sans-serif; font-size:0.8rem; background:var(--paper); color:var(--ink);
 }
+.toolbar input { min-width:200px; }
+
 .data-table {
-  width:100%;
-  border-collapse:collapse;
-  font-size:0.8rem;
-  background:var(--paper);
-  border-radius:var(--radius);
-  overflow:hidden;
-  box-shadow:var(--shadow);
-  border:1px solid var(--border);
+  width:100%; border-collapse:collapse; font-size:0.8rem;
+  background:var(--paper); border-radius:var(--radius);
+  overflow:hidden; box-shadow:var(--shadow-sm); border:1px solid var(--border);
 }
 .data-table th {
-  background:var(--brown);
-  color:rgba(255,255,255,0.85);
-  padding:11px 14px;
-  text-align:left;
-  font-size:0.67rem;
-  font-weight:600;
-  letter-spacing:0.08em;
-  text-transform:uppercase;
-  white-space:nowrap;
+  background:var(--brown); color:rgba(255,255,255,0.85); padding:11px 14px;
+  text-align:left; font-size:0.67rem; font-weight:600;
+  letter-spacing:0.08em; text-transform:uppercase; white-space:nowrap;
 }
-.data-table td {
-  padding:10px 14px;
-  border-bottom:1px solid var(--border);
-  vertical-align:middle;
-}
+.data-table td { padding:10px 14px; border-bottom:1px solid var(--border); vertical-align:middle; }
 .data-table tbody tr:hover { background:var(--cream); }
 .data-table tbody tr:last-child td { border-bottom:none; }
 
-/* ── BADGES ── */
+/* BADGES */
 .badge {
-  display:inline-block; padding:3px 9px;
-  border-radius:20px; font-size:0.68rem; font-weight:700;
+  display:inline-block; padding:3px 9px; border-radius:20px;
+  font-size:0.68rem; font-weight:700; white-space:nowrap;
 }
 .badge-green  { background:#d4edda; color:#155724; }
 .badge-yellow { background:#fff3cd; color:#856404; }
@@ -206,238 +230,154 @@ body {
 .badge-blue   { background:#dbeafe; color:#1e40af; }
 .badge-gray   { background:#f0f0f0; color:#666; }
 .badge-brown  { background:#ede0d4; color:var(--brown); }
+.badge-kepri  { background:#dbeafe; color:#1e40af; }
+.badge-luar   { background:#fef3c7; color:#92400e; }
 
-/* ── DASHBOARD ── */
-.dash-wrap { padding:28px 32px; max-width:1400px; margin:0 auto; }
-.kpi-row {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-  gap:16px;
-  margin-bottom:28px;
+.action-select {
+  padding:5px 8px; border:1.5px solid var(--border); border-radius:5px;
+  font-size:0.74rem; font-family:inherit; background:var(--cream); color:var(--ink); cursor:pointer; min-width:140px;
 }
-.kpi-card {
-  background:var(--paper);
-  border-radius:var(--radius);
-  padding:20px 22px;
-  box-shadow:var(--shadow);
+.action-select:focus { border-color:var(--orange); outline:none; }
+
+.save-btn {
+  padding:5px 12px; background:var(--brown); color:#fff;
+  border:none; border-radius:5px; font-size:0.72rem; font-weight:600; cursor:pointer;
+}
+.save-btn:hover { background:var(--brown2); }
+.save-btn.sm { padding:3px 9px; font-size:0.68rem; }
+
+.empty-state { text-align:center; padding:60px 24px; color:var(--muted); }
+.empty-icon  { font-size:2.5rem; margin-bottom:12px; }
+.empty-msg   { font-size:0.88rem; }
+
+/* PSIKOTEST */
+.hadir-auto {
+  display:inline-flex; align-items:center; gap:5px;
+  padding:3px 10px; border-radius:20px; font-size:0.68rem; font-weight:700;
+}
+.hadir-auto.hadir { background:#d4edda; color:#155724; }
+.hadir-auto.absen { background:#fde8e4; color:#7a2010; }
+.iq-score { font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700; }
+.ps-sync-info {
+  display:flex; align-items:flex-start; gap:12px; flex-wrap:wrap;
+  padding:10px 14px; border-radius:6px; background:#dbeafe;
+  color:#1e40af; font-size:0.75rem; font-weight:600; margin-bottom:14px;
+}
+
+/* PAPI MINI BARS */
+.papi-mini { display:flex; gap:6px; align-items:center; }
+.papi-bar-wrap { display:flex; flex-direction:column; align-items:center; gap:2px; }
+.papi-bar-track {
+  width:18px; height:60px; background:var(--cream);
+  border-radius:3px; overflow:hidden; display:flex;
+  flex-direction:column; justify-content:flex-end;
   border:1px solid var(--border);
-  position:relative; overflow:hidden;
 }
-.kpi-card::before {
-  content:'';
-  position:absolute;
-  top:0; left:0; right:0; height:3px;
-  background:var(--amber);
-}
-.kpi-card.green::before { background:var(--green); }
-.kpi-card.red::before   { background:var(--red); }
-.kpi-label {
-  font-size:0.67rem; font-weight:600;
-  letter-spacing:0.08em; text-transform:uppercase;
-  color:var(--muted); margin-bottom:10px;
-}
-.kpi-val {
-  font-family:'Playfair Display',serif;
-  font-size:2.2rem; font-weight:700;
-  color:var(--brown); line-height:1;
-}
-.kpi-card.green .kpi-val { color:var(--green); }
-.kpi-card.red .kpi-val   { color:var(--red); }
-.kpi-sub { font-size:0.72rem; color:var(--muted); margin-top:6px; }
+.papi-bar-fill { width:100%; border-radius:2px; transition:height 0.3s; }
+.papi-bar-lbl { font-size:0.6rem; font-weight:700; color:var(--muted); }
+.papi-bar-val { font-size:0.65rem; font-weight:700; color:var(--ink); }
 
-/* ── SCORING TAB ── */
-.scoring-wrap { padding:28px 32px; max-width:900px; }
-.form-grid {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:16px;
-  margin-bottom:20px;
-}
-.form-group label {
-  display:block;
-  font-size:0.72rem; font-weight:600;
-  color:var(--muted); text-transform:uppercase;
-  letter-spacing:0.06em; margin-bottom:4px;
-}
-.form-group input,
-.form-group select {
-  width:100%; padding:8px 12px;
-  border:1.5px solid var(--border);
-  border-radius:6px;
-  font-family:'DM Sans',sans-serif;
-  font-size:0.83rem;
-  background:var(--cream); color:var(--ink);
-}
-.form-group input:focus,
-.form-group select:focus {
-  border-color:var(--orange); outline:none;
-}
-.papi-grid {
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
-  gap:10px;
-  margin-bottom:20px;
-}
-.papi-item label {
-  display:block;
-  font-size:0.7rem; font-weight:700;
-  color:var(--brown); margin-bottom:3px;
-}
-.papi-item input {
-  width:100%; padding:6px 8px;
-  border:1.5px solid var(--border);
-  border-radius:5px; text-align:center;
-  font-size:0.85rem; font-weight:700;
-  font-family:'DM Sans',sans-serif;
-}
-.papi-item input:focus {
-  border-color:var(--orange); outline:none;
-}
-.btn-score {
-  padding:10px 28px;
-  background:var(--brown); color:#fff;
-  border:none; border-radius:8px;
-  font-family:'DM Sans',sans-serif;
-  font-size:0.9rem; font-weight:700;
-  cursor:pointer; transition:all 0.2s;
-}
-.btn-score:hover { background:var(--brown2); }
-
-/* ── SCORING RESULT ── */
-.score-result {
-  display:none;
-  background:var(--paper);
-  border:1px solid var(--border);
-  border-radius:var(--radius);
-  padding:24px;
-  box-shadow:var(--shadow);
-  margin-top:20px;
-}
-.score-result.show { display:block; }
-.result-header {
-  display:flex; align-items:center;
-  justify-content:space-between;
-  margin-bottom:20px;
-  padding-bottom:16px;
-  border-bottom:2px solid var(--border);
-}
-.result-name {
-  font-family:'Playfair Display',serif;
-  font-size:1.3rem; color:var(--brown);
-}
-.verdict-badge {
-  padding:8px 20px;
-  border-radius:8px;
-  font-size:0.9rem; font-weight:700;
-}
-.verdict-sangat  { background:#d4edda; color:#155724; }
-.verdict-dis     { background:#cce5ff; color:#004085; }
-.verdict-ber     { background:#fff3cd; color:#856404; }
-.verdict-tidak   { background:#fde8e4; color:#7a2010; }
-.verdict-gugur   { background:#f8d7da; color:#721c24; }
-
-.filter-table {
-  width:100%; border-collapse:collapse;
-  margin-bottom:20px; font-size:0.82rem;
-}
-.filter-table th {
-  background:var(--cream); padding:8px 12px;
-  text-align:left; font-size:0.68rem;
-  font-weight:700; letter-spacing:0.06em;
-  text-transform:uppercase; color:var(--muted);
-  border-bottom:2px solid var(--border);
-}
-.filter-table td {
-  padding:8px 12px;
-  border-bottom:1px solid var(--border);
-}
-.filter-ok  { color:var(--green); font-weight:700; }
-.filter-fail{ color:var(--red);   font-weight:700; }
-
-.score-table {
-  width:100%; border-collapse:collapse;
-  font-size:0.8rem; margin-bottom:16px;
-}
-.score-table th {
-  background:var(--brown); color:#fff;
-  padding:9px 12px; text-align:left;
-  font-size:0.67rem; font-weight:600;
-  letter-spacing:0.06em; text-transform:uppercase;
-}
-.score-table td {
-  padding:8px 12px;
-  border-bottom:1px solid var(--border);
-}
-.score-table tbody tr:nth-child(even) {
-  background:var(--cream);
-}
-.total-row td {
-  font-weight:700; background:#1a3c5e !important;
-  color:#fff;
-}
-
-/* ── MODAL ── */
+/* MODAL */
 .modal-overlay {
   display:none; position:fixed; inset:0;
-  background:rgba(0,0,0,0.5);
-  z-index:9000; align-items:center;
-  justify-content:center;
+  background:rgba(0,0,0,0.5); z-index:9000;
+  align-items:center; justify-content:center;
 }
 .modal-overlay.open { display:flex; }
 .modal {
-  background:var(--paper);
-  border-radius:var(--radius);
-  padding:28px 32px;
-  max-width:420px; width:90%;
-  box-shadow:0 24px 60px rgba(0,0,0,0.25);
+  background:var(--paper); border-radius:var(--radius);
+  padding:28px 32px; max-width:480px; width:90%;
+  box-shadow:0 24px 60px rgba(0,0,0,0.25); position:relative;
+  max-height:90vh; overflow-y:auto;
 }
 .modal h3 {
-  font-family:'Playfair Display',serif;
-  font-size:1.1rem; color:var(--brown);
-  margin-bottom:16px;
+  font-family:'Playfair Display',serif; font-size:1.1rem;
+  color:var(--brown); margin-bottom:4px;
 }
-.modal-actions {
-  display:flex; gap:10px;
-  margin-top:20px; justify-content:flex-end;
+.modal-sub { font-size:0.78rem; color:var(--muted); margin-bottom:20px; }
+.modal label {
+  display:block; font-size:0.72rem; font-weight:600;
+  color:var(--muted); text-transform:uppercase;
+  letter-spacing:0.06em; margin-bottom:4px; margin-top:14px;
 }
+.modal input, .modal select, .modal textarea {
+  width:100%; padding:8px 12px; border:1.5px solid var(--border);
+  border-radius:6px; font-family:inherit; font-size:0.83rem;
+  background:var(--cream); color:var(--ink);
+}
+.modal textarea { min-height:70px; resize:vertical; }
+.modal input:focus, .modal select:focus { border-color:var(--orange); outline:none; }
+.modal-close {
+  position:absolute; top:12px; right:16px;
+  background:none; border:none; font-size:1.2rem; cursor:pointer; color:var(--muted);
+}
+.modal-actions { display:flex; gap:10px; margin-top:20px; justify-content:flex-end; }
 .btn-cancel {
-  padding:8px 18px; background:var(--cream);
-  color:var(--muted); border:1.5px solid var(--border);
-  border-radius:6px; font-size:0.8rem; cursor:pointer;
+  padding:8px 18px; background:var(--cream); color:var(--muted);
+  border:1.5px solid var(--border); border-radius:6px; font-size:0.8rem; cursor:pointer;
 }
 .btn-save {
-  padding:8px 20px; background:var(--brown);
-  color:#fff; border:none; border-radius:6px;
-  font-size:0.8rem; font-weight:600; cursor:pointer;
+  padding:8px 20px; background:var(--brown); color:#fff;
+  border:none; border-radius:6px; font-size:0.8rem; font-weight:600; cursor:pointer;
+}
+.btn-save:hover { background:var(--brown2); }
+
+/* PAPI DETAIL MODAL */
+.papi-detail-grid {
+  display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:16px;
+}
+.papi-detail-item {
+  background:var(--cream); border-radius:8px; padding:10px;
+  text-align:center; border:1px solid var(--border);
+}
+.papi-detail-code { font-size:0.7rem; font-weight:700; color:var(--muted); text-transform:uppercase; }
+.papi-detail-name { font-size:0.62rem; color:var(--muted); margin-bottom:6px; }
+.papi-detail-val {
+  font-family:'Playfair Display',serif; font-size:1.4rem;
+  font-weight:700; color:var(--brown);
+}
+.papi-detail-bar {
+  height:4px; border-radius:2px; margin-top:6px; background:var(--border);
+}
+.papi-detail-bar-fill { height:100%; border-radius:2px; background:var(--amber); }
+.papi-high { border-color:var(--green); background:#f0faf4; }
+.papi-high .papi-detail-val { color:var(--green); }
+.papi-high .papi-detail-bar-fill { background:var(--green); }
+.papi-low  { border-color:var(--red); background:#fff5f5; }
+.papi-low  .papi-detail-val { color:var(--red); }
+.papi-low  .papi-detail-bar-fill { background:var(--red); }
+
+/* BULK BAR */
+.bulk-bar {
+  display:none; align-items:center; gap:10px;
+  padding:8px 14px; background:#fff8ec;
+  border:1.5px solid var(--amber); border-radius:8px;
+  margin-bottom:10px; font-size:0.83rem; flex-wrap:wrap;
 }
 
-/* ── TOAST ── */
-.toast {
-  position:fixed; bottom:24px; right:24px;
-  background:var(--brown); color:#fff;
-  padding:10px 20px; border-radius:8px;
-  font-size:0.82rem; font-weight:600;
-  box-shadow:0 4px 16px rgba(0,0,0,0.2);
-  z-index:99999; opacity:0;
-  transform:translateY(20px);
-  transition:all 0.3s; pointer-events:none;
+/* INTERVIEW */
+.iv-hadir-badge {
+  display:inline-flex; align-items:center; gap:5px;
+  padding:3px 10px; border-radius:20px; font-size:0.68rem; font-weight:700;
 }
-.toast.show { opacity:1; transform:translateY(0); }
+.iv-hadir-badge.hadir { background:#d4edda; color:#155724; }
+.iv-hadir-badge.belum { background:#fff3cd; color:#856404; }
 
-/* ── UTIL ── */
+/* PRINT */
+@media print {
+  .header,.conn-bar,.toolbar,.action-select,.save-btn,
+  .btn-print,.modal-overlay,.bulk-bar { display:none !important; }
+  .view.active { display:block !important; }
+  body { background:white; }
+  .data-table { font-size:0.72rem; }
+}
+
+/* UTIL */
+a { color:var(--orange); text-decoration:none; }
+a:hover { text-decoration:underline; }
 .text-muted { color:var(--muted); font-size:0.75rem; }
 .fw6 { font-weight:600; }
 .nowrap { white-space:nowrap; }
-.empty-state {
-  text-align:center; padding:60px 24px;
-  color:var(--muted);
-}
-.empty-icon { font-size:2.5rem; margin-bottom:12px; }
-
-@media print {
-  .header,.conn-bar,.toolbar { display:none !important; }
-  body { background:white; }
-}
 </style>
 </head>
 <body>
@@ -450,14 +390,12 @@ body {
   <nav class="nav-tabs">
     <button class="nav-tab active" onclick="switchView('dashboard')">📊 Dashboard</button>
     <button class="nav-tab" onclick="switchView('kandidat')">👥 Kandidat</button>
-    <button class="nav-tab" onclick="switchView('jobtest')">📝 Job Test</button>
     <button class="nav-tab" onclick="switchView('psikotest')">🧠 Psikotest</button>
     <button class="nav-tab" onclick="switchView('interview')">🗣 Interview</button>
-    <button class="nav-tab" onclick="switchView('scoring')">🎯 Scoring Card</button>
   </nav>
   <div class="header-right">
     <span class="sync-badge" id="sync-badge">—</span>
-    <button class="btn-print" onclick="window.print()">⬇ Print</button>
+    <button class="btn-print" onclick="window.print()">⬇ Print / PDF</button>
   </div>
 </div>
 
@@ -465,87 +403,199 @@ body {
 <div class="conn-bar">
   <span style="font-weight:600">🔗 Google Sheet</span>
   <input type="text" id="api-url"
-    placeholder="Paste URL Google Apps Script...">
+    placeholder="Paste URL Google Apps Script (https://script.google.com/macros/s/.../exec)">
   <button class="conn-btn" onclick="connectSheet()">Sambungkan</button>
   <span class="conn-status" id="conn-status"></span>
 </div>
 
-<!-- ══ DASHBOARD ══ -->
+<!-- ══════════════ DASHBOARD ══════════════ -->
 <div class="view active" id="view-dashboard">
 <div class="dash-wrap">
-  <div class="kpi-row" id="kpi-row">
+
+  <!-- Posisi Panel -->
+  <div class="posisi-panel">
+    <div class="posisi-panel-header">
+      <div class="posisi-panel-title">📋 Daftar Posisi Rekrutmen</div>
+      <button class="btn-add-posisi" onclick="openAddPosisi()">+ Tambah Posisi</button>
+    </div>
+    <div style="overflow-x:auto">
+    <table class="posisi-table">
+      <thead>
+        <tr>
+          <th>Nama Posisi</th>
+          <th>Tgl Permintaan</th>
+          <th>Tgl Terpenuhi</th>
+          <th>Hari</th>
+          <th>Status</th>
+          <th>Aksi</th>
+        </tr>
+      </thead>
+      <tbody id="posisi-tbody">
+        <tr><td colspan="6" style="text-align:center;color:var(--muted);padding:20px">
+          Sambungkan sheet untuk melihat data posisi
+        </td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <!-- KPI -->
+  <div class="kpi-row">
+    <div class="kpi-card">
+      <div class="kpi-label">Total Posisi</div>
+      <div class="kpi-val" id="kpi-total-posisi">—</div>
+      <div class="kpi-sub">Kebutuhan rekrutmen</div>
+    </div>
+    <div class="kpi-card highlight">
+      <div class="kpi-label">Posisi Terpenuhi</div>
+      <div class="kpi-val" id="kpi-terpenuhi">—</div>
+      <div class="kpi-sub">Berhasil join</div>
+    </div>
+    <div class="kpi-card warn">
+      <div class="kpi-label">Masih Open</div>
+      <div class="kpi-val" id="kpi-open">—</div>
+      <div class="kpi-sub">Belum terpenuhi</div>
+    </div>
     <div class="kpi-card">
       <div class="kpi-label">Total Kandidat</div>
-      <div class="kpi-val" id="kpi-total">—</div>
+      <div class="kpi-val" id="kpi-kandidat">—</div>
       <div class="kpi-sub">CV masuk</div>
     </div>
-    <div class="kpi-card green">
-      <div class="kpi-label">Join / Hired</div>
-      <div class="kpi-val" id="kpi-hired">—</div>
-      <div class="kpi-sub">Berhasil bergabung</div>
-    </div>
-    <div class="kpi-card red">
-      <div class="kpi-label">Rejected</div>
-      <div class="kpi-val" id="kpi-rejected">—</div>
-      <div class="kpi-sub">Tidak lolos</div>
+    <div class="kpi-card">
+      <div class="kpi-label">Avg. Waktu Pemenuhan</div>
+      <div class="kpi-val" id="kpi-avg-hari">—</div>
+      <div class="kpi-sub">Hari kalender</div>
     </div>
     <div class="kpi-card">
-      <div class="kpi-label">Dalam Proses</div>
-      <div class="kpi-val" id="kpi-proses">—</div>
-      <div class="kpi-sub">Sedang diproses</div>
-    </div>
-    <div class="kpi-card">
-      <div class="kpi-label">Konversi</div>
+      <div class="kpi-label">Tingkat Konversi</div>
       <div class="kpi-val" id="kpi-konversi">—</div>
       <div class="kpi-sub">CV → Join</div>
     </div>
   </div>
 
-  <div style="background:var(--paper);border-radius:var(--radius);
-              padding:22px 24px;box-shadow:var(--shadow);
-              border:1px solid var(--border)">
-    <div style="font-family:'Playfair Display',serif;
-                font-size:1rem;color:var(--brown);margin-bottom:16px">
-      Pipeline Rekrutmen
+  <!-- Dash Grid -->
+  <div class="dash-grid">
+    <div class="card">
+      <div class="card-title">Funnel Rekrutmen per Posisi</div>
+      <div class="card-sub">Dihitung dari tanggal posisi diinput</div>
+      <div class="funnel-select-wrap">
+        <label>Posisi</label>
+        <select id="funnel-select" onchange="onFunnelSelect(this)">
+          <option value="">Semua Posisi</option>
+        </select>
+        <span class="funnel-date-info" id="funnel-date-info" style="display:none"></span>
+      </div>
+      <div class="funnel-stages" id="funnel-stages">
+        <div class="empty-state">
+          <div class="empty-icon">📊</div>
+          <div class="empty-msg">Sambungkan sheet untuk melihat funnel</div>
+        </div>
+      </div>
     </div>
-    <div id="pipeline-bars"></div>
+
+    <div class="card">
+      <div class="card-title">Posisi Masih Open</div>
+      <div class="card-sub">Hari berjalan sejak permintaan</div>
+      <div class="open-list" id="open-list">
+        <div class="empty-state">
+          <div class="empty-icon">✅</div>
+          <div class="empty-msg">Data belum tersedia</div>
+        </div>
+      </div>
+    </div>
   </div>
+
 </div>
 </div>
 
-<!-- ══ KANDIDAT ══ -->
+<!-- ══════════════ KANDIDAT ══════════════ -->
 <div class="view" id="view-kandidat">
 <div class="table-view">
   <div class="view-header">
-    <div class="view-title">👥 Kandidat</div>
+    <div>
+      <div class="view-title">👥 Semua Kandidat</div>
+      <div class="text-muted" style="margin-top:4px">
+        Klik 📄 untuk preview CV · Pilih tindakan per kandidat
+      </div>
+    </div>
+    <span class="view-count" id="kandidat-count">0 kandidat</span>
   </div>
+
   <div class="toolbar">
     <select id="k-filter-posisi" onchange="renderKandidat()">
       <option value="">Semua Posisi</option>
     </select>
     <select id="k-filter-stage" onchange="renderKandidat()">
+      <option value="pending">Belum Diproses</option>
       <option value="">Semua Status</option>
       <option value="Baru">Baru</option>
-      <option value="Screening">Screening</option>
-      <option value="Job Test">Job Test</option>
+      <option value="Disimpan">Disimpan</option>
       <option value="Psikotest">Psikotest</option>
       <option value="Interview">Interview</option>
-      <option value="Hired">Hired</option>
-      <option value="Rejected">Rejected</option>
+      <option value="Join">Join</option>
+      <option value="Reject">Reject</option>
+    </select>
+    <select id="k-filter-pendidikan" onchange="renderKandidat()">
+      <option value="">Semua Pendidikan</option>
+    </select>
+    <select id="k-filter-provinsi" onchange="renderKandidat()">
+      <option value="">Semua Provinsi</option>
+      <option value="kepri">Kepri</option>
+      <option value="luar">Luar Kepri</option>
     </select>
     <input type="text" id="k-search"
-      placeholder="🔍 Cari nama..."
+      placeholder="🔍 Cari nama atau jurusan..."
       oninput="renderKandidat()">
+    <button onclick="resetFilterKandidat()" id="k-reset-btn"
+      style="display:none;padding:7px 13px;background:var(--cream);
+             border:1.5px solid var(--border);border-radius:6px;
+             font-size:0.78rem;color:var(--muted);cursor:pointer">
+      ↺ Reset
+    </button>
   </div>
+
+  <!-- Bulk Bar -->
+  <div class="bulk-bar" id="bulk-bar">
+    <span style="font-weight:700;color:var(--brown)">
+      <span id="bulk-count">0</span> kandidat dipilih
+    </span>
+    <button onclick="executeBulkReject()"
+      style="background:var(--red);color:#fff;border:none;border-radius:6px;
+             padding:5px 16px;font-weight:700;font-size:0.78rem;cursor:pointer">
+      ✕ Bulk Reject
+    </button>
+    <button onclick="clearBulkSelect()"
+      style="background:var(--cream);border:1.5px solid var(--border);
+             border-radius:6px;padding:5px 13px;font-size:0.78rem;
+             cursor:pointer;color:var(--muted)">
+      Batal
+    </button>
+    <span id="bulk-undo-wrap" style="display:none;align-items:center;gap:8px">
+      <button onclick="undoBulkReject()"
+        style="background:#2d6a4f;color:#fff;border:none;border-radius:6px;
+               padding:5px 16px;font-weight:700;font-size:0.78rem;cursor:pointer">
+        ↩ Undo Reject
+      </button>
+      <span id="bulk-undo-timer" style="font-size:0.73rem;color:var(--muted)"></span>
+    </span>
+  </div>
+
   <div style="overflow-x:auto">
   <table class="data-table">
     <thead>
       <tr>
+        <th style="width:36px;text-align:center">
+          <input type="checkbox" id="k-check-all"
+            onchange="toggleCheckAll(this)" title="Pilih semua">
+        </th>
         <th>Nama</th>
-        <th>Posisi</th>
+        <th>Posisi Dilamar</th>
         <th>No. WA</th>
+        <th>Provinsi</th>
         <th>Pendidikan</th>
+        <th>Jurusan</th>
         <th>Tgl Daftar</th>
+        <th>CV</th>
         <th>Status</th>
         <th>Tindakan</th>
       </tr>
@@ -556,40 +606,69 @@ body {
 </div>
 </div>
 
-<!-- ══ JOB TEST ══ -->
-<div class="view" id="view-jobtest">
-<div class="table-view">
-  <div class="view-header">
-    <div class="view-title">📝 Job Test</div>
-  </div>
-  <div style="overflow-x:auto">
-  <table class="data-table">
-    <thead>
-      <tr>
-        <th>Nama</th><th>Posisi</th><th>No. WA</th>
-        <th>Kehadiran</th><th>Nilai</th>
-        <th>Hasil</th><th>Tindakan</th><th>Simpan</th>
-      </tr>
-    </thead>
-    <tbody id="jobtest-body"></tbody>
-  </table>
-  </div>
-</div>
-</div>
-
-<!-- ══ PSIKOTEST ══ -->
+<!-- ══════════════ PSIKOTEST ══════════════ -->
 <div class="view" id="view-psikotest">
 <div class="table-view">
   <div class="view-header">
-    <div class="view-title">🧠 Psikotest</div>
+    <div>
+      <div class="view-title">🧠 Psikotest</div>
+      <div class="text-muted" style="margin-top:4px">
+        IQ & PAPI otomatis dari sheet Level Officer · Klik nama untuk detail PAPI
+      </div>
+    </div>
+    <span class="view-count" id="psikotest-count">0 kandidat</span>
   </div>
+
+  <div class="ps-sync-info">
+    <div style="flex:1;min-width:200px">
+      ℹ️ IQ dihitung otomatis dari jawaban psikotest.
+      Klik <strong>🔄 Hitung & Sync</strong> untuk memproses semua kandidat.
+    </div>
+    <div style="display:flex;flex-direction:column;gap:6px;min-width:200px">
+      <button class="save-btn"
+        style="background:#1a73e8;font-size:0.82rem;padding:7px 14px"
+        onclick="syncPsikotest(false)">
+        🔄 Hitung &amp; Sync IQ + PAPI
+      </button>
+      <button class="save-btn"
+        style="background:#555;font-size:0.78rem;padding:5px 10px"
+        onclick="syncPsikotest(true)">
+        🔄 Recalculate Semua (Timpa)
+      </button>
+      <div id="sync-psiko-status"
+        style="font-size:0.75rem;color:#555;min-height:16px"></div>
+    </div>
+  </div>
+
+  <div class="toolbar">
+    <select id="ps-filter-posisi" onchange="renderPsikotest()">
+      <option value="">Semua Posisi</option>
+    </select>
+    <select id="ps-filter-hadir" onchange="renderPsikotest()">
+      <option value="">Semua Kehadiran</option>
+      <option value="hadir">✅ Hadir</option>
+      <option value="absen">❌ Tidak Hadir</option>
+    </select>
+    <input type="text" id="ps-search"
+      placeholder="Cari nama..." oninput="renderPsikotest()">
+  </div>
+
   <div style="overflow-x:auto">
   <table class="data-table">
     <thead>
       <tr>
-        <th>Nama</th><th>Posisi</th>
-        <th>IQ</th><th>Kategori</th>
-        <th>DISC</th><th>Aksi</th>
+        <th>Nama</th>
+        <th>Posisi</th>
+        <th>Jurusan</th>
+        <th>No. HP</th>
+        <th>Email</th>
+        <th>Tgl Lahir</th>
+        <th>Kehadiran</th>
+        <th>Skor IQ</th>
+        <th>N</th>
+        <th>G</th>
+        <th>A</th>
+        <th>Aksi</th>
       </tr>
     </thead>
     <tbody id="psikotest-body"></tbody>
@@ -598,19 +677,40 @@ body {
 </div>
 </div>
 
-<!-- ══ INTERVIEW ══ -->
+<!-- ══════════════ INTERVIEW ══════════════ -->
 <div class="view" id="view-interview">
 <div class="table-view">
   <div class="view-header">
-    <div class="view-title">🗣 Interview</div>
+    <div>
+      <div class="view-title">🗣 Interview</div>
+      <div class="text-muted" style="margin-top:4px">
+        Kandidat lolos psikotest · Input hasil & tindakan
+      </div>
+    </div>
+    <span class="view-count" id="interview-count">0 kandidat</span>
+  </div>
+  <div class="ps-sync-info">
+    ℹ️ Kehadiran dibaca otomatis dari Google Form Absensi Interview.
+  </div>
+  <div class="toolbar">
+    <select id="iv-filter-posisi" onchange="renderInterview()">
+      <option value="">Semua Posisi</option>
+    </select>
+    <input type="text" id="iv-search"
+      placeholder="Cari nama..." oninput="renderInterview()">
   </div>
   <div style="overflow-x:auto">
   <table class="data-table">
     <thead>
       <tr>
-        <th>Nama</th><th>Posisi</th><th>No. WA</th>
-        <th>Hasil</th><th>Catatan</th>
-        <th>Tindak Lanjut</th><th>Simpan</th>
+        <th>Nama</th>
+        <th>Posisi</th>
+        <th>No. HP</th>
+        <th>Kehadiran</th>
+        <th>Hasil Interview</th>
+        <th>Catatan</th>
+        <th>Tindak Lanjut</th>
+        <th>Simpan</th>
       </tr>
     </thead>
     <tbody id="interview-body"></tbody>
@@ -619,574 +719,131 @@ body {
 </div>
 </div>
 
-<!-- ══ SCORING CARD ══ -->
-<div class="view" id="view-scoring">
-<div class="scoring-wrap">
-  <div class="view-title" style="margin-bottom:20px">
-    🎯 Scoring Card
+<!-- ══════════════ MODALS ══════════════ -->
+
+<!-- Tambah Posisi -->
+<div class="modal-overlay" id="modal-add-posisi">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('modal-add-posisi')">✕</button>
+    <h3>📋 Tambah Posisi Rekrutmen</h3>
+    <div class="modal-sub">Data tersimpan ke sheet tab "Posisi"</div>
+    <label>Nama Posisi</label>
+    <input type="text" id="ap-nama" placeholder="cth: Property Consultant">
+    <label>Tanggal Permintaan</label>
+    <input type="date" id="ap-tgl-req">
+    <label>Jumlah Kebutuhan</label>
+    <input type="number" id="ap-jumlah" min="1" value="1">
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeModal('modal-add-posisi')">Batal</button>
+      <button class="btn-save" onclick="saveNewPosisi()">Simpan</button>
+    </div>
   </div>
-
-  <!-- Form Input -->
-  <div style="background:var(--paper);border:1px solid var(--border);
-              border-radius:var(--radius);padding:24px;
-              box-shadow:var(--shadow);margin-bottom:20px">
-
-    <div style="font-size:0.85rem;font-weight:600;
-                color:var(--brown);margin-bottom:16px">
-      Data Kandidat
-    </div>
-
-    <div class="form-grid">
-      <div class="form-group">
-        <label>Nama Kandidat</label>
-        <input type="text" id="sc-nama" placeholder="Nama lengkap">
-      </div>
-      <div class="form-group">
-        <label>Usia</label>
-        <input type="number" id="sc-usia" placeholder="Usia" min="18" max="60">
-      </div>
-      <div class="form-group">
-        <label>Posisi Dilamar</label>
-        <select id="sc-posisi" onchange="onPosisiChange()">
-          <option value="">Pilih Posisi</option>
-          <option value="Sales Property">Sales Property</option>
-          <option value="Site Project Coordinator">Site Project Coordinator</option>
-          <option value="Manager / Dept Head">Manager / Dept Head</option>
-          <option value="Finance / Accounting">Finance / Accounting</option>
-          <option value="HR">HR</option>
-          <option value="IT">IT</option>
-          <option value="Admin / Operasional">Admin / Operasional</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Skor IQ</label>
-        <input type="number" id="sc-iq" placeholder="Skor IQ (min 90)">
-      </div>
-    </div>
-
-    <div style="font-size:0.85rem;font-weight:600;
-                color:var(--brown);margin-bottom:12px;
-                margin-top:8px">
-      Skor Papikostick (1–9)
-    </div>
-
-    <div class="papi-grid">
-      <div class="papi-item">
-        <label>N — Ketekunan</label>
-        <input type="number" id="papi-N" min="1" max="9" placeholder="1-9">
-      </div>
-      <div class="papi-item">
-        <label>G — Kerja Keras</label>
-        <input type="number" id="papi-G" min="1" max="9" placeholder="1-9">
-      </div>
-      <div class="papi-item">
-        <label>A — Ambisi</label>
-        <input type="number" id="papi-A" min="1" max="9" placeholder="1-9">
-      </div>
-      <div class="papi-item">
-        <label>L — Leadership</label>
-        <input type="number" id="papi-L" min="1" max="9" placeholder="1-9">
-      </div>
-      <div class="papi-item">
-        <label>P — Kontrol</label>
-        <input type="number" id="papi-P" min="1" max="9" placeholder="1-9">
-      </div>
-      <div class="papi-item">
-        <label>I — Keputusan</label>
-        <input type="number" id="papi-I" min="1" max="9" placeholder="1-9">
-      </div>
-      <div class="papi-item">
-        <label>T — Aktif</label>
-        <input type="number" id="papi-T" min="1" max="9" placeholder="1-9">
-      </div>
-      <div class="papi-item">
-        <label>V — Energik</label>
-        <input type="number" id="papi-V" min="1" max="9" placeholder="1-9">
-      </div>
-      <div class="papi-item">
-        <label>X — Noticed</label>
-        <input type="number" id="papi-X" min="1" max="9" placeholder="1-9">
-      </div>
-      <div class="papi-item">
-        <label>S — Sosial</label>
-        <input type="number" id="papi-S" min="1" max="9" placeholder="1-9">
-      </div>
-      <div class="papi-item">
-        <label>B — Belong</label>
-        <input type="number" id="papi-B" min="1" max="9" placeholder="1-9">
-      </div>
-      <div class="papi-item">
-        <label>O — Closeness</label>
-        <input type="number" id="papi-O" min="1" max="9" placeholder="1-9">
-      </div>
-      <div class="papi-item">
-        <label>F — Authority</label>
-        <input type="number" id="papi-F" min="1" max="9" placeholder="1-9">
-      </div>
-      <div class="papi-item">
-        <label>W — Supervision</label>
-        <input type="number" id="papi-W" min="1" max="9" placeholder="1-9">
-      </div>
-      <div class="papi-item">
-        <label>R — Teoritis</label>
-        <input type="number" id="papi-R" min="1" max="9" placeholder="1-9">
-      </div>
-      <div class="papi-item">
-        <label>D — Detail</label>
-        <input type="number" id="papi-D" min="1" max="9" placeholder="1-9">
-      </div>
-      <div class="papi-item">
-        <label>C — Organized</label>
-        <input type="number" id="papi-C" min="1" max="9" placeholder="1-9">
-      </div>
-      <div class="papi-item">
-        <label>Z — Visioner</label>
-        <input type="number" id="papi-Z" min="1" max="9" placeholder="1-9">
-      </div>
-      <div class="papi-item">
-        <label>E — Emosi</label>
-        <input type="number" id="papi-E" min="1" max="9" placeholder="1-9">
-      </div>
-      <div class="papi-item">
-        <label>K — Forceful</label>
-        <input type="number" id="papi-K" min="1" max="9" placeholder="1-9">
-      </div>
-    </div>
-
-    <button class="btn-score" onclick="runScoring()">
-      🎯 Hitung Scoring
-    </button>
-  </div>
-
-  <!-- Result -->
-  <div class="score-result" id="score-result"></div>
-</div>
 </div>
 
-<!-- TOAST -->
-<div class="toast" id="toast"></div>
+<!-- Fulfil Posisi -->
+<div class="modal-overlay" id="modal-fulfil-posisi">
+  <div class="modal" style="max-width:360px">
+    <button class="modal-close" onclick="closeModal('modal-fulfil-posisi')">✕</button>
+    <h3>✅ Posisi Terpenuhi</h3>
+    <div class="modal-sub" id="fulfil-posisi-info">—</div>
+    <input type="hidden" id="fulfil-posisi-row">
+    <label>Tanggal Terpenuhi</label>
+    <input type="date" id="fulfil-tgl">
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeModal('modal-fulfil-posisi')">Batal</button>
+      <button class="btn-save" onclick="saveFulfilPosisi()">Simpan</button>
+    </div>
+  </div>
+</div>
+
+<!-- CV Preview -->
+<div class="modal-overlay" id="modal-cv-preview">
+  <div class="modal"
+    style="max-width:860px;width:95%;padding:0;overflow:hidden;border-radius:var(--radius)">
+    <div style="display:flex;align-items:center;justify-content:space-between;
+                padding:14px 20px;background:var(--brown);color:#fff">
+      <span style="font-family:'Playfair Display',serif;font-size:0.95rem"
+        id="cv-preview-title">CV Preview</span>
+      <div style="display:flex;gap:10px;align-items:center">
+        <a id="cv-preview-link" href="#" target="_blank"
+          style="font-size:0.75rem;color:rgba(255,255,255,0.75);
+                 padding:4px 12px;border:1px solid rgba(255,255,255,0.3);
+                 border-radius:4px;text-decoration:none">
+          🔗 Buka di tab baru
+        </a>
+        <button onclick="closeModal('modal-cv-preview')"
+          style="background:none;border:none;color:rgba(255,255,255,0.8);
+                 font-size:1.3rem;cursor:pointer">✕</button>
+      </div>
+    </div>
+    <iframe id="cv-preview-iframe"
+      style="width:100%;height:70vh;border:none;background:#f0f0f0"
+      src="about:blank"></iframe>
+    <div style="padding:10px 20px;background:var(--cream);
+                font-size:0.73rem;color:var(--muted);text-align:center">
+      Jika preview tidak muncul, klik "Buka di tab baru" di atas.
+    </div>
+  </div>
+</div>
+
+<!-- PAPI Detail -->
+<div class="modal-overlay" id="modal-papi-detail">
+  <div class="modal" style="max-width:640px">
+    <button class="modal-close" onclick="closeModal('modal-papi-detail')">✕</button>
+    <h3 id="papi-detail-nama">Detail PAPI Kostick</h3>
+    <div class="modal-sub" id="papi-detail-sub">—</div>
+    <div id="papi-detail-content"></div>
+  </div>
+</div>
 
 <script>
 // ═══════════════════════════════════════════
-// CONFIG & STATE
+// STATE
 // ═══════════════════════════════════════════
-let apiUrl  = localStorage.getItem('apiUrl') || '';
-let allData = [];
+let apiUrl    = localStorage.getItem('apiUrl') || '';
+let allData   = [];
+let allPosisi = [];
+let bulkUndoSnapshot = null;
+let bulkUndoTimer    = null;
 
+const PAPI_META = {
+  N:{ name:'Ketekunan',    desc:'Need to be forceful'         },
+  G:{ name:'Kerja Keras',  desc:'Need to excel'               },
+  A:{ name:'Ambisi',       desc:'Need to achieve'             },
+  L:{ name:'Leadership',   desc:'Need to lead'                },
+  P:{ name:'Kontrol',      desc:'Need to control others'      },
+  I:{ name:'Keputusan',    desc:'Ease in decision making'     },
+  T:{ name:'Aktif',        desc:'Need to be active'           },
+  V:{ name:'Energik',      desc:'Vigorous type'               },
+  X:{ name:'Noticed',      desc:'Need to be noticed'          },
+  S:{ name:'Sosial',       desc:'Social extension'            },
+  B:{ name:'Belong',       desc:'Need to belong'              },
+  O:{ name:'Closeness',    desc:'Need for closeness'          },
+  F:{ name:'Authority',    desc:'Need to support authority'   },
+  W:{ name:'Supervision',  desc:'Need for rules & supervision'},
+  R:{ name:'Teoritis',     desc:'Theoretical type'            },
+  D:{ name:'Detail',       desc:'Interest in working with details'},
+  C:{ name:'Organized',    desc:'Need to be methodical'       },
+  Z:{ name:'Visioner',     desc:'Need for change'             },
+  E:{ name:'Emosi',        desc:'Emotional restraint'         },
+  K:{ name:'Forceful',     desc:'Need to be forceful'         },
+};
+
+// ═══════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════
 if (apiUrl) {
   document.getElementById('api-url').value = apiUrl;
   loadData();
 }
 
 // ═══════════════════════════════════════════
-// SCORING CONFIG — SEMUA POSISI
+// CONNECTION
 // ═══════════════════════════════════════════
-const SCORING_CONFIG = {
-  'Sales Property': {
-    label      : 'Sales Property',
-    hardFilter : [
-      {factor:'IQ',  min:90,  label:'IQ Minimum'},
-      {factor:'N',   min:5,   label:'N (Ketekunan)'},
-      {factor:'G',   min:5,   label:'G (Kerja Keras)'},
-      {factor:'A',   min:6,   label:'A (Ambisi)'},
-      {factor:'K',   min:5,   label:'K (Semangat Bersaing)'},
-    ],
-    weights: [
-      {factor:'IQ', min:90,  ideal:120, weight:0.25, label:'IQ'},
-      {factor:'A',  min:6,   ideal:9,   weight:0.25, label:'A — Ambisi'},
-      {factor:'K',  min:5,   ideal:8,   weight:0.20, label:'K — Bersaing'},
-      {factor:'S',  min:5,   ideal:8,   weight:0.15, label:'S — Sosial'},
-      {factor:'N',  min:5,   ideal:7,   weight:0.10, label:'N — Ketekunan'},
-      {factor:'G',  min:5,   ideal:7,   weight:0.05, label:'G — Kerja Keras'},
-    ],
-  },
-  'Site Project Coordinator': {
-    label      : 'Site Project Coordinator',
-    hardFilter : [
-      {factor:'IQ', min:90, label:'IQ Minimum'},
-      {factor:'N',  min:6,  label:'N (Ketekunan)'},
-      {factor:'G',  min:6,  label:'G (Kerja Keras)'},
-      {factor:'C',  min:6,  label:'C (Organized)'},
-      {factor:'D',  min:5,  label:'D (Detail)'},
-      {factor:'A',  min:5,  label:'A (Ambisi)'},
-    ],
-    weights: [
-      {factor:'IQ', min:90, ideal:115, weight:0.20, label:'IQ'},
-      {factor:'N',  min:6,  ideal:9,   weight:0.20, label:'N — Ketekunan'},
-      {factor:'G',  min:6,  ideal:9,   weight:0.20, label:'G — Kerja Keras'},
-      {factor:'C',  min:6,  ideal:8,   weight:0.15, label:'C — Organized'},
-      {factor:'D',  min:5,  ideal:8,   weight:0.15, label:'D — Detail'},
-      {factor:'S',  min:4,  ideal:7,   weight:0.05, label:'S — Sosial'},
-      {factor:'A',  min:5,  ideal:7,   weight:0.05, label:'A — Ambisi'},
-    ],
-  },
-  'Manager / Dept Head': {
-    label      : 'Manager / Dept Head',
-    hardFilter : [
-      {factor:'IQ', min:100, label:'IQ Minimum'},
-      {factor:'A',  min:7,   label:'A (Ambisi)'},
-      {factor:'I',  min:6,   label:'I (Keputusan)'},
-      {factor:'N',  min:6,   label:'N (Ketekunan)'},
-      {factor:'G',  min:6,   label:'G (Kerja Keras)'},
-    ],
-    weights: [
-      {factor:'IQ', min:100, ideal:125, weight:0.25, label:'IQ'},
-      {factor:'A',  min:7,   ideal:9,   weight:0.25, label:'A — Ambisi'},
-      {factor:'I',  min:6,   ideal:9,   weight:0.20, label:'I — Keputusan'},
-      {factor:'N',  min:6,   ideal:8,   weight:0.10, label:'N — Ketekunan'},
-      {factor:'G',  min:6,   ideal:8,   weight:0.10, label:'G — Kerja Keras'},
-      {factor:'R',  min:5,   ideal:7,   weight:0.05, label:'R — Teoritis'},
-      {factor:'C',  min:5,   ideal:7,   weight:0.05, label:'C — Organized'},
-    ],
-  },
-  'Finance / Accounting': {
-    label      : 'Finance / Accounting',
-    hardFilter : [
-      {factor:'IQ', min:100, label:'IQ Minimum'},
-      {factor:'D',  min:6,   label:'D (Detail)'},
-      {factor:'C',  min:5,   label:'C (Organized)'},
-      {factor:'N',  min:4,   label:'N (Ketekunan)'},
-      {factor:'G',  min:4,   label:'G (Kerja Keras)'},
-    ],
-    weights: [
-      {factor:'IQ', min:100, ideal:125, weight:0.35, label:'IQ'},
-      {factor:'D',  min:6,   ideal:9,   weight:0.25, label:'D — Detail'},
-      {factor:'C',  min:5,   ideal:8,   weight:0.20, label:'C — Organized'},
-      {factor:'N',  min:5,   ideal:7,   weight:0.10, label:'N — Ketekunan'},
-      {factor:'G',  min:5,   ideal:7,   weight:0.10, label:'G — Kerja Keras'},
-    ],
-  },
-  'HR': {
-    label      : 'HR',
-    hardFilter : [
-      {factor:'IQ', min:90, label:'IQ Minimum'},
-      {factor:'S',  min:6,  label:'S (Sosial)'},
-      {factor:'I',  min:5,  label:'I (Keputusan)'},
-      {factor:'N',  min:5,  label:'N (Ketekunan)'},
-    ],
-    weights: [
-      {factor:'IQ', min:90,  ideal:115, weight:0.20, label:'IQ'},
-      {factor:'S',  min:6,   ideal:9,   weight:0.25, label:'S — Sosial'},
-      {factor:'I',  min:5,   ideal:8,   weight:0.20, label:'I — Keputusan'},
-      {factor:'N',  min:5,   ideal:7,   weight:0.15, label:'N — Ketekunan'},
-      {factor:'C',  min:5,   ideal:7,   weight:0.10, label:'C — Organized'},
-      {factor:'G',  min:4,   ideal:7,   weight:0.10, label:'G — Kerja Keras'},
-    ],
-  },
-  'IT': {
-    label      : 'IT',
-    hardFilter : [
-      {factor:'IQ', min:100, label:'IQ Minimum'},
-      {factor:'R',  min:6,   label:'R (Teoritis)'},
-      {factor:'D',  min:5,   label:'D (Detail)'},
-      {factor:'N',  min:5,   label:'N (Ketekunan)'},
-    ],
-    weights: [
-      {factor:'IQ', min:100, ideal:130, weight:0.35, label:'IQ'},
-      {factor:'R',  min:6,   ideal:9,   weight:0.25, label:'R — Teoritis'},
-      {factor:'D',  min:5,   ideal:8,   weight:0.20, label:'D — Detail'},
-      {factor:'N',  min:5,   ideal:8,   weight:0.10, label:'N — Ketekunan'},
-      {factor:'C',  min:4,   ideal:7,   weight:0.10, label:'C — Organized'},
-    ],
-  },
-  'Admin / Operasional': {
-    label      : 'Admin / Operasional',
-    hardFilter : [
-      {factor:'IQ', min:90, label:'IQ Minimum'},
-      {factor:'C',  min:5,  label:'C (Organized)'},
-      {factor:'D',  min:5,  label:'D (Detail)'},
-      {factor:'N',  min:4,  label:'N (Ketekunan)'},
-      {factor:'G',  min:4,  label:'G (Kerja Keras)'},
-    ],
-    weights: [
-      {factor:'IQ', min:90, ideal:115, weight:0.30, label:'IQ'},
-      {factor:'C',  min:5,  ideal:8,   weight:0.25, label:'C — Organized'},
-      {factor:'D',  min:5,  ideal:8,   weight:0.20, label:'D — Detail'},
-      {factor:'N',  min:5,  ideal:7,   weight:0.15, label:'N — Ketekunan'},
-      {factor:'G',  min:4,  ideal:7,   weight:0.10, label:'G — Kerja Keras'},
-    ],
-  },
-};
-
-// ═══════════════════════════════════════════
-// SCORING ENGINE
-// ═══════════════════════════════════════════
-function getFactorValue(factor, inputs) {
-  if (factor === 'IQ') return inputs.iq;
-  return inputs.papi[factor] || 0;
-}
-
-function calcComponentScore(raw, min, ideal) {
-  if (raw >= ideal) return 100;
-  if (raw >= min)   return 60 + ((raw-min)/(ideal-min))*40;
-  return (raw/min)*60;
-}
-
-function checkToleranceNG(papi) {
-  const N = papi['N'] || 0;
-  const G = papi['G'] || 0;
-  return (N+G)/2 >= 5;
-}
-
-function runScoring() {
-  const nama   = document.getElementById('sc-nama').value.trim();
-  const usia   = parseInt(document.getElementById('sc-usia').value)||0;
-  const posisi = document.getElementById('sc-posisi').value;
-  const iq     = parseInt(document.getElementById('sc-iq').value)||0;
-
-  if (!nama || !posisi || !iq) {
-    showToast('Lengkapi nama, posisi, dan IQ dulu');
-    return;
-  }
-
-  const config = SCORING_CONFIG[posisi];
-  if (!config) {
-    showToast('Posisi tidak dikenali');
-    return;
-  }
-
-  // Kumpulkan PAPI
-  const papi = {};
-  const codes = ['N','G','A','L','P','I','T','V',
-                 'X','S','B','O','F','W','R','D',
-                 'C','Z','E','K'];
-  codes.forEach(c => {
-    papi[c] = parseInt(document.getElementById('papi-'+c).value)||0;
-  });
-
-  const inputs = {iq, papi};
-
-  // ── Universal Gate ──
-  const univGate = [
-    {factor:'IQ', min:90,  label:'IQ Universal'},
-    {factor:'N',  min:4,   label:'N Universal'},
-    {factor:'G',  min:4,   label:'G Universal'},
-  ];
-
-  // ── Hard Filter Check ──
-  const allFilters = [...config.hardFilter];
-  let gugur        = false;
-  let gugurReason  = '';
-
-  // Cek universal gate dulu
-  for (const f of univGate) {
-    const val = getFactorValue(f.factor, inputs);
-    if (val < f.min) {
-      // Cek toleransi N+G
-      if ((f.factor==='N'||f.factor==='G') && checkToleranceNG(papi)) {
-        continue; // toleransi aktif
-      }
-      gugur       = true;
-      gugurReason = f.label + ' = ' + val + ' (min ' + f.min + ')';
-      break;
-    }
-  }
-
-  // Cek position-specific hard filter
-  if (!gugur) {
-    for (const f of config.hardFilter) {
-      if (f.factor === 'IQ') continue; // sudah dicek di universal
-      const val = getFactorValue(f.factor, inputs);
-      if (val < f.min) {
-        // Toleransi N+G
-        if ((f.factor==='N'||f.factor==='G') && checkToleranceNG(papi)) {
-          continue;
-        }
-        gugur       = true;
-        gugurReason = f.label + ' = ' + val + ' (min ' + f.min + ')';
-        break;
-      }
-    }
-  }
-
-  // ── Scoring ──
-  let totalScore = 0;
-  const scoreRows = [];
-
-  if (!gugur) {
-    config.weights.forEach(w => {
-      const raw  = getFactorValue(w.factor, inputs);
-      let comp   = calcComponentScore(raw, w.min, w.ideal);
-
-      // Toleransi N+G
-      if ((w.factor==='N'||w.factor==='G') &&
-          raw < w.min && checkToleranceNG(papi)) {
-        comp = 60;
-      }
-
-      const contrib = comp * w.weight;
-      totalScore   += contrib;
-
-      scoreRows.push({
-        factor : w.label,
-        min    : w.min,
-        ideal  : w.ideal,
-        weight : Math.round(w.weight*100) + '%',
-        raw    : raw,
-        comp   : Math.round(comp*10)/10,
-        contrib: Math.round(contrib*10)/10,
-      });
-    });
-  }
-
-  // ── Verdict ──
-  let verdict, vClass;
-  if (gugur) {
-    verdict = 'GUGUR';
-    vClass  = 'verdict-gugur';
-  } else if (totalScore >= 80) {
-    verdict = 'SANGAT DISARANKAN';
-    vClass  = 'verdict-sangat';
-  } else if (totalScore >= 70) {
-    verdict = 'DISARANKAN';
-    vClass  = 'verdict-dis';
-  } else if (totalScore >= 60) {
-    verdict = 'BERSYARAT';
-    vClass  = 'verdict-ber';
-  } else {
-    verdict = 'TIDAK DISARANKAN';
-    vClass  = 'verdict-tidak';
-  }
-
-  // ── Render ──
-  renderScoringResult({
-    nama, usia, posisi, iq, papi,
-    gugur, gugurReason,
-    filters: config.hardFilter,
-    scoreRows, totalScore,
-    verdict, vClass,
-    toleransiNG: checkToleranceNG(papi),
-  });
-}
-
-function renderScoringResult(d) {
-  const el = document.getElementById('score-result');
-
-  // Filter table
-  let filterRows = '';
-  const allF = [
-    {factor:'IQ', min:90,  label:'IQ Universal'},
-    {factor:'N',  min:4,   label:'N Universal'},
-    {factor:'G',  min:4,   label:'G Universal'},
-    ...d.filters,
-  ];
-  const seenF = new Set();
-  allF.forEach(f => {
-    if (seenF.has(f.factor)) return;
-    seenF.add(f.factor);
-    const val  = f.factor==='IQ' ? d.iq : (d.papi[f.factor]||0);
-    const ok   = val >= f.min;
-    const tolNG= (f.factor==='N'||f.factor==='G') && d.toleransiNG;
-    const status = ok ? '✅ LOLOS' : tolNG ? '⚠️ TOLERANSI' : '❌ GUGUR';
-    const cls    = ok ? 'filter-ok' : tolNG ? '' : 'filter-fail';
-    filterRows  += `<tr>
-      <td>${f.label}</td>
-      <td>${f.min}</td>
-      <td>${val}</td>
-      <td class="${cls}">${status}</td>
-    </tr>`;
-  });
-
-  // Score table
-  let scoreRows = '';
-  if (!d.gugur) {
-    d.scoreRows.forEach(r => {
-      scoreRows += `<tr>
-        <td>${r.factor}</td>
-        <td>${r.min}</td>
-        <td>${r.ideal}</td>
-        <td>${r.weight}</td>
-        <td><strong>${r.raw}</strong></td>
-        <td>${r.comp}%</td>
-        <td>${r.contrib}%</td>
-      </tr>`;
-    });
-    scoreRows += `<tr class="total-row">
-      <td colspan="6"><strong>TOTAL SKOR</strong></td>
-      <td><strong>${Math.round(d.totalScore*10)/10}%</strong></td>
-    </tr>`;
-  }
-
-  el.innerHTML = `
-    <div class="result-header">
-      <div>
-        <div class="result-name">${d.nama}</div>
-        <div class="text-muted">${d.posisi} · Usia ${d.usia} · IQ ${d.iq}</div>
-      </div>
-      <div class="verdict-badge ${d.vClass}">${d.verdict}</div>
-    </div>
-
-    ${d.gugur ? `
-    <div style="background:#fde8e4;border-radius:8px;padding:12px 16px;
-                margin-bottom:16px;color:#7a2010;font-weight:600">
-      ❌ GUGUR: ${d.gugurReason}
-    </div>` : ''}
-
-    ${d.toleransiNG ? `
-    <div style="background:#fff3cd;border-radius:8px;padding:10px 16px;
-                margin-bottom:16px;color:#856404;font-size:0.82rem">
-      ⚠️ Toleransi N+G aktif — avg(N,G) ≥ 5
-    </div>` : ''}
-
-    <div style="font-size:0.8rem;font-weight:700;color:var(--brown);
-                margin-bottom:8px">HARD FILTER CHECK</div>
-    <table class="filter-table">
-      <thead>
-        <tr>
-          <th>Faktor</th>
-          <th>Minimum</th>
-          <th>Nilai</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody>${filterRows}</tbody>
-    </table>
-
-    ${!d.gugur ? `
-    <div style="font-size:0.8rem;font-weight:700;color:var(--brown);
-                margin-bottom:8px;margin-top:16px">SCORING DETAIL</div>
-    <table class="score-table">
-      <thead>
-        <tr>
-          <th>Faktor</th>
-          <th>Min</th>
-          <th>Ideal</th>
-          <th>Bobot</th>
-          <th>Raw</th>
-          <th>Skor Komponen</th>
-          <th>Kontribusi</th>
-        </tr>
-      </thead>
-      <tbody>${scoreRows}</tbody>
-    </table>` : ''}
-
-    <div style="display:flex;gap:10px;margin-top:16px">
-      <button class="btn-score" style="background:#2d6a4f"
-        onclick="window.print()">🖨 Print</button>
-      <button class="btn-score" style="background:#2471a3"
-        onclick="saveScoringToSheet()">💾 Simpan ke Sheet</button>
-    </div>
-  `;
-
-  el.classList.add('show');
-  el.scrollIntoView({behavior:'smooth'});
-}
-
-function onPosisiChange() {
-  // Reset field saat posisi berubah
-}
-
-function saveScoringToSheet() {
-  showToast('Fitur simpan ke sheet segera hadir');
-}
-
-// ═══════════════════════════════════════════
-// CONNECTION & DATA
-// ═══════════════════════════════════════════
-function connectSheet() {
+  function connectSheet() {
   const url = document.getElementById('api-url').value.trim();
   if (!url || !url.includes('script.google.com')) {
-    showToast('URL tidak valid');
+    alert('URL tidak valid. Harus URL dari Google Apps Script.');
     return;
   }
   apiUrl = url;
@@ -1201,13 +858,14 @@ function setStatus(type, msg) {
   el.className     = 'conn-status ' + type;
 }
 
+// ═══════════════════════════════════════════
+// JSONP
+// ═══════════════════════════════════════════
 function jsonp(url, onOk, onErr) {
-  const cb  = 'cb_' + Date.now();
+  const cb  = 'cb_' + Date.now() + '_' + Math.floor(Math.random()*9999);
   const tag = document.createElement('script');
   let done  = false;
-  window[cb] = function(data) {
-    done = true; cleanup(); onOk(data);
-  };
+  window[cb] = function(data) { done=true; cleanup(); onOk(data); };
   function cleanup() {
     delete window[cb];
     if (tag.parentNode) tag.parentNode.removeChild(tag);
@@ -1222,26 +880,34 @@ function jsonp(url, onOk, onErr) {
   document.head.appendChild(tag);
 }
 
+// ═══════════════════════════════════════════
+// LOAD DATA
+// ═══════════════════════════════════════════
 function loadData() {
   if (!apiUrl) return;
   setStatus('loading','⏳ Memuat...');
   jsonp(apiUrl+'?action=listRekrutmen&t='+Date.now(),
     function(data) {
       if (data.error) { setStatus('err','❌ '+data.error); return; }
-      allData = data.data || [];
-      setStatus('ok','✓ '+allData.length+' kandidat');
+      allData   = data.data     || data.kandidats || [];
+      allPosisi = data.posisi   || [];
+      setStatus('ok','✓ '+allData.length+' kandidat · '+allPosisi.length+' posisi');
       document.getElementById('sync-badge').textContent =
         'Sync: '+new Date().toLocaleTimeString('id-ID');
       renderAll();
     },
-    function() { setStatus('err','❌ Gagal. Cek URL'); }
+    function() {
+      setStatus('err','❌ Gagal. Cek URL & deployment Apps Script.');
+    }
   );
 }
 
+// ═══════════════════════════════════════════
+// RENDER ALL
+// ═══════════════════════════════════════════
 function renderAll() {
   renderDashboard();
   renderKandidat();
-  renderJobTest();
   renderPsikotest();
   renderInterview();
   populateFilters();
@@ -1251,390 +917,35 @@ function populateFilters() {
   const positions = [...new Set(
     allData.map(k=>k.posisi).filter(Boolean)
   )].sort();
-  const el = document.getElementById('k-filter-posisi');
-  const cur = el.value;
-  el.innerHTML = '<option value="">Semua Posisi</option>' +
-    positions.map(p=>`<option value="${p}" ${p===cur?'selected':''}>${p}</option>`).join('');
-}
 
-// ═══════════════════════════════════════════
-// DASHBOARD
-// ═══════════════════════════════════════════
-function renderDashboard() {
-  const total    = allData.length;
-  const hired    = allData.filter(k=>k.rekStage==='Hired').length;
-  const rejected = allData.filter(k=>k.rekStage==='Rejected').length;
-  const proses   = allData.filter(k=>
-    !['Hired','Rejected'].includes(k.rekStage||'Baru')
-  ).length;
-  const konversi = total ? Math.round(hired/total*100)+'%' : '—';
-
-  setText('kpi-total',    total    || '—');
-  setText('kpi-hired',    hired    || '—');
-  setText('kpi-rejected', rejected || '—');
-  setText('kpi-proses',   proses   || '—');
-  setText('kpi-konversi', konversi);
-
-  // Pipeline bars
-  const stages = [
-    {label:'Baru',      key:'Baru',      color:'#4a3728'},
-    {label:'Job Test',  key:'Job Test',  color:'#e8920a'},
-    {label:'Psikotest', key:'Psikotest', color:'#2471a3'},
-    {label:'Interview', key:'Interview', color:'#8e44ad'},
-    {label:'Hired',     key:'Hired',     color:'#2d6a4f'},
-  ];
-  const max = total || 1;
-  let html  = '';
-  stages.forEach(s => {
-    const cnt = allData.filter(k=>(k.rekStage||'Baru')===s.key).length;
-    const pct = Math.round(cnt/max*100);
-    html += `<div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
-      <div style="width:100px;font-size:0.75rem;color:var(--muted);text-align:right">
-        ${s.label}
-      </div>
-      <div style="flex:1;height:24px;background:var(--cream);border-radius:4px;overflow:hidden">
-        <div style="width:${Math.max(pct,2)}%;height:100%;background:${s.color};
-                    display:flex;align-items:center;padding-left:8px;
-                    font-size:0.7rem;color:#fff;font-weight:700">
-          ${cnt}
-        </div>
-      </div>
-      <div style="width:40px;font-size:0.72rem;color:var(--muted)">${pct}%</div>
-    </div>`;
-  });
-  document.getElementById('pipeline-bars').innerHTML = html;
-}
-
-// ═══════════════════════════════════════════
-// KANDIDAT
-// ═══════════════════════════════════════════
-function renderKandidat() {
-  const posFilter   = document.getElementById('k-filter-posisi')?.value || '';
-  const stageFilter = document.getElementById('k-filter-stage')?.value  || '';
-  const search      = (document.getElementById('k-search')?.value       || '').toLowerCase();
-
-  let data = allData.filter(k => {
-    const st  = k.rekStage || 'Baru';
-    const pos = k.posisi   || '';
-    if (posFilter   && pos!==posFilter)                          return false;
-    if (stageFilter && st!==stageFilter)                         return false;
-    if (search && !(k.nama||'').toLowerCase().includes(search))  return false;
-    return true;
+  ['k-filter-posisi','ps-filter-posisi','iv-filter-posisi',
+   'funnel-select'].forEach(id => {
+    const el  = document.getElementById(id);
+    if (!el) return;
+    const cur = el.value;
+    const opt = id === 'funnel-select'
+      ? '<option value="">Semua Posisi</option>'
+      : '<option value="">Semua Posisi</option>';
+    el.innerHTML = opt + positions.map(p =>
+      `<option value="${p}" ${p===cur?'selected':''}>${p}</option>`
+    ).join('');
   });
 
-  const tbody = document.getElementById('kandidat-body');
-  if (!data.length) {
-    tbody.innerHTML = '<tr><td colspan="7"><div class="empty-state"><div class="empty-icon">📭</div>Tidak ada kandidat</div></td></tr>';
-    return;
+  const pdEl = document.getElementById('k-filter-pendidikan');
+  if (pdEl) {
+    const cur  = pdEl.value;
+    const list = [...new Set(
+      allData.map(k=>k.pendidikan).filter(Boolean)
+    )].sort();
+    pdEl.innerHTML = '<option value="">Semua Pendidikan</option>' +
+      list.map(p =>
+        `<option value="${p}" ${p===cur?'selected':''}>${p}</option>`
+      ).join('');
   }
-
-  tbody.innerHTML = data.map(k => {
-    const stage    = k.rekStage || 'Baru';
-    const badgeCls = stageBadge(stage);
-    const wa       = k.wa ? `<a href="https://wa.me/${k.wa.replace(/\D/g,'')}"
-      target="_blank" style="color:var(--green)">📱 ${k.wa}</a>` : '—';
-    return `<tr>
-      <td class="fw6">${k.nama||'—'}</td>
-      <td>${k.posisi||'—'}</td>
-      <td class="nowrap">${wa}</td>
-      <td style="font-size:0.76rem">${k.pendidikan||'—'}</td>
-      <td class="text-muted">${k.timestamp||'—'}</td>
-      <td><span class="badge ${badgeCls}">${stage}</span></td>
-      <td>
-        <select class="action-sel"
-          onchange="handleKandidatAction(this,${k.row})"
-          style="padding:5px 8px;border:1.5px solid var(--border);
-                 border-radius:5px;font-size:0.74rem;
-                 font-family:inherit;background:var(--cream);
-                 color:var(--ink);cursor:pointer;min-width:140px">
-          <option value="">— Tindakan —</option>
-          <option value="Job Test">→ Job Test</option>
-          <option value="Psikotest">→ Psikotest</option>
-          <option value="Interview">→ Interview</option>
-          <option value="Hired">✅ Hired</option>
-          <option value="Rejected">✕ Reject</option>
-        </select>
-      </td>
-    </tr>`;
-  }).join('');
-}
-
-function handleKandidatAction(sel, row) {
-  const action = sel.value;
-  if (!action) return;
-  if (action==='Rejected' && !confirm('Yakin reject?')) {
-    sel.value=''; return;
-  }
-  updateStage(row, action, function() {
-    const k = allData.find(x=>x.row===row);
-    if (k) k.rekStage = action;
-    sel.value = '';
-    renderAll();
-  });
 }
 
 // ═══════════════════════════════════════════
-// JOB TEST
-// ═══════════════════════════════════════════
-function renderJobTest() {
-  const data  = allData.filter(k=>(k.rekStage||'Baru')==='Job Test');
-  const tbody = document.getElementById('jobtest-body');
-
-  if (!data.length) {
-    tbody.innerHTML = '<tr><td colspan="8"><div class="empty-state"><div class="empty-icon">📝</div>Belum ada kandidat di Job Test</div></td></tr>';
-    return;
-  }
-
-  tbody.innerHTML = data.map(k => {
-    const score  = k.jobScore || '';
-    const hadir  = k.jobHadir || '';
-    const pass   = score!=='' ? parseFloat(score)>=60 : null;
-    const hasil  = pass===null ? '—' : pass
-      ? '<span class="badge badge-green">LULUS</span>'
-      : '<span class="badge badge-red">TIDAK LULUS</span>';
-
-    return `<tr>
-      <td class="fw6">${k.nama||'—'}</td>
-      <td>${k.posisi||'—'}</td>
-      <td>${k.wa||'—'}</td>
-      <td>
-        <select onchange="saveJTHadir(this,${k.row})"
-          style="padding:4px 8px;border:1.5px solid var(--border);
-                 border-radius:5px;font-size:0.74rem;font-family:inherit">
-          <option value="" ${!hadir?'selected':''}>— Kehadiran —</option>
-          <option value="Hadir"       ${hadir==='Hadir'?'selected':''}>✅ Hadir</option>
-          <option value="Tidak Hadir" ${hadir==='Tidak Hadir'?'selected':''}>❌ Tidak Hadir</option>
-        </select>
-      </td>
-      <td>
-        <input type="number" value="${score}" min="0" max="100"
-          style="width:70px;padding:4px 8px;border:1.5px solid var(--border);
-                 border-radius:5px;font-size:0.78rem;text-align:center"
-          onchange="saveJTScore(this,${k.row})">
-      </td>
-      <td>${hasil}</td>
-      <td>
-        <select onchange="handleJTAction(this,${k.row})"
-          style="padding:4px 8px;border:1.5px solid var(--border);
-                 border-radius:5px;font-size:0.74rem;font-family:inherit;min-width:120px">
-          <option value="">— Tindak Lanjut —</option>
-          <option value="Psikotest">→ Psikotest</option>
-          <option value="Interview">→ Interview</option>
-          <option value="Rejected">✕ Reject</option>
-        </select>
-      </td>
-      <td>
-        <button onclick="saveJTAll(${k.row})"
-          style="padding:4px 10px;background:var(--brown);color:#fff;
-                 border:none;border-radius:5px;font-size:0.72rem;cursor:pointer">
-          💾
-        </button>
-      </td>
-    </tr>`;
-  }).join('');
-}
-
-function saveJTHadir(sel, row) {
-  const k = allData.find(x=>x.row===row);
-  if (k) k.jobHadir = sel.value;
-}
-function saveJTScore(input, row) {
-  const k = allData.find(x=>x.row===row);
-  if (k) k.jobScore = parseFloat(input.value)||0;
-}
-function saveJTAll(row) {
-  const k = allData.find(x=>x.row===row);
-  if (!k || !apiUrl) return;
-  jsonp(apiUrl+'?action=updateJobTest&row='+row+
-    '&score='+(k.jobScore||'')+
-    '&hadir='+encodeURIComponent(k.jobHadir||'')+'&t='+Date.now(),
-    function(res) {
-      if (res.error) { showToast('❌ '+res.error); return; }
-      showToast('Job Test tersimpan ✓');
-    }, function() { showToast('❌ Gagal menyimpan'); }
-  );
-}
-function handleJTAction(sel, row) {
-  const action = sel.value;
-  if (!action) return;
-  const k = allData.find(x=>x.row===row);
-  if (!k) return;
-  if (action==='Rejected'&&!confirm('Reject '+k.nama+'?')) {
-    sel.value=''; return;
-  }
-  updateStage(row, action, function() {
-    k.rekStage=action; sel.value=''; renderAll();
-  });
-}
-
-// ═══════════════════════════════════════════
-// PSIKOTEST
-// ═══════════════════════════════════════════
-function renderPsikotest() {
-  const data  = allData.filter(k=>(k.rekStage||'Baru')==='Psikotest');
-  const tbody = document.getElementById('psikotest-body');
-
-  if (!data.length) {
-    tbody.innerHTML = '<tr><td colspan="6"><div class="empty-state"><div class="empty-icon">🧠</div>Belum ada kandidat di Psikotest</div></td></tr>';
-    return;
-  }
-
-  tbody.innerHTML = data.map(k => {
-    const iq      = k.psiIQ     || '—';
-    const iqNum   = parseFloat(iq);
-    const kat     = k.psiKat    || '—';
-    const disc    = k.psiDisc   || '—';
-    const hadir   = k.psiHadir  || '';
-    const iqColor = !isNaN(iqNum)
-      ? (iqNum>=110?'#155724':iqNum>=90?'#856404':'#7a2010')
-      : '#999';
-
-    return `<tr>
-      <td class="fw6">${k.nama||'—'}</td>
-      <td>${k.posisi||'—'}</td>
-      <td><span style="font-family:'Playfair Display',serif;
-                       font-size:1.1rem;font-weight:700;color:${iqColor}">
-        ${iq}</span></td>
-      <td><span style="font-size:0.75rem;color:#888">${kat}</span></td>
-      <td>${disc}</td>
-      <td class="nowrap" style="display:flex;gap:4px">
-        <button onclick="advancePsikotest(${k.row})"
-          style="padding:4px 10px;background:var(--green);color:#fff;
-                 border:none;border-radius:5px;font-size:0.72rem;cursor:pointer">
-          → Interview
-        </button>
-        <button onclick="rejectPs(${k.row})"
-          style="padding:4px 10px;background:var(--red);color:#fff;
-                 border:none;border-radius:5px;font-size:0.72rem;cursor:pointer">
-          ✕
-        </button>
-      </td>
-    </tr>`;
-  }).join('');
-}
-
-function advancePsikotest(row) {
-  const k = allData.find(x=>x.row===row);
-  if (!k) return;
-  updateStage(row,'Interview',function() {
-    k.rekStage='Interview'; renderAll();
-    showToast(k.nama+' → Interview ✓');
-  });
-}
-function rejectPs(row) {
-  const k = allData.find(x=>x.row===row);
-  if (!k||!confirm('Reject '+k.nama+'?')) return;
-  updateStage(row,'Rejected',function() {
-    k.rekStage='Rejected'; renderAll();
-  });
-}
-
-// ═══════════════════════════════════════════
-// INTERVIEW
-// ═══════════════════════════════════════════
-function renderInterview() {
-  const data  = allData.filter(k=>(k.rekStage||'Baru')==='Interview');
-  const tbody = document.getElementById('interview-body');
-
-  if (!data.length) {
-    tbody.innerHTML = '<tr><td colspan="7"><div class="empty-state"><div class="empty-icon">🗣</div>Belum ada kandidat di Interview</div></td></tr>';
-    return;
-  }
-
-  tbody.innerHTML = data.map(k => {
-    const hasil   = k.ivHasil   || '';
-    const catatan = k.ivCatatan || '';
-    return `<tr>
-      <td class="fw6">${k.nama||'—'}</td>
-      <td>${k.posisi||'—'}</td>
-      <td>${k.wa||'—'}</td>
-      <td>
-        <select onchange="saveIVHasil(this,${k.row})"
-          style="padding:4px 8px;border:1.5px solid var(--border);
-                 border-radius:5px;font-size:0.74rem;font-family:inherit;min-width:150px">
-          <option value="" ${!hasil?'selected':''}>— Hasil —</option>
-          <option value="Lolos"           ${hasil==='Lolos'?'selected':''}>✅ Lolos</option>
-          <option value="Dipertimbangkan" ${hasil==='Dipertimbangkan'?'selected':''}>🟡 Dipertimbangkan</option>
-          <option value="Gagal"           ${hasil==='Gagal'?'selected':''}>❌ Gagal</option>
-        </select>
-      </td>
-      <td>
-        <input type="text" value="${escQ(catatan)}" placeholder="Catatan..."
-          style="width:160px;padding:4px 8px;border:1.5px solid var(--border);
-                 border-radius:5px;font-size:0.78rem"
-          onchange="saveIVCatatan(this,${k.row})">
-      </td>
-      <td>
-        <select onchange="handleIVAction(this,${k.row})"
-          style="padding:4px 8px;border:1.5px solid var(--border);
-                 border-radius:5px;font-size:0.74rem;font-family:inherit;min-width:130px">
-          <option value="">— Tindak Lanjut —</option>
-          <option value="Hired">✅ Hired</option>
-          <option value="Rejected">✕ Reject</option>
-        </select>
-      </td>
-      <td>
-        <button onclick="saveIVAll(${k.row})"
-          style="padding:4px 10px;background:var(--brown);color:#fff;
-                 border:none;border-radius:5px;font-size:0.72rem;cursor:pointer">
-          💾 Simpan
-        </button>
-      </td>
-    </tr>`;
-  }).join('');
-}
-
-function saveIVHasil(sel, row) {
-  const k = allData.find(x=>x.row===row);
-  if (k) k.ivHasil = sel.value;
-}
-function saveIVCatatan(input, row) {
-  const k = allData.find(x=>x.row===row);
-  if (k) k.ivCatatan = input.value;
-}
-function saveIVAll(row) {
-  const k = allData.find(x=>x.row===row);
-  if (!k||!apiUrl) return;
-  jsonp(apiUrl+'?action=updateInterview&row='+row+
-    '&hasil='+encodeURIComponent(k.ivHasil||'')+
-    '&catatan='+encodeURIComponent(k.ivCatatan||'')+'&t='+Date.now(),
-    function(res) {
-      if (res.error) { showToast('❌ '+res.error); return; }
-      showToast('Interview tersimpan ✓');
-    }, function() { showToast('❌ Gagal'); }
-  );
-}
-function handleIVAction(sel, row) {
-  const action = sel.value;
-  if (!action) return;
-  const k = allData.find(x=>x.row===row);
-  if (!k) return;
-  const msg = action==='Hired'
-    ? 'Konfirmasi: '+k.nama+' HIRED?'
-    : 'Reject '+k.nama+'?';
-  if (!confirm(msg)) { sel.value=''; return; }
-  updateStage(row, action, function() {
-    k.rekStage=action; sel.value=''; renderAll();
-    if (action==='Hired') showToast('🎉 '+k.nama+' HIRED!');
-  });
-}
-
-// ═══════════════════════════════════════════
-// API CALLS
-// ═══════════════════════════════════════════
-function updateStage(row, stage, cb) {
-  if (!apiUrl) { showToast('Sambungkan sheet dulu'); return; }
-  jsonp(apiUrl+'?action=updateRekStage&row='+row+
-    '&stage='+encodeURIComponent(stage)+'&t='+Date.now(),
-    function(res) {
-      if (res.error) { showToast('❌ '+res.error); return; }
-      if (cb) cb();
-    }, function() { showToast('❌ Gagal'); }
-  );
-}
-
-// ═══════════════════════════════════════════
-// UTILS
+// SWITCH VIEW
 // ═══════════════════════════════════════════
 function switchView(v) {
   document.querySelectorAll('.view')
@@ -1642,38 +953,1082 @@ function switchView(v) {
   document.querySelectorAll('.nav-tab')
     .forEach(el => el.classList.remove('active'));
   document.getElementById('view-'+v).classList.add('active');
-  const tabs = ['dashboard','kandidat','jobtest',
-                'psikotest','interview','scoring'];
-  const tabEl = document.querySelectorAll('.nav-tab')[tabs.indexOf(v)];
-  if (tabEl) tabEl.classList.add('active');
+  const tabs = ['dashboard','kandidat','psikotest','interview'];
+  const idx  = tabs.indexOf(v);
+  const tabEls = document.querySelectorAll('.nav-tab');
+  if (tabEls[idx]) tabEls[idx].classList.add('active');
 }
 
-function stageBadge(stage) {
-  const map = {
-    'Baru'     :'badge-brown',
-    'Job Test' :'badge-yellow',
-    'Psikotest':'badge-blue',
-    'Interview':'badge-blue',
-    'Hired'    :'badge-green',
-    'Rejected' :'badge-red',
-  };
-  return map[stage] || 'badge-gray';
+// ═══════════════════════════════════════════
+// DASHBOARD
+// ═══════════════════════════════════════════
+function renderDashboard() {
+  const total     = allPosisi.length;
+  const fulfilled = allPosisi.filter(r=>r.tglFulfil).length;
+  const open      = total - fulfilled;
+  const days      = allPosisi
+    .filter(r=>r.tglReq && r.tglFulfil)
+    .map(r=>calcDays(r.tglReq, r.tglFulfil))
+    .filter(d=>d!==null);
+  const avgDays   = days.length
+    ? Math.round(days.reduce((a,b)=>a+b,0)/days.length)
+    : null;
+  const totalK    = allData.length;
+  const joined    = allData.filter(k=>(k.rekStage||'Baru')==='Join').length;
+  const konversi  = totalK ? Math.round(joined/totalK*100) : 0;
+
+  setText('kpi-total-posisi', total    || '—');
+  setText('kpi-terpenuhi',    fulfilled|| '—');
+  setText('kpi-open',         open >= 0 ? open : '—');
+  setText('kpi-kandidat',     totalK   || '—');
+  setText('kpi-avg-hari',     avgDays !== null ? avgDays+' hr' : '—');
+  setText('kpi-konversi',     totalK ? konversi+'%' : '—');
+
+  renderPosisiTable();
+  renderFunnel();
+  renderOpenList();
 }
 
+function calcDays(d1, d2) {
+  if (!d1||!d2) return null;
+  const r = Math.round((new Date(d2)-new Date(d1))/86400000);
+  return isNaN(r) ? null : r;
+}
+
+function daysSince(d) {
+  if (!d) return null;
+  const r = Math.round((Date.now()-new Date(d))/86400000);
+  return isNaN(r) ? null : r;
+}
+
+// ═══════════════════════════════════════════
+// FUNNEL — dihitung dari tgl posisi diinput
+// >= tglReq (termasuk hari yang sama)
+// ═══════════════════════════════════════════
+function renderFunnel() {
+  const sel = document.getElementById('funnel-select');
+  if (!allData.length && !allPosisi.length) return;
+  const positions = [...new Set(
+    allData.map(k=>k.posisi).filter(Boolean)
+  )].sort();
+  const cur = sel.value;
+  sel.innerHTML = '<option value="">Semua Posisi</option>' +
+    positions.map(p =>
+      `<option value="${p}" ${p===cur?'selected':''}>${p}</option>`
+    ).join('');
+  drawFunnel(sel.value);
+}
+
+function onFunnelSelect(sel) {
+  drawFunnel(sel.value);
+  const pos     = allPosisi.find(p=>p.nama===sel.value);
+  const infoEl  = document.getElementById('funnel-date-info');
+  if (pos && pos.tglReq) {
+    infoEl.textContent = '📅 Mulai: '+fmtDate(pos.tglReq);
+    infoEl.style.display = 'inline-block';
+  } else {
+    infoEl.style.display = 'none';
+  }
+}
+
+function drawFunnel(posFilter) {
+  const stagesEl = document.getElementById('funnel-stages');
+
+  // Cari tglReq posisi yang dipilih
+  let tglReq = null;
+  if (posFilter) {
+    const pos = allPosisi.find(p=>p.nama===posFilter);
+    if (pos && pos.tglReq) {
+      // Set ke awal hari (00:00:00) agar >= tglReq termasuk hari yang sama
+      const d = new Date(pos.tglReq);
+      d.setHours(0,0,0,0);
+      tglReq = d;
+    }
+  }
+
+  // Filter kandidat berdasarkan posisi dan tglReq
+  let data = allData.filter(k => {
+    if (posFilter && k.posisi !== posFilter) return false;
+    if (tglReq) {
+      const tglDaftar = k.tanggal ? new Date(k.tanggal) : null;
+      if (!tglDaftar) return false;
+      tglDaftar.setHours(0,0,0,0);
+      // >= tglReq: termasuk hari yang sama
+      if (tglDaftar < tglReq) return false;
+    }
+    return true;
+  });
+
+  if (!data.length) {
+    stagesEl.innerHTML =
+      '<div class="text-muted" style="padding:20px;text-align:center">'+
+      'Tidak ada kandidat'+(posFilter?' untuk posisi ini':'')+
+      (tglReq?' sejak '+fmtDate(tglReq):'')+
+      '</div>';
+    return;
+  }
+
+  const total  = data.length;
+  const order  = ['Baru','Disimpan','Psikotest','Interview','Join','Reject'];
+
+  const stages = [
+    { label:'CV Masuk',   key:null,        color:'#4a3728' },
+    { label:'Psikotest',  key:'Psikotest', color:'#2471a3' },
+    { label:'Interview',  key:'Interview', color:'#8e44ad' },
+    { label:'Join',       key:'Join',      color:'#2d6a4f' },
+  ];
+
+  const counts = stages.map(s => {
+    if (s.key === null) return total;
+    return data.filter(k => {
+      const st = k.rekStage || 'Baru';
+      return order.indexOf(st) >= order.indexOf(s.key) && st !== 'Reject';
+    }).length;
+  });
+
+  const maxCount = counts[0] || 1;
+  let html = '';
+
+  counts.forEach((c, i) => {
+    const pct  = Math.round(c/maxCount*100);
+    const drop = i>0 && counts[i-1]
+      ? Math.round((1-c/counts[i-1])*100)
+      : null;
+    const s = stages[i];
+    html += `
+      <div class="funnel-row">
+        <div class="funnel-lbl">${s.label}</div>
+        <div class="funnel-track">
+          <div class="funnel-fill"
+            style="width:${Math.max(pct,4)}%;background:${s.color}">
+            ${c}
+          </div>
+        </div>
+        <div class="funnel-pct">${pct}%</div>
+        ${drop!==null
+          ? `<div class="funnel-drop">↓${drop}%</div>`
+          : '<div class="funnel-drop"></div>'}
+      </div>`;
+  });
+
+  const rejected = data.filter(k=>(k.rekStage||'Baru')==='Reject').length;
+  if (rejected) {
+    const pct = Math.round(rejected/maxCount*100);
+    html += `
+      <div class="funnel-row" style="margin-top:6px;opacity:0.7">
+        <div class="funnel-lbl" style="color:var(--red)">Ditolak</div>
+        <div class="funnel-track">
+          <div class="funnel-fill"
+            style="width:${Math.max(pct,4)}%;background:var(--red)">
+            ${rejected}
+          </div>
+        </div>
+        <div class="funnel-pct"></div>
+        <div class="funnel-drop"></div>
+      </div>`;
+  }
+
+  // Info tanggal
+  if (tglReq) {
+    html += `<div style="margin-top:12px;font-size:0.72rem;
+                         color:var(--muted);text-align:center">
+      Menampilkan kandidat yang mendaftar sejak
+      <strong>${fmtDate(tglReq)}</strong>
+    </div>`;
+  }
+
+  stagesEl.innerHTML = html;
+}
+
+// ═══════════════════════════════════════════
+// OPEN LIST
+// ═══════════════════════════════════════════
+function renderOpenList() {
+  const open = allPosisi.filter(r=>!r.tglFulfil && r.tglReq);
+  const el   = document.getElementById('open-list');
+  if (!open.length) {
+    el.innerHTML =
+      '<div class="empty-state">'+
+      '<div class="empty-icon">🎉</div>'+
+      '<div class="empty-msg">Semua posisi sudah terpenuhi!</div>'+
+      '</div>';
+    return;
+  }
+  open.sort((a,b)=>daysSince(b.tglReq)-daysSince(a.tglReq));
+  el.innerHTML = open.map(r => {
+    const d   = daysSince(r.tglReq);
+    const cls = d<=30?'days-ok':d<=50?'days-warn':'days-bad';
+    return `<div class="open-item">
+      <div>
+        <div class="open-name">${r.nama}</div>
+        <div class="open-meta">Sejak ${fmtDate(r.tglReq)}</div>
+      </div>
+      <div style="text-align:center">
+        <div class="days-badge ${cls}">${d??'?'}</div>
+        <div class="days-lbl">hari</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ═══════════════════════════════════════════
+// POSISI TABLE
+// ═══════════════════════════════════════════
+function renderPosisiTable() {
+  const tbody = document.getElementById('posisi-tbody');
+  if (!tbody) return;
+  if (!allPosisi.length) {
+    tbody.innerHTML =
+      '<tr><td colspan="6" style="text-align:center;'+
+      'color:var(--muted);padding:16px">'+
+      'Belum ada data posisi. Klik "+ Tambah Posisi" untuk mulai.'+
+      '</td></tr>';
+    return;
+  }
+  tbody.innerHTML = allPosisi.map(p => {
+    const d   = p.tglFulfil
+      ? calcDays(p.tglReq, p.tglFulfil)
+      : daysSince(p.tglReq);
+    const cls = !p.tglFulfil
+      ? (d<=30?'days-ok':d<=50?'days-warn':'days-bad')
+      : '';
+    const status = p.tglFulfil
+      ? '<span class="badge badge-green">Terpenuhi</span>'
+      : `<span class="badge badge-yellow" style="color:${d>50?'#7a2010':'#856404'};background:${d>50?'#fde8e4':'#fff3cd'}">Open · ${d} hr</span>`;
+    const fulfilBtn = !p.tglFulfil
+      ? `<button class="fulfil-btn" onclick="openFulfilPosisi(${p.row},'${escQ(p.nama)}')">✅ Penuhi</button>&nbsp;`
+      : '';
+    const dColor = cls==='days-bad'?'var(--red)':cls==='days-warn'?'var(--yellow)':'var(--green)';
+    return `<tr>
+      <td class="fw6">${p.nama}</td>
+      <td>${fmtDate(p.tglReq)}</td>
+      <td>${p.tglFulfil ? fmtDate(p.tglFulfil) : '—'}</td>
+      <td><span style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:${dColor}">${d??'?'}</span></td>
+      <td>${status}</td>
+      <td class="nowrap">
+        ${fulfilBtn}
+        <button class="btn-del" onclick="deletePosisi(${p.row},'${escQ(p.nama)}')">🗑</button>
+      </td>
+    </tr>`;
+  }).join('');
+}
+
+function openAddPosisi() {
+  document.getElementById('ap-nama').value    = '';
+  document.getElementById('ap-tgl-req').value = new Date().toISOString().split('T')[0];
+  document.getElementById('ap-jumlah').value  = 1;
+  openModal('modal-add-posisi');
+}
+
+function saveNewPosisi() {
+  const nama   = document.getElementById('ap-nama').value.trim();
+  const tglReq = document.getElementById('ap-tgl-req').value;
+  const jumlah = document.getElementById('ap-jumlah').value || 1;
+  if (!nama||!tglReq) {
+    alert('Nama posisi dan tanggal permintaan wajib diisi.');
+    return;
+  }
+  const params = `action=addPosisi&nama=${encodeURIComponent(nama)}&tglReq=${encodeURIComponent(tglReq)}&jumlah=${jumlah}&t=${Date.now()}`;
+  jsonp(apiUrl+'?'+params, function(res) {
+    if (res.error) { alert('Gagal: '+res.error); return; }
+    allPosisi.push({ row:res.row||Date.now(), nama, tglReq, jumlah, tglFulfil:'' });
+    closeModal('modal-add-posisi');
+    showToast('Posisi berhasil ditambahkan ✓');
+    renderDashboard();
+    populateFilters();
+  }, function() { alert('Gagal menyimpan.'); });
+}
+
+function openFulfilPosisi(row, nama) {
+  document.getElementById('fulfil-posisi-row').value = row;
+  document.getElementById('fulfil-posisi-info').textContent = 'Posisi: '+nama;
+  document.getElementById('fulfil-tgl').value = new Date().toISOString().split('T')[0];
+  openModal('modal-fulfil-posisi');
+}
+
+function saveFulfilPosisi() {
+  const row = parseInt(document.getElementById('fulfil-posisi-row').value);
+  const tgl = document.getElementById('fulfil-tgl').value;
+  if (!tgl) { alert('Pilih tanggal terpenuhi.'); return; }
+  const params = `action=updatePosisi&row=${row}&tglFulfil=${encodeURIComponent(tgl)}&t=${Date.now()}`;
+  jsonp(apiUrl+'?'+params, function(res) {
+    if (res.error) { alert('Gagal: '+res.error); return; }
+    const p = allPosisi.find(x=>x.row===row);
+    if (p) p.tglFulfil = tgl;
+    closeModal('modal-fulfil-posisi');
+    showToast('Posisi ditandai terpenuhi ✓');
+    renderDashboard();
+  }, function() { alert('Gagal menyimpan.'); });
+}
+
+function deletePosisi(row, nama) {
+  if (!confirm(`Hapus posisi "${nama}"?`)) return;
+  const params = `action=deletePosisi&row=${row}&t=${Date.now()}`;
+  jsonp(apiUrl+'?'+params, function(res) {
+    if (res.error) { alert('Gagal: '+res.error); return; }
+    allPosisi = allPosisi.filter(x=>x.row!==row);
+    showToast('Posisi dihapus ✓');
+    renderDashboard();
+    populateFilters();
+  }, function() { alert('Gagal.'); });
+}
+
+// ═══════════════════════════════════════════
+// KANDIDAT
+// ═══════════════════════════════════════════
+function renderKandidat() {
+  const posFilter   = document.getElementById('k-filter-posisi')?.value    || '';
+  const stageFilter = document.getElementById('k-filter-stage')?.value     || 'pending';
+  const pendFilter  = document.getElementById('k-filter-pendidikan')?.value || '';
+  const provFilter  = document.getElementById('k-filter-provinsi')?.value  || '';
+  const search      = (document.getElementById('k-search')?.value          || '').toLowerCase().trim();
+  const PROCESSED   = ['Psikotest','Interview','Join','Reject'];
+
+  const hasFilter = posFilter || stageFilter!=='pending' || pendFilter || provFilter || search;
+  const resetBtn  = document.getElementById('k-reset-btn');
+  if (resetBtn) resetBtn.style.display = hasFilter ? 'block' : 'none';
+
+  let data = allData.filter(k => {
+    const st    = k.rekStage || 'Baru';
+    const prov  = (k.provinsi||'').toLowerCase();
+    const isKepri = !prov.includes('luar kepri') &&
+      (prov.includes('kepulauan riau')||prov.includes('kepri'));
+
+    if (posFilter && k.posisi!==posFilter) return false;
+    if (stageFilter==='pending') {
+      if (PROCESSED.includes(st)) return false;
+    } else if (stageFilter && st!==stageFilter) return false;
+    if (pendFilter && (k.pendidikan||'')!==pendFilter) return false;
+    if (provFilter==='kepri' && !isKepri) return false;
+    if (provFilter==='luar'  &&  isKepri) return false;
+    if (search) {
+      const matchNama    = (k.nama   ||'').toLowerCase().includes(search);
+      const matchJurusan = (k.jurusan||'').toLowerCase().includes(search);
+      if (!matchNama && !matchJurusan) return false;
+    }
+    return true;
+  });
+
+  document.getElementById('kandidat-count').textContent = data.length+' kandidat';
+
+  const chkAll = document.getElementById('k-check-all');
+  if (chkAll) chkAll.checked = false;
+  updateBulkBar();
+
+  const tbody = document.getElementById('kandidat-body');
+  if (!data.length) {
+    tbody.innerHTML =
+      '<tr><td colspan="11"><div class="empty-state">'+
+      '<div class="empty-icon">📭</div>'+
+      '<div class="empty-msg">Tidak ada kandidat ditemukan</div>'+
+      '</div></td></tr>';
+    return;
+  }
+
+  tbody.innerHTML = data.map(k => {
+    const stage    = k.rekStage || 'Baru';
+    const badgeCls = stageBadge(stage);
+    const prov     = k.provinsi || '';
+    const provLow  = prov.toLowerCase();
+    const isKepri  = !provLow.includes('luar kepri') &&
+      (provLow.includes('kepulauan riau')||provLow.includes('kepri'));
+    const provLabel = prov ? (isKepri?'Kepri':prov) : '';
+    const provBadge = prov
+      ? `<span class="badge ${isKepri?'badge-kepri':'badge-luar'}"
+           title="${prov}">${provLabel}</span>`
+      : '<span class="text-muted">—</span>';
+
+    // CV — klik langsung preview
+    const cvLink = k.cvLink
+      ? `<button onclick="previewCV('${escQ(k.cvLink)}','${escQ(k.nama)}')"
+           style="display:inline-flex;align-items:center;gap:4px;
+                  padding:3px 9px;background:#fef3c7;border:none;
+                  border-radius:4px;font-size:0.72rem;font-weight:600;
+                  color:#92400e;cursor:pointer" title="Preview CV">
+           📄 Lihat CV
+         </button>`
+      : '<span class="text-muted">—</span>';
+
+    const wa = k.wa
+      ? `<a href="https://wa.me/${k.wa.replace(/\D/g,'')}"
+           target="_blank" style="color:var(--green);font-weight:500">
+           📱 ${k.wa}
+         </a>`
+      : '—';
+
+    const hlNama    = search ? hlText(k.nama   ||'—',search) : (k.nama   ||'—');
+    const hlJurusan = search ? hlText(k.jurusan||'—',search) : (k.jurusan||'—');
+
+    return `<tr id="row-k-${k.row}">
+      <td style="text-align:center">
+        <input type="checkbox" class="k-row-check"
+          value="${k.row}" onchange="updateBulkBar()">
+      </td>
+      <td class="fw6">${hlNama}</td>
+      <td>${k.posisi||'—'}</td>
+      <td class="nowrap">${wa}</td>
+      <td>${provBadge}</td>
+      <td style="font-size:0.76rem">${k.pendidikan||'—'}</td>
+      <td style="font-size:0.76rem">${hlJurusan}</td>
+      <td class="text-muted">${fmtDate(k.tanggal)}</td>
+      <td>${cvLink}</td>
+      <td><span class="badge ${badgeCls}">${stage}</span></td>
+      <td class="nowrap">
+        <select class="action-select"
+          onchange="handleKandidatAction(this,${k.row})">
+          <option value="">— Pilih Tindakan —</option>
+          <option value="Psikotest">→ Psikotest</option>
+          <option value="Interview">→ Interview</option>
+          <option value="Disimpan">📁 Simpan CV</option>
+          <option value="Reject">✕ Reject</option>
+        </select>
+      </td>
+    </tr>`;
+  }).join('');
+}
+
+function hlText(text, query) {
+  if (!query||!text) return text;
+  const idx = text.toLowerCase().indexOf(query);
+  if (idx<0) return text;
+  return text.slice(0,idx)+
+    `<mark style="background:#fde68a;border-radius:2px;padding:0 2px">${text.slice(idx,idx+query.length)}</mark>`+
+    text.slice(idx+query.length);
+}
+
+function resetFilterKandidat() {
+  ['k-filter-posisi','k-filter-pendidikan','k-filter-provinsi'].forEach(id=>{
+    const el=document.getElementById(id); if(el) el.value='';
+  });
+  const stage=document.getElementById('k-filter-stage');
+  if(stage) stage.value='pending';
+  const search=document.getElementById('k-search');
+  if(search) search.value='';
+  renderKandidat();
+}
+
+function handleKandidatAction(sel, row) {
+  const action = sel.value;
+  if (!action) return;
+  const k = allData.find(x=>x.row===row);
+  if (!k) return;
+  if (action==='Reject') {
+    if (!confirm(`Yakin reject ${k.nama}?`)) { sel.value=''; return; }
+  }
+  updateStage(row, action, function() {
+    sel.value  = '';
+    k.rekStage = action;
+    renderAll();
+  });
+}
+
+// ── BULK SELECT ──
+function toggleCheckAll(master) {
+  document.querySelectorAll('.k-row-check')
+    .forEach(cb=>cb.checked=master.checked);
+  updateBulkBar();
+}
+
+function updateBulkBar() {
+  const checked = [...document.querySelectorAll('.k-row-check:checked')];
+  const bar     = document.getElementById('bulk-bar');
+  const countEl = document.getElementById('bulk-count');
+  if (!bar) return;
+  if (checked.length>0) {
+    bar.style.display='flex';
+    countEl.textContent=checked.length;
+  } else {
+    const undoWrap=document.getElementById('bulk-undo-wrap');
+    if (!undoWrap||undoWrap.style.display==='none')
+      bar.style.display='none';
+  }
+}
+
+function clearBulkSelect() {
+  document.querySelectorAll('.k-row-check').forEach(cb=>cb.checked=false);
+  const chkAll=document.getElementById('k-check-all');
+  if(chkAll) chkAll.checked=false;
+  const undoWrap=document.getElementById('bulk-undo-wrap');
+  if(!undoWrap||undoWrap.style.display==='none')
+    document.getElementById('bulk-bar').style.display='none';
+}
+
+function executeBulkReject() {
+  const checked=[...document.querySelectorAll('.k-row-check:checked')];
+  if(!checked.length) return;
+  const rows=checked.map(cb=>parseInt(cb.value));
+  if(!confirm(`Yakin reject ${rows.length} kandidat? Bisa di-undo dalam 30 detik.`)) return;
+
+  bulkUndoSnapshot=rows.map(row=>{
+    const k=allData.find(x=>x.row===row);
+    return {row, prevStage:k?(k.rekStage||'Baru'):'Baru'};
+  });
+  rows.forEach(row=>{
+    const k=allData.find(x=>x.row===row);
+    if(k) k.rekStage='Reject';
+  });
+
+  if(apiUrl) {
+    const cbName='bulkCb_'+Date.now();
+    window[cbName]=function(){delete window[cbName];};
+    const s=document.createElement('script');
+    s.src=`${apiUrl}?action=bulkRejectKandidat&rows=${rows.join(',')}&callback=${cbName}&t=${Date.now()}`;
+    document.head.appendChild(s);
+  }
+
+  clearBulkSelect();
+  renderAll();
+
+  const bar      = document.getElementById('bulk-bar');
+  const undoWrap = document.getElementById('bulk-undo-wrap');
+  const undoTimer    = document.getElementById('bulk-undo-timer');
+  bar.style.display = 'flex';
+  document.getElementById('bulk-count').textContent = rows.length;
+  undoWrap.style.display = 'flex';
+  let sec = 30;
+  undoTimer.textContent = `(tersedia ${sec}d)`;
+  if (bulkUndoTimer) clearInterval(bulkUndoTimer);
+  bulkUndoTimer = setInterval(() => {
+    sec--;
+    if (sec<=0) {
+      clearInterval(bulkUndoTimer);
+      bulkUndoSnapshot = null;
+      undoWrap.style.display = 'none';
+      bar.style.display = 'none';
+    } else {
+      undoTimer.textContent = `(tersedia ${sec}d)`;
+    }
+  }, 1000);
+}
+
+function undoBulkReject() {
+  if (!bulkUndoSnapshot||!bulkUndoSnapshot.length) return;
+  if (!confirm(`Kembalikan ${bulkUndoSnapshot.length} kandidat ke stage sebelumnya?`)) return;
+  bulkUndoSnapshot.forEach(snap => {
+    const k = allData.find(x=>x.row===snap.row);
+    if (k) k.rekStage = snap.prevStage;
+    if (apiUrl) {
+      const cbName = 'undoCb_'+snap.row+'_'+Date.now();
+      window[cbName] = function(){delete window[cbName];};
+      const s = document.createElement('script');
+      s.src = `${apiUrl}?action=updateRekStage&row=${snap.row}&stage=${encodeURIComponent(snap.prevStage)}&callback=${cbName}&t=${Date.now()}`;
+      document.head.appendChild(s);
+    }
+  });
+  if (bulkUndoTimer) clearInterval(bulkUndoTimer);
+  bulkUndoSnapshot = null;
+  document.getElementById('bulk-undo-wrap').style.display = 'none';
+  document.getElementById('bulk-bar').style.display = 'none';
+  renderAll();
+  showToast('↩ Undo berhasil — kandidat dikembalikan ke stage sebelumnya');
+}
+
+// ═══════════════════════════════════════════
+// PSIKOTEST
+// ═══════════════════════════════════════════
+function renderPsikotest() {
+  const posFilter   = document.getElementById('ps-filter-posisi')?.value || '';
+  const hadirFilter = document.getElementById('ps-filter-hadir')?.value  || '';
+  const search      = (document.getElementById('ps-search')?.value       || '').toLowerCase();
+
+  let data = allData.filter(k => {
+    if ((k.rekStage||'Baru') !== 'Psikotest') return false;
+    if (posFilter && k.posisi !== posFilter)   return false;
+    const hadir = k.psikotestHadir===true || k.psikotestHadir==='true' || k.psikotestHadir===1;
+    if (hadirFilter==='hadir' && !hadir) return false;
+    if (hadirFilter==='absen' &&  hadir) return false;
+    if (search && !(k.nama||'').toLowerCase().includes(search)) return false;
+    return true;
+  });
+
+  document.getElementById('psikotest-count').textContent = data.length+' kandidat';
+  const tbody = document.getElementById('psikotest-body');
+
+  if (!data.length) {
+    tbody.innerHTML =
+      '<tr><td colspan="12"><div class="empty-state">'+
+      '<div class="empty-icon">🧠</div>'+
+      '<div class="empty-msg">Belum ada kandidat di Psikotest.<br>'+
+      'Pilih tindakan "Psikotest" di menu Kandidat.</div>'+
+      '</div></td></tr>';
+    return;
+  }
+
+  tbody.innerHTML = data.map(k => {
+    const hadir = k.psikotestHadir===true ||
+                  k.psikotestHadir==='true' ||
+                  k.psikotestHadir===1;
+
+    const hadirBadge = hadir
+      ? `<span class="hadir-auto hadir">✅ Hadir</span>`
+      : `<span class="hadir-auto absen">❌ Tidak Hadir</span>`;
+
+    // IQ
+    const iqNum   = hadir && k.psikotestIQ!=null
+                    ? parseFloat(k.psikotestIQ) : NaN;
+    const iqColor = !isNaN(iqNum)
+                    ? (iqNum>=110?'#155724':iqNum>=90?'#856404':'#7a2010')
+                    : '#999';
+    const iqBadge = !isNaN(iqNum)
+      ? `<span class="iq-score" style="color:${iqColor}">${iqNum}</span>
+         <br><span style="font-size:0.68rem;color:#888">${iqKat(iqNum)}</span>`
+      : '<span class="text-muted">—</span>';
+
+    // PAPI N, G, A — mini bar
+    const papi  = k.psikotestPAPI || {};
+    const N     = parseInt(papi.N)||0;
+    const G     = parseInt(papi.G)||0;
+    const A     = parseInt(papi.A)||0;
+
+    function papiCell(code, val) {
+      const pct   = Math.round(val/9*100);
+      const color = val>=7?'#2d6a4f':val<=3?'#c0392b':'#e8920a';
+      return `<td style="text-align:center">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:2px">
+          <div style="width:20px;height:40px;background:var(--cream);
+                      border-radius:3px;overflow:hidden;display:flex;
+                      flex-direction:column;justify-content:flex-end;
+                      border:1px solid var(--border)">
+            <div style="width:100%;height:${pct}%;background:${color};
+                        border-radius:2px;transition:height 0.3s"></div>
+          </div>
+          <span style="font-size:0.72rem;font-weight:700;color:${color}">${val||'—'}</span>
+        </div>
+      </td>`;
+    }
+
+    // Tgl Lahir format
+    const tglLahir = k.tglLahir ? fmtDate(k.tglLahir) : '—';
+
+    return `<tr id="row-ps-${k.row}">
+      <td class="fw6" style="cursor:pointer;color:var(--orange)"
+        onclick="showPAPIDetail(${k.row})"
+        title="Klik untuk detail PAPI lengkap">
+        ${k.nama||'—'}
+      </td>
+      <td>${k.posisi||'—'}</td>
+      <td style="font-size:0.76rem">${k.jurusan||'—'}</td>
+      <td class="nowrap">${k.wa||'—'}</td>
+      <td class="text-muted" style="font-size:0.75rem">${k.email||'—'}</td>
+      <td class="text-muted">${tglLahir}</td>
+      <td>${hadirBadge}</td>
+      <td>${iqBadge}</td>
+      ${papiCell('N',N)}
+      ${papiCell('G',G)}
+      ${papiCell('A',A)}
+      <td class="nowrap" style="display:flex;gap:4px;flex-wrap:wrap;padding:10px 8px">
+        ${hadir
+          ? `<button class="save-btn sm" style="background:var(--green)"
+               onclick="advancePsikotest(${k.row})">→ Interview</button>
+             <button class="save-btn sm" style="background:var(--red)"
+               onclick="rejectPs(${k.row})">✕</button>`
+          : '<span class="text-muted" style="font-size:0.72rem">Belum hadir</span>'
+        }
+      </td>
+    </tr>`;
+  }).join('');
+}
+
+// ── PAPI DETAIL MODAL ──
+function showPAPIDetail(row) {
+  const k = allData.find(x=>x.row===row);
+  if (!k) return;
+
+  const papi   = k.psikotestPAPI || {};
+  const codes  = ['N','G','A','L','P','I','T','V','X','S',
+                  'B','O','F','W','R','D','C','Z','E','K'];
+
+  document.getElementById('papi-detail-nama').textContent =
+    'PAPI Kostick — '+k.nama;
+  document.getElementById('papi-detail-sub').textContent =
+    k.posisi+' · IQ: '+(k.psikotestIQ||'—')+' · '+iqKat(parseFloat(k.psikotestIQ)||0);
+
+  const highs = codes.filter(c=>(parseInt(papi[c])||0)>=7);
+  const lows  = codes.filter(c=>(parseInt(papi[c])||0)<=3);
+
+  let html = '';
+
+  // Summary
+  if (highs.length||lows.length) {
+    html += `<div style="display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap">`;
+    if (highs.length) {
+      html += `<div style="flex:1;min-width:180px;background:#f0faf4;
+                            border:1px solid #74c69d;border-radius:8px;padding:10px 14px">
+        <div style="font-size:0.68rem;font-weight:700;color:#2d6a4f;
+                    text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px">
+          ⬆ Faktor Tinggi (≥7)
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:4px">
+          ${highs.map(c=>`<span style="background:#2d6a4f;color:#fff;
+            padding:2px 8px;border-radius:4px;font-size:0.72rem;font-weight:700">${c}</span>`).join('')}
+        </div>
+      </div>`;
+    }
+    if (lows.length) {
+      html += `<div style="flex:1;min-width:180px;background:#fff5f5;
+                            border:1px solid #e88;border-radius:8px;padding:10px 14px">
+        <div style="font-size:0.68rem;font-weight:700;color:#c0392b;
+                    text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px">
+          ⬇ Faktor Rendah (≤3)
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:4px">
+          ${lows.map(c=>`<span style="background:#c0392b;color:#fff;
+            padding:2px 8px;border-radius:4px;font-size:0.72rem;font-weight:700">${c}</span>`).join('')}
+        </div>
+      </div>`;
+    }
+    html += `</div>`;
+  }
+
+  // Grid semua faktor
+  html += `<div class="papi-detail-grid">`;
+  codes.forEach(c => {
+    const val  = parseInt(papi[c])||0;
+    const pct  = Math.round(val/9*100);
+    const meta = PAPI_META[c]||{name:c,desc:''};
+    const cls  = val>=7?'papi-high':val<=3?'papi-low':'';
+    html += `<div class="papi-detail-item ${cls}">
+      <div class="papi-detail-code">${c}</div>
+      <div class="papi-detail-name">${meta.name}</div>
+      <div class="papi-detail-val">${val}</div>
+      <div class="papi-detail-bar">
+        <div class="papi-detail-bar-fill" style="width:${pct}%"></div>
+      </div>
+    </div>`;
+  });
+  html += `</div>`;
+
+  // DISC jika ada
+  if (k.psikotestDISC) {
+    html += `<div style="margin-top:16px;padding:12px 16px;
+                          background:var(--cream);border-radius:8px;
+                          border:1px solid var(--border)">
+      <div style="font-size:0.72rem;font-weight:700;color:var(--muted);
+                  text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px">
+        DISC
+      </div>
+      <span style="font-size:1rem;font-weight:700;color:var(--brown)">
+        ${k.psikotestDISC}
+      </span>
+      ${k.psikotestDISCPattern
+        ? `<span style="font-size:0.8rem;color:var(--muted);margin-left:8px">
+             ${k.psikotestDISCPattern}
+           </span>`
+        : ''}
+    </div>`;
+  }
+
+  document.getElementById('papi-detail-content').innerHTML = html;
+  openModal('modal-papi-detail');
+}
+
+function iqKat(iq) {
+  if (iq>=130) return 'Sangat Superior';
+  if (iq>=120) return 'Superior';
+  if (iq>=110) return 'Di atas Rata-rata';
+  if (iq>=90)  return 'Rata-rata';
+  if (iq>=80)  return 'Di bawah Rata-rata';
+  if (iq>=70)  return 'Lambat Belajar';
+  return 'Keterbelakangan Mental';
+}
+
+function syncPsikotest(overwrite) {
+  const statusEl = document.getElementById('sync-psiko-status');
+  const btnEls   = document.querySelectorAll('.ps-sync-info .save-btn');
+  if (!apiUrl) { alert('URL Apps Script belum diisi!'); return; }
+
+  statusEl.textContent = '⏳ Sedang menghitung... (bisa 30-60 detik)';
+  statusEl.style.color = '#856404';
+  btnEls.forEach(b=>b.disabled=true);
+
+  const params = 'action=syncLevelOfficer'+(overwrite?'&overwrite=true':'')+'&t='+Date.now();
+  jsonp(apiUrl+'?'+params,
+    function(res) {
+      btnEls.forEach(b=>b.disabled=false);
+      if (res.error) {
+        statusEl.textContent = '❌ Error: '+res.error;
+        statusEl.style.color = '#c0392b';
+        return;
+      }
+      const msg = `✅ Selesai! ${res.scored||0} diproses`+
+                  (res.errors>0?`, ⚠️ ${res.errors} error`:'');
+      statusEl.textContent = msg;
+      statusEl.style.color = res.errors>0?'#f57f17':'#2d6a4f';
+      loadData();
+    },
+    function() {
+      btnEls.forEach(b=>b.disabled=false);
+      statusEl.textContent = '❌ Gagal: timeout atau error';
+      statusEl.style.color = '#c0392b';
+    }
+  );
+}
+
+function advancePsikotest(row) {
+  const k = allData.find(x=>x.row===row);
+  if (!k) return;
+  updateStage(row, 'Interview', function() {
+    k.rekStage = 'Interview';
+    renderAll();
+    showToast(k.nama+' dipindahkan ke Interview ✓');
+  });
+}
+
+function rejectPs(row) {
+  const k = allData.find(x=>x.row===row);
+  if (!k||!confirm(`Reject ${k.nama}?`)) return;
+  updateStage(row, 'Reject', function() {
+    k.rekStage = 'Reject';
+    renderAll();
+  });
+}
+
+// ═══════════════════════════════════════════
+// INTERVIEW
+// ═══════════════════════════════════════════
+function renderInterview() {
+  const posFilter = document.getElementById('iv-filter-posisi')?.value || '';
+  const search    = (document.getElementById('iv-search')?.value       || '').toLowerCase();
+
+  const data = allData.filter(k => {
+    if ((k.rekStage||'Baru') !== 'Interview') return false;
+    if (posFilter && k.posisi !== posFilter)   return false;
+    if (search && !(k.nama||'').toLowerCase().includes(search)) return false;
+    return true;
+  });
+
+  document.getElementById('interview-count').textContent = data.length+' kandidat';
+  const tbody = document.getElementById('interview-body');
+
+  if (!data.length) {
+    tbody.innerHTML =
+      '<tr><td colspan="8"><div class="empty-state">'+
+      '<div class="empty-icon">🗣</div>'+
+      '<div class="empty-msg">Belum ada kandidat di Interview.</div>'+
+      '</div></td></tr>';
+    return;
+  }
+
+  tbody.innerHTML = data.map(k => {
+    const ivHasil   = k.interviewHasil   || '';
+    const ivCatatan = k.interviewCatatan || '';
+    const ivHadir   = k.ivHadir===true ||
+                      k.ivHadir==='true' ||
+                      k.ivHadir==='Hadir';
+    const ivHadirTgl = k.ivHadirTgl || '';
+
+    const hadirBadge = ivHadir
+      ? `<span class="iv-hadir-badge hadir" title="${ivHadirTgl}">✅ Hadir</span>`
+      : `<span class="iv-hadir-badge belum">⏳ Belum Hadir</span>`;
+
+    return `<tr id="row-iv-${k.row}">
+      <td class="fw6">${k.nama||'—'}</td>
+      <td>${k.posisi||'—'}</td>
+      <td class="nowrap">${k.wa||'—'}</td>
+      <td>${hadirBadge}</td>
+      <td>
+        <select class="action-select" style="min-width:160px"
+          onchange="saveIVHasil(this,${k.row})">
+          <option value="" ${!ivHasil?'selected':''}>— Hasil Interview —</option>
+          <option value="Lolos"
+            ${ivHasil==='Lolos'?'selected':''}>✅ Lolos</option>
+          <option value="Dipertimbangkan"
+            ${ivHasil==='Dipertimbangkan'?'selected':''}>🟡 Dipertimbangkan</option>
+          <option value="Gagal"
+            ${ivHasil==='Gagal'?'selected':''}>❌ Gagal</option>
+        </select>
+      </td>
+      <td>
+        <input type="text"
+          style="width:180px;padding:5px 8px;border:1.5px solid var(--border);
+                 border-radius:5px;font-size:0.78rem;font-family:inherit"
+          placeholder="Catatan interviewer..."
+          value="${escQ(ivCatatan)}"
+          onchange="saveIVCatatan(this,${k.row})">
+      </td>
+      <td>
+        <select class="action-select"
+          onchange="handleIVAction(this,${k.row})">
+          <option value="">— Tindak Lanjut —</option>
+          <option value="Join">✅ Offering / Join</option>
+          <option value="Reject">✕ Reject</option>
+        </select>
+      </td>
+      <td>
+        <button class="save-btn sm"
+          onclick="saveIVAll(${k.row})">💾 Simpan</button>
+      </td>
+    </tr>`;
+  }).join('');
+}
+
+function saveIVHasil(sel, row) {
+  const k = allData.find(x=>x.row===row);
+  if (k) k.interviewHasil = sel.value;
+}
+
+function saveIVCatatan(input, row) {
+  const k = allData.find(x=>x.row===row);
+  if (k) k.interviewCatatan = input.value;
+}
+
+function saveIVAll(row) {
+  const k = allData.find(x=>x.row===row);
+  if (!k||!apiUrl) return;
+  const params = `action=updateInterview&row=${row}`+
+    `&hasil=${encodeURIComponent(k.interviewHasil||'')}`+
+    `&catatan=${encodeURIComponent(k.interviewCatatan||'')}`+
+    `&t=${Date.now()}`;
+  jsonp(apiUrl+'?'+params,
+    function(res) {
+      if (res.error) { alert('Gagal: '+res.error); return; }
+      showToast('Data Interview tersimpan ✓');
+    },
+    function() { alert('Gagal menyimpan.'); }
+  );
+}
+
+function handleIVAction(sel, row) {
+  const action = sel.value;
+  if (!action) return;
+  const k = allData.find(x=>x.row===row);
+  if (!k) return;
+  const msg = action==='Join'
+    ? `Konfirmasi: ${k.nama} diterima JOIN?`
+    : `Reject ${k.nama}?`;
+  if (!confirm(msg)) { sel.value=''; return; }
+  updateStage(row, action, function() {
+    k.rekStage = action;
+    renderAll();
+    if (action==='Join') showToast('🎉 '+k.nama+' berhasil JOIN!');
+  });
+}
+
+// ═══════════════════════════════════════════
+// API CALLS
+// ═══════════════════════════════════════════
+function updateStage(row, stage, cb) {
+  if (!apiUrl) { alert('Sambungkan sheet dulu.'); return; }
+  const params = `action=updateRekStage&row=${row}`+
+    `&stage=${encodeURIComponent(stage)}&t=${Date.now()}`;
+  jsonp(apiUrl+'?'+params,
+    function(res) {
+      if (res.error) { alert('Gagal: '+res.error); return; }
+      if (cb) cb();
+    },
+    function() { alert('Gagal terhubung ke sheet.'); }
+  );
+}
+
+// ═══════════════════════════════════════════
+// CV PREVIEW
+// ═══════════════════════════════════════════
+function previewCV(url, nama) {
+  if (!url) return;
+  document.getElementById('cv-preview-title').textContent = 'CV — '+(nama||'');
+  document.getElementById('cv-preview-link').href = url;
+
+  let embedUrl = url;
+  const driveMatch = url.match(/\/file\/d\/([^/]+)/);
+  if (driveMatch) {
+    embedUrl = 'https://drive.google.com/file/d/'+driveMatch[1]+'/preview';
+  } else if (url.includes('docs.google.com')) {
+    embedUrl = url.replace(/\/edit.*$/,'/preview');
+  }
+  document.getElementById('cv-preview-iframe').src = embedUrl;
+  openModal('modal-cv-preview');
+}
+
+// ═══════════════════════════════════════════
+// MODAL HELPERS
+// ═══════════════════════════════════════════
+function openModal(id)  {
+  document.getElementById(id).classList.add('open');
+}
+function closeModal(id) {
+  document.getElementById(id).classList.remove('open');
+  // Reset iframe saat tutup CV preview
+  if (id==='modal-cv-preview') {
+    document.getElementById('cv-preview-iframe').src='about:blank';
+  }
+}
+
+// Klik overlay untuk tutup modal
+document.querySelectorAll('.modal-overlay').forEach(el => {
+  el.addEventListener('click', function(e) {
+    if (e.target===this) {
+      this.classList.remove('open');
+      const iframe = this.querySelector('iframe');
+      if (iframe) iframe.src = 'about:blank';
+    }
+  });
+});
+
+// ═══════════════════════════════════════════
+// UTILS
+// ═══════════════════════════════════════════
 function setText(id, val) {
   const el = document.getElementById(id);
   if (el) el.textContent = val;
+}
+
+function fmtDate(d) {
+  if (!d) return '—';
+  try {
+    const dt = new Date(d);
+    if (isNaN(dt.getTime())) return '—';
+    if (dt.getFullYear()<2000) return '—';
+    return dt.toLocaleDateString('id-ID',{
+      day:'2-digit', month:'short', year:'numeric'
+    });
+  } catch(e) { return '—'; }
 }
 
 function escQ(s) {
   return (s||'').replace(/'/g,"&#39;").replace(/"/g,'&quot;');
 }
 
+function stageBadge(stage) {
+  const map = {
+    'Baru'      : 'badge-brown',
+    'Disimpan'  : 'badge-gray',
+    'Psikotest' : 'badge-blue',
+    'Interview' : 'badge-blue',
+    'Join'      : 'badge-green',
+    'Reject'    : 'badge-red',
+  };
+  return map[stage] || 'badge-gray';
+}
+
 function showToast(msg) {
-  const t = document.getElementById('toast');
+  const t = document.createElement('div');
   t.textContent = msg;
-  t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 2500);
+  Object.assign(t.style, {
+    position   : 'fixed',
+    bottom     : '24px',
+    right      : '24px',
+    background : 'var(--brown)',
+    color      : '#fff',
+    padding    : '10px 20px',
+    borderRadius: '8px',
+    fontSize   : '0.82rem',
+    fontWeight : '600',
+    boxShadow  : '0 4px 16px rgba(0,0,0,0.2)',
+    zIndex     : '99999',
+    opacity    : '0',
+    transform  : 'translateY(20px)',
+    transition : 'all 0.3s',
+  });
+  document.body.appendChild(t);
+  requestAnimationFrame(() => {
+    t.style.opacity   = '1';
+    t.style.transform = 'translateY(0)';
+  });
+  setTimeout(() => {
+    t.style.opacity   = '0';
+    t.style.transform = 'translateY(20px)';
+    setTimeout(() => t.remove(), 300);
+  }, 2500);
 }
 </script>
 </body>
