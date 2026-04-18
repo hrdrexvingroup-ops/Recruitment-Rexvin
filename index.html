@@ -8,20 +8,20 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
-  --brown:    #4a3728;
-  --brown2:   #6b4f3a;
-  --orange:   #e8920a;
-  --amber:    #f5a623;
-  --gold:     #f0c040;
-  --cream:    #faf6f0;
-  --paper:    #ffffff;
-  --border:   #e8ddd2;
-  --muted:    #9a8778;
-  --ink:      #2d1f14;
-  --green:    #2d6a4f;
-  --yellow:   #f5a623;
-  --red:      #c0392b;
-  --blue:     #2471a3;
+  --brown:     #4a3728;
+  --brown2:    #6b4f3a;
+  --orange:    #e8920a;
+  --amber:     #f5a623;
+  --gold:      #f0c040;
+  --cream:     #faf6f0;
+  --paper:     #ffffff;
+  --border:    #e8ddd2;
+  --muted:     #9a8778;
+  --ink:       #2d1f14;
+  --green:     #2d6a4f;
+  --yellow:    #f5a623;
+  --red:       #c0392b;
+  --blue:      #2471a3;
   --shadow-sm: 0 1px 4px rgba(74,55,40,0.08);
   --shadow:    0 4px 16px rgba(74,55,40,0.12);
   --radius:    10px;
@@ -29,7 +29,7 @@
 * { box-sizing:border-box; margin:0; padding:0; }
 body { font-family:'DM Sans',sans-serif; background:var(--cream); color:var(--ink); min-height:100vh; }
 
-/* HEADER */
+/* ── HEADER ── */
 .header {
   background:var(--brown); display:flex; align-items:center;
   height:56px; position:sticky; top:0; z-index:100;
@@ -60,8 +60,9 @@ body { font-family:'DM Sans',sans-serif; background:var(--cream); color:var(--in
   border:none; border-radius:6px; font-family:'DM Sans',sans-serif;
   font-size:0.76rem; font-weight:700; cursor:pointer;
 }
+.btn-print:hover { background:var(--gold); }
 
-/* CONN BAR */
+/* ── CONN BAR ── */
 .conn-bar {
   background:var(--brown2); padding:8px 24px;
   display:flex; align-items:center; gap:10px; flex-wrap:wrap;
@@ -84,11 +85,11 @@ body { font-family:'DM Sans',sans-serif; background:var(--cream); color:var(--in
 .conn-status.err     { background:#fde8e4; color:#7a2010; }
 .conn-status.loading { background:#fff3cd; color:#856404; }
 
-/* VIEWS */
+/* ── VIEWS ── */
 .view { display:none; }
 .view.active { display:block; }
 
-/* DASHBOARD */
+/* ── DASHBOARD ── */
 .dash-wrap { padding:28px 32px; max-width:1400px; margin:0 auto; }
 .kpi-row {
   display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
@@ -115,17 +116,14 @@ body { font-family:'DM Sans',sans-serif; background:var(--cream); color:var(--in
   font-weight:700; color:var(--brown); line-height:1;
 }
 .kpi-sub { font-size:0.72rem; color:var(--muted); margin-top:6px; }
-
 .dash-grid { display:grid; grid-template-columns:1fr 380px; gap:20px; }
 @media(max-width:900px){ .dash-grid{ grid-template-columns:1fr; } }
-
 .card {
   background:var(--paper); border-radius:var(--radius);
   padding:22px 24px; box-shadow:var(--shadow-sm); border:1px solid var(--border);
 }
 .card-title { font-family:'Playfair Display',serif; font-size:1rem; color:var(--brown); margin-bottom:4px; }
 .card-sub { font-size:0.72rem; color:var(--muted); margin-bottom:18px; letter-spacing:0.04em; text-transform:uppercase; }
-
 .funnel-select-wrap { display:flex; align-items:center; gap:10px; margin-bottom:12px; flex-wrap:wrap; }
 .funnel-select-wrap label { font-size:0.75rem; color:var(--muted); font-weight:600; text-transform:uppercase; letter-spacing:0.06em; }
 .funnel-select-wrap select {
@@ -147,7 +145,6 @@ body { font-family:'DM Sans',sans-serif; background:var(--cream); color:var(--in
 }
 .funnel-pct { width:40px; font-size:0.72rem; color:var(--muted); text-align:right; }
 .funnel-drop { font-size:0.68rem; color:var(--red); width:40px; }
-
 .open-list { display:flex; flex-direction:column; gap:10px; }
 .open-item {
   display:flex; justify-content:space-between; align-items:center;
@@ -161,7 +158,7 @@ body { font-family:'DM Sans',sans-serif; background:var(--cream); color:var(--in
 .days-warn { color:var(--yellow); }
 .days-bad  { color:var(--red); }
 
-/* POSISI PANEL */
+/* ── POSISI PANEL ── */
 .posisi-panel {
   background:var(--paper); border:1px solid var(--border);
   border-radius:var(--radius); padding:20px 24px; margin-bottom:20px; box-shadow:var(--shadow-sm);
@@ -172,6 +169,7 @@ body { font-family:'DM Sans',sans-serif; background:var(--cream); color:var(--in
   padding:6px 14px; background:var(--brown); color:#fff;
   border:none; border-radius:5px; font-size:0.76rem; font-weight:600; cursor:pointer;
 }
+.btn-add-posisi:hover { background:var(--brown2); }
 .posisi-table { width:100%; border-collapse:collapse; font-size:0.8rem; }
 .posisi-table th {
   padding:7px 12px; background:var(--cream); font-size:0.66rem; font-weight:700;
@@ -179,15 +177,17 @@ body { font-family:'DM Sans',sans-serif; background:var(--cream); color:var(--in
   border-bottom:2px solid var(--border); text-align:left;
 }
 .posisi-table td { padding:8px 12px; border-bottom:1px solid var(--border); vertical-align:middle; }
-.posisi-table tbody tr:hover { background:var(--cream); }
+.posisi-table tbody tr:hover { background:#f5f0ea; }
 .posisi-table tbody tr:last-child td { border-bottom:none; }
 .btn-del { background:none; border:none; color:var(--red); cursor:pointer; font-size:0.8rem; padding:2px 6px; }
+.btn-del:hover { background:#fde8e4; border-radius:4px; }
 .fulfil-btn {
   padding:3px 10px; background:var(--green); color:#fff;
   border:none; border-radius:4px; font-size:0.7rem; font-weight:600; cursor:pointer;
 }
+.fulfil-btn:hover { opacity:0.85; }
 
-/* TABLE VIEWS */
+/* ── TABLE VIEWS ── */
 .table-view { padding:24px 32px; }
 .view-header {
   display:flex; align-items:center; justify-content:space-between;
@@ -204,7 +204,6 @@ body { font-family:'DM Sans',sans-serif; background:var(--cream); color:var(--in
   font-family:'DM Sans',sans-serif; font-size:0.8rem; background:var(--paper); color:var(--ink);
 }
 .toolbar input { min-width:200px; }
-
 .data-table {
   width:100%; border-collapse:collapse; font-size:0.8rem;
   background:var(--paper); border-radius:var(--radius);
@@ -219,7 +218,7 @@ body { font-family:'DM Sans',sans-serif; background:var(--cream); color:var(--in
 .data-table tbody tr:hover { background:var(--cream); }
 .data-table tbody tr:last-child td { border-bottom:none; }
 
-/* BADGES */
+/* ── BADGES ── */
 .badge {
   display:inline-block; padding:3px 9px; border-radius:20px;
   font-size:0.68rem; font-weight:700; white-space:nowrap;
@@ -233,24 +232,24 @@ body { font-family:'DM Sans',sans-serif; background:var(--cream); color:var(--in
 .badge-kepri  { background:#dbeafe; color:#1e40af; }
 .badge-luar   { background:#fef3c7; color:#92400e; }
 
+/* ── BUTTONS ── */
 .action-select {
   padding:5px 8px; border:1.5px solid var(--border); border-radius:5px;
-  font-size:0.74rem; font-family:inherit; background:var(--cream); color:var(--ink); cursor:pointer; min-width:140px;
+  font-size:0.74rem; font-family:inherit; background:var(--cream);
+  color:var(--ink); cursor:pointer; min-width:140px;
 }
 .action-select:focus { border-color:var(--orange); outline:none; }
-
 .save-btn {
   padding:5px 12px; background:var(--brown); color:#fff;
   border:none; border-radius:5px; font-size:0.72rem; font-weight:600; cursor:pointer;
 }
 .save-btn:hover { background:var(--brown2); }
 .save-btn.sm { padding:3px 9px; font-size:0.68rem; }
-
 .empty-state { text-align:center; padding:60px 24px; color:var(--muted); }
 .empty-icon  { font-size:2.5rem; margin-bottom:12px; }
 .empty-msg   { font-size:0.88rem; }
 
-/* PSIKOTEST */
+/* ── PSIKOTEST ── */
 .hadir-auto {
   display:inline-flex; align-items:center; gap:5px;
   padding:3px 10px; border-radius:20px; font-size:0.68rem; font-weight:700;
@@ -264,20 +263,23 @@ body { font-family:'DM Sans',sans-serif; background:var(--cream); color:var(--in
   color:#1e40af; font-size:0.75rem; font-weight:600; margin-bottom:14px;
 }
 
-/* PAPI MINI BARS */
-.papi-mini { display:flex; gap:6px; align-items:center; }
-.papi-bar-wrap { display:flex; flex-direction:column; align-items:center; gap:2px; }
-.papi-bar-track {
-  width:18px; height:60px; background:var(--cream);
-  border-radius:3px; overflow:hidden; display:flex;
-  flex-direction:column; justify-content:flex-end;
-  border:1px solid var(--border);
+/* ── INTERVIEW ── */
+.iv-hadir-badge {
+  display:inline-flex; align-items:center; gap:5px;
+  padding:3px 10px; border-radius:20px; font-size:0.68rem; font-weight:700;
 }
-.papi-bar-fill { width:100%; border-radius:2px; transition:height 0.3s; }
-.papi-bar-lbl { font-size:0.6rem; font-weight:700; color:var(--muted); }
-.papi-bar-val { font-size:0.65rem; font-weight:700; color:var(--ink); }
+.iv-hadir-badge.hadir { background:#d4edda; color:#155724; }
+.iv-hadir-badge.belum { background:#fff3cd; color:#856404; }
 
-/* MODAL */
+/* ── BULK BAR ── */
+.bulk-bar {
+  display:none; align-items:center; gap:10px;
+  padding:8px 14px; background:#fff8ec;
+  border:1.5px solid var(--amber); border-radius:8px;
+  margin-bottom:10px; font-size:0.83rem; flex-wrap:wrap;
+}
+
+/* ── MODAL ── */
 .modal-overlay {
   display:none; position:fixed; inset:0;
   background:rgba(0,0,0,0.5); z-index:9000;
@@ -287,8 +289,8 @@ body { font-family:'DM Sans',sans-serif; background:var(--cream); color:var(--in
 .modal {
   background:var(--paper); border-radius:var(--radius);
   padding:28px 32px; max-width:480px; width:90%;
-  box-shadow:0 24px 60px rgba(0,0,0,0.25); position:relative;
-  max-height:90vh; overflow-y:auto;
+  box-shadow:0 24px 60px rgba(0,0,0,0.25);
+  position:relative; max-height:90vh; overflow-y:auto;
 }
 .modal h3 {
   font-family:'Playfair Display',serif; font-size:1.1rem;
@@ -322,7 +324,7 @@ body { font-family:'DM Sans',sans-serif; background:var(--cream); color:var(--in
 }
 .btn-save:hover { background:var(--brown2); }
 
-/* PAPI DETAIL MODAL */
+/* ── PAPI DETAIL MODAL ── */
 .papi-detail-grid {
   display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:16px;
 }
@@ -336,34 +338,16 @@ body { font-family:'DM Sans',sans-serif; background:var(--cream); color:var(--in
   font-family:'Playfair Display',serif; font-size:1.4rem;
   font-weight:700; color:var(--brown);
 }
-.papi-detail-bar {
-  height:4px; border-radius:2px; margin-top:6px; background:var(--border);
-}
+.papi-detail-bar { height:4px; border-radius:2px; margin-top:6px; background:var(--border); }
 .papi-detail-bar-fill { height:100%; border-radius:2px; background:var(--amber); }
-.papi-high { border-color:var(--green); background:#f0faf4; }
+.papi-high { border-color:#74c69d; background:#f0faf4; }
 .papi-high .papi-detail-val { color:var(--green); }
 .papi-high .papi-detail-bar-fill { background:var(--green); }
-.papi-low  { border-color:var(--red); background:#fff5f5; }
+.papi-low  { border-color:#e88; background:#fff5f5; }
 .papi-low  .papi-detail-val { color:var(--red); }
 .papi-low  .papi-detail-bar-fill { background:var(--red); }
 
-/* BULK BAR */
-.bulk-bar {
-  display:none; align-items:center; gap:10px;
-  padding:8px 14px; background:#fff8ec;
-  border:1.5px solid var(--amber); border-radius:8px;
-  margin-bottom:10px; font-size:0.83rem; flex-wrap:wrap;
-}
-
-/* INTERVIEW */
-.iv-hadir-badge {
-  display:inline-flex; align-items:center; gap:5px;
-  padding:3px 10px; border-radius:20px; font-size:0.68rem; font-weight:700;
-}
-.iv-hadir-badge.hadir { background:#d4edda; color:#155724; }
-.iv-hadir-badge.belum { background:#fff3cd; color:#856404; }
-
-/* PRINT */
+/* ── PRINT ── */
 @media print {
   .header,.conn-bar,.toolbar,.action-select,.save-btn,
   .btn-print,.modal-overlay,.bulk-bar { display:none !important; }
@@ -372,7 +356,7 @@ body { font-family:'DM Sans',sans-serif; background:var(--cream); color:var(--in
   .data-table { font-size:0.72rem; }
 }
 
-/* UTIL */
+/* ── UTIL ── */
 a { color:var(--orange); text-decoration:none; }
 a:hover { text-decoration:underline; }
 .text-muted { color:var(--muted); font-size:0.75rem; }
@@ -382,7 +366,9 @@ a:hover { text-decoration:underline; }
 </head>
 <body>
 
-<!-- HEADER -->
+<!-- ══════════════════════════════════════
+     HEADER
+══════════════════════════════════════ -->
 <div class="header">
   <div class="logo-area">
     <img src="logo.png" class="logo-svg" alt="Rexvin">
@@ -399,7 +385,9 @@ a:hover { text-decoration:underline; }
   </div>
 </div>
 
-<!-- CONN BAR -->
+<!-- ══════════════════════════════════════
+     CONNECTION BAR
+══════════════════════════════════════ -->
 <div class="conn-bar">
   <span style="font-weight:600">🔗 Google Sheet</span>
   <input type="text" id="api-url"
@@ -408,7 +396,9 @@ a:hover { text-decoration:underline; }
   <span class="conn-status" id="conn-status"></span>
 </div>
 
-<!-- ══════════════ DASHBOARD ══════════════ -->
+<!-- ══════════════════════════════════════
+     VIEW: DASHBOARD
+══════════════════════════════════════ -->
 <div class="view active" id="view-dashboard">
 <div class="dash-wrap">
 
@@ -439,7 +429,7 @@ a:hover { text-decoration:underline; }
     </div>
   </div>
 
-  <!-- KPI -->
+  <!-- KPI Row -->
   <div class="kpi-row">
     <div class="kpi-card">
       <div class="kpi-label">Total Posisi</div>
@@ -492,7 +482,6 @@ a:hover { text-decoration:underline; }
         </div>
       </div>
     </div>
-
     <div class="card">
       <div class="card-title">Posisi Masih Open</div>
       <div class="card-sub">Hari berjalan sejak permintaan</div>
@@ -508,7 +497,9 @@ a:hover { text-decoration:underline; }
 </div>
 </div>
 
-<!-- ══════════════ KANDIDAT ══════════════ -->
+<!-- ══════════════════════════════════════
+     VIEW: KANDIDAT
+══════════════════════════════════════ -->
 <div class="view" id="view-kandidat">
 <div class="table-view">
   <div class="view-header">
@@ -520,7 +511,6 @@ a:hover { text-decoration:underline; }
     </div>
     <span class="view-count" id="kandidat-count">0 kandidat</span>
   </div>
-
   <div class="toolbar">
     <select id="k-filter-posisi" onchange="renderKandidat()">
       <option value="">Semua Posisi</option>
@@ -553,8 +543,6 @@ a:hover { text-decoration:underline; }
       ↺ Reset
     </button>
   </div>
-
-  <!-- Bulk Bar -->
   <div class="bulk-bar" id="bulk-bar">
     <span style="font-weight:700;color:var(--brown)">
       <span id="bulk-count">0</span> kandidat dipilih
@@ -579,7 +567,6 @@ a:hover { text-decoration:underline; }
       <span id="bulk-undo-timer" style="font-size:0.73rem;color:var(--muted)"></span>
     </span>
   </div>
-
   <div style="overflow-x:auto">
   <table class="data-table">
     <thead>
@@ -606,23 +593,24 @@ a:hover { text-decoration:underline; }
 </div>
 </div>
 
-<!-- ══════════════ PSIKOTEST ══════════════ -->
+<!-- ══════════════════════════════════════
+     VIEW: PSIKOTEST
+══════════════════════════════════════ -->
 <div class="view" id="view-psikotest">
 <div class="table-view">
   <div class="view-header">
     <div>
       <div class="view-title">🧠 Psikotest</div>
       <div class="text-muted" style="margin-top:4px">
-        IQ & PAPI otomatis dari sheet Level Officer · Klik nama untuk detail PAPI
+        IQ &amp; PAPI otomatis dari sheet Level Officer · Klik nama untuk detail PAPI
       </div>
     </div>
     <span class="view-count" id="psikotest-count">0 kandidat</span>
   </div>
-
   <div class="ps-sync-info">
     <div style="flex:1;min-width:200px">
-      ℹ️ IQ dihitung otomatis dari jawaban psikotest.
-      Klik <strong>🔄 Hitung & Sync</strong> untuk memproses semua kandidat.
+      ℹ️ IQ &amp; PAPI dihitung otomatis dari jawaban psikotest.
+      Klik <strong>🔄 Hitung &amp; Sync</strong> untuk memproses semua kandidat.
     </div>
     <div style="display:flex;flex-direction:column;gap:6px;min-width:200px">
       <button class="save-btn"
@@ -639,7 +627,6 @@ a:hover { text-decoration:underline; }
         style="font-size:0.75rem;color:#555;min-height:16px"></div>
     </div>
   </div>
-
   <div class="toolbar">
     <select id="ps-filter-posisi" onchange="renderPsikotest()">
       <option value="">Semua Posisi</option>
@@ -652,7 +639,6 @@ a:hover { text-decoration:underline; }
     <input type="text" id="ps-search"
       placeholder="Cari nama..." oninput="renderPsikotest()">
   </div>
-
   <div style="overflow-x:auto">
   <table class="data-table">
     <thead>
@@ -665,9 +651,9 @@ a:hover { text-decoration:underline; }
         <th>Tgl Lahir</th>
         <th>Kehadiran</th>
         <th>Skor IQ</th>
-        <th>N</th>
-        <th>G</th>
-        <th>A</th>
+        <th style="text-align:center">N</th>
+        <th style="text-align:center">G</th>
+        <th style="text-align:center">A</th>
         <th>Aksi</th>
       </tr>
     </thead>
@@ -677,14 +663,16 @@ a:hover { text-decoration:underline; }
 </div>
 </div>
 
-<!-- ══════════════ INTERVIEW ══════════════ -->
+<!-- ══════════════════════════════════════
+     VIEW: INTERVIEW
+══════════════════════════════════════ -->
 <div class="view" id="view-interview">
 <div class="table-view">
   <div class="view-header">
     <div>
       <div class="view-title">🗣 Interview</div>
       <div class="text-muted" style="margin-top:4px">
-        Kandidat lolos psikotest · Input hasil & tindakan
+        Kandidat lolos psikotest · Input hasil &amp; tindakan
       </div>
     </div>
     <span class="view-count" id="interview-count">0 kandidat</span>
@@ -719,9 +707,9 @@ a:hover { text-decoration:underline; }
 </div>
 </div>
 
-<!-- ══════════════ MODALS ══════════════ -->
-
-<!-- Tambah Posisi -->
+<!-- ══════════════════════════════════════
+     MODAL: TAMBAH POSISI
+══════════════════════════════════════ -->
 <div class="modal-overlay" id="modal-add-posisi">
   <div class="modal">
     <button class="modal-close" onclick="closeModal('modal-add-posisi')">✕</button>
@@ -740,7 +728,9 @@ a:hover { text-decoration:underline; }
   </div>
 </div>
 
-<!-- Fulfil Posisi -->
+<!-- ══════════════════════════════════════
+     MODAL: FULFIL POSISI
+══════════════════════════════════════ -->
 <div class="modal-overlay" id="modal-fulfil-posisi">
   <div class="modal" style="max-width:360px">
     <button class="modal-close" onclick="closeModal('modal-fulfil-posisi')">✕</button>
@@ -756,7 +746,9 @@ a:hover { text-decoration:underline; }
   </div>
 </div>
 
-<!-- CV Preview -->
+<!-- ══════════════════════════════════════
+     MODAL: CV PREVIEW
+══════════════════════════════════════ -->
 <div class="modal-overlay" id="modal-cv-preview">
   <div class="modal"
     style="max-width:860px;width:95%;padding:0;overflow:hidden;border-radius:var(--radius)">
@@ -773,12 +765,13 @@ a:hover { text-decoration:underline; }
         </a>
         <button onclick="closeModal('modal-cv-preview')"
           style="background:none;border:none;color:rgba(255,255,255,0.8);
-                 font-size:1.3rem;cursor:pointer">✕</button>
+                 font-size:1.3rem;cursor:pointer;line-height:1">✕</button>
       </div>
     </div>
     <iframe id="cv-preview-iframe"
       style="width:100%;height:70vh;border:none;background:#f0f0f0"
-      src="about:blank"></iframe>
+      src="about:blank"
+      allow="autoplay"></iframe>
     <div style="padding:10px 20px;background:var(--cream);
                 font-size:0.73rem;color:var(--muted);text-align:center">
       Jika preview tidak muncul, klik "Buka di tab baru" di atas.
@@ -786,7 +779,9 @@ a:hover { text-decoration:underline; }
   </div>
 </div>
 
-<!-- PAPI Detail -->
+<!-- ══════════════════════════════════════
+     MODAL: PAPI DETAIL
+══════════════════════════════════════ -->
 <div class="modal-overlay" id="modal-papi-detail">
   <div class="modal" style="max-width:640px">
     <button class="modal-close" onclick="closeModal('modal-papi-detail')">✕</button>
@@ -796,37 +791,40 @@ a:hover { text-decoration:underline; }
   </div>
 </div>
 
+<!-- ══════════════════════════════════════
+     SCRIPT BAGIAN 3
+══════════════════════════════════════ -->
 <script>
 // ═══════════════════════════════════════════
-// STATE
+// STATE & CONSTANTS
 // ═══════════════════════════════════════════
-let apiUrl    = localStorage.getItem('apiUrl') || '';
-let allData   = [];
-let allPosisi = [];
+let apiUrl           = localStorage.getItem('apiUrl') || '';
+let allData          = [];
+let allPosisi        = [];
 let bulkUndoSnapshot = null;
 let bulkUndoTimer    = null;
 
 const PAPI_META = {
-  N:{ name:'Ketekunan',    desc:'Need to be forceful'         },
-  G:{ name:'Kerja Keras',  desc:'Need to excel'               },
-  A:{ name:'Ambisi',       desc:'Need to achieve'             },
-  L:{ name:'Leadership',   desc:'Need to lead'                },
-  P:{ name:'Kontrol',      desc:'Need to control others'      },
-  I:{ name:'Keputusan',    desc:'Ease in decision making'     },
-  T:{ name:'Aktif',        desc:'Need to be active'           },
-  V:{ name:'Energik',      desc:'Vigorous type'               },
-  X:{ name:'Noticed',      desc:'Need to be noticed'          },
-  S:{ name:'Sosial',       desc:'Social extension'            },
-  B:{ name:'Belong',       desc:'Need to belong'              },
-  O:{ name:'Closeness',    desc:'Need for closeness'          },
-  F:{ name:'Authority',    desc:'Need to support authority'   },
-  W:{ name:'Supervision',  desc:'Need for rules & supervision'},
-  R:{ name:'Teoritis',     desc:'Theoretical type'            },
-  D:{ name:'Detail',       desc:'Interest in working with details'},
-  C:{ name:'Organized',    desc:'Need to be methodical'       },
-  Z:{ name:'Visioner',     desc:'Need for change'             },
-  E:{ name:'Emosi',        desc:'Emotional restraint'         },
-  K:{ name:'Forceful',     desc:'Need to be forceful'         },
+  N:{ name:'Ketekunan',   desc:'Need to be forceful'              },
+  G:{ name:'Kerja Keras', desc:'Need to excel'                    },
+  A:{ name:'Ambisi',      desc:'Need to achieve'                  },
+  L:{ name:'Leadership',  desc:'Need to lead'                     },
+  P:{ name:'Kontrol',     desc:'Need to control others'           },
+  I:{ name:'Keputusan',   desc:'Ease in decision making'          },
+  T:{ name:'Aktif',       desc:'Need to be active'                },
+  V:{ name:'Energik',     desc:'Vigorous type'                    },
+  X:{ name:'Noticed',     desc:'Need tobe noticed'                    },
+  S:{ name:'Sosial',      desc:'Social extension'                 },
+  B:{ name:'Belong',      desc:'Need to belong'                   },
+  O:{ name:'Closeness',   desc:'Need for closeness'               },
+  F:{ name:'Authority',   desc:'Need to support authority'        },
+  W:{ name:'Supervision', desc:'Need for rules & supervision'     },
+  R:{ name:'Teoritis',    desc:'Theoretical type'                 },
+  D:{ name:'Detail',      desc:'Interest in working with details' },
+  C:{ name:'Organized',   desc:'Need to be methodical'            },
+  Z:{ name:'Visioner',    desc:'Need for change'                  },
+  E:{ name:'Emosi',       desc:'Emotional restraint'              },
+  K:{ name:'Forceful',    desc:'Need to be forceful'              },
 };
 
 // ═══════════════════════════════════════════
@@ -840,7 +838,7 @@ if (apiUrl) {
 // ═══════════════════════════════════════════
 // CONNECTION
 // ═══════════════════════════════════════════
-  function connectSheet() {
+function connectSheet() {
   const url = document.getElementById('api-url').value.trim();
   if (!url || !url.includes('script.google.com')) {
     alert('URL tidak valid. Harus URL dari Google Apps Script.');
@@ -875,7 +873,7 @@ function jsonp(url, onOk, onErr) {
   };
   setTimeout(function() {
     if (!done) { done=true; cleanup(); if(onErr) onErr(); }
-  }, 15000);
+  }, 20000);
   tag.src = url + (url.includes('?')?'&':'?') + 'callback=' + cb;
   document.head.appendChild(tag);
 }
@@ -886,7 +884,7 @@ function jsonp(url, onOk, onErr) {
 function loadData() {
   if (!apiUrl) return;
   setStatus('loading','⏳ Memuat...');
-  jsonp(apiUrl+'?action=listRekrutmen&t='+Date.now(),
+  jsonp(apiUrl + '?action=listRekrutmen&t=' + Date.now(),
     function(data) {
       if (data.error) { setStatus('err','❌ '+data.error); return; }
       allData   = data.data     || data.kandidats || [];
@@ -914,29 +912,28 @@ function renderAll() {
 }
 
 function populateFilters() {
-  const positions = [...new Set(
-    allData.map(k=>k.posisi).filter(Boolean)
-  )].sort();
-
-  ['k-filter-posisi','ps-filter-posisi','iv-filter-posisi',
-   'funnel-select'].forEach(id => {
-    const el  = document.getElementById(id);
+  const positions = [...new Set(allData.map(k=>k.posisi).filter(Boolean))].sort();
+  ['k-filter-posisi','ps-filter-posisi','iv-filter-posisi'].forEach(id => {
+    const el = document.getElementById(id);
     if (!el) return;
     const cur = el.value;
-    const opt = id === 'funnel-select'
-      ? '<option value="">Semua Posisi</option>'
-      : '<option value="">Semua Posisi</option>';
-    el.innerHTML = opt + positions.map(p =>
-      `<option value="${p}" ${p===cur?'selected':''}>${p}</option>`
-    ).join('');
+    el.innerHTML = '<option value="">Semua Posisi</option>' +
+      positions.map(p =>
+        `<option value="${p}" ${p===cur?'selected':''}>${p}</option>`
+      ).join('');
   });
-
+  const funnelSel = document.getElementById('funnel-select');
+  if (funnelSel) {
+    const cur = funnelSel.value;
+    funnelSel.innerHTML = '<option value="">Semua Posisi</option>' +
+      positions.map(p =>
+        `<option value="${p}" ${p===cur?'selected':''}>${p}</option>`
+      ).join('');
+  }
   const pdEl = document.getElementById('k-filter-pendidikan');
   if (pdEl) {
     const cur  = pdEl.value;
-    const list = [...new Set(
-      allData.map(k=>k.pendidikan).filter(Boolean)
-    )].sort();
+    const list = [...new Set(allData.map(k=>k.pendidikan).filter(Boolean))].sort();
     pdEl.innerHTML = '<option value="">Semua Pendidikan</option>' +
       list.map(p =>
         `<option value="${p}" ${p===cur?'selected':''}>${p}</option>`
@@ -948,15 +945,12 @@ function populateFilters() {
 // SWITCH VIEW
 // ═══════════════════════════════════════════
 function switchView(v) {
-  document.querySelectorAll('.view')
-    .forEach(el => el.classList.remove('active'));
-  document.querySelectorAll('.nav-tab')
-    .forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.view').forEach(el=>el.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(el=>el.classList.remove('active'));
   document.getElementById('view-'+v).classList.add('active');
-  const tabs = ['dashboard','kandidat','psikotest','interview'];
-  const idx  = tabs.indexOf(v);
-  const tabEls = document.querySelectorAll('.nav-tab');
-  if (tabEls[idx]) tabEls[idx].classList.add('active');
+  const tabs  = ['dashboard','kandidat','psikotest','interview'];
+  const tabEl = document.querySelectorAll('.nav-tab')[tabs.indexOf(v)];
+  if (tabEl) tabEl.classList.add('active');
 }
 
 // ═══════════════════════════════════════════
@@ -968,7 +962,7 @@ function renderDashboard() {
   const open      = total - fulfilled;
   const days      = allPosisi
     .filter(r=>r.tglReq && r.tglFulfil)
-    .map(r=>calcDays(r.tglReq, r.tglFulfil))
+    .map(r=>calcDays(r.tglReq,r.tglFulfil))
     .filter(d=>d!==null);
   const avgDays   = days.length
     ? Math.round(days.reduce((a,b)=>a+b,0)/days.length)
@@ -977,10 +971,10 @@ function renderDashboard() {
   const joined    = allData.filter(k=>(k.rekStage||'Baru')==='Join').length;
   const konversi  = totalK ? Math.round(joined/totalK*100) : 0;
 
-  setText('kpi-total-posisi', total    || '—');
-  setText('kpi-terpenuhi',    fulfilled|| '—');
-  setText('kpi-open',         open >= 0 ? open : '—');
-  setText('kpi-kandidat',     totalK   || '—');
+  setText('kpi-total-posisi', total     || '—');
+  setText('kpi-terpenuhi',    fulfilled || '—');
+  setText('kpi-open',         open >= 0  ? open : '—');
+  setText('kpi-kandidat',     totalK    || '—');
   setText('kpi-avg-hari',     avgDays !== null ? avgDays+' hr' : '—');
   setText('kpi-konversi',     totalK ? konversi+'%' : '—');
 
@@ -1002,29 +996,19 @@ function daysSince(d) {
 }
 
 // ═══════════════════════════════════════════
-// FUNNEL — dihitung dari tgl posisi diinput
-// >= tglReq (termasuk hari yang sama)
+// FUNNEL — >= tglReq (termasuk hari yang sama)
 // ═══════════════════════════════════════════
 function renderFunnel() {
-  const sel = document.getElementById('funnel-select');
   if (!allData.length && !allPosisi.length) return;
-  const positions = [...new Set(
-    allData.map(k=>k.posisi).filter(Boolean)
-  )].sort();
-  const cur = sel.value;
-  sel.innerHTML = '<option value="">Semua Posisi</option>' +
-    positions.map(p =>
-      `<option value="${p}" ${p===cur?'selected':''}>${p}</option>`
-    ).join('');
-  drawFunnel(sel.value);
+  drawFunnel(document.getElementById('funnel-select').value);
 }
 
 function onFunnelSelect(sel) {
   drawFunnel(sel.value);
-  const pos     = allPosisi.find(p=>p.nama===sel.value);
-  const infoEl  = document.getElementById('funnel-date-info');
+  const pos    = allPosisi.find(p=>p.nama===sel.value);
+  const infoEl = document.getElementById('funnel-date-info');
   if (pos && pos.tglReq) {
-    infoEl.textContent = '📅 Mulai: '+fmtDate(pos.tglReq);
+    infoEl.textContent  = '📅 Mulai: '+fmtDate(pos.tglReq);
     infoEl.style.display = 'inline-block';
   } else {
     infoEl.style.display = 'none';
@@ -1033,27 +1017,23 @@ function onFunnelSelect(sel) {
 
 function drawFunnel(posFilter) {
   const stagesEl = document.getElementById('funnel-stages');
+  let tglReq     = null;
 
-  // Cari tglReq posisi yang dipilih
-  let tglReq = null;
   if (posFilter) {
     const pos = allPosisi.find(p=>p.nama===posFilter);
     if (pos && pos.tglReq) {
-      // Set ke awal hari (00:00:00) agar >= tglReq termasuk hari yang sama
       const d = new Date(pos.tglReq);
       d.setHours(0,0,0,0);
       tglReq = d;
     }
   }
 
-  // Filter kandidat berdasarkan posisi dan tglReq
   let data = allData.filter(k => {
     if (posFilter && k.posisi !== posFilter) return false;
     if (tglReq) {
       const tglDaftar = k.tanggal ? new Date(k.tanggal) : null;
       if (!tglDaftar) return false;
       tglDaftar.setHours(0,0,0,0);
-      // >= tglReq: termasuk hari yang sama
       if (tglDaftar < tglReq) return false;
     }
     return true;
@@ -1070,16 +1050,15 @@ function drawFunnel(posFilter) {
 
   const total  = data.length;
   const order  = ['Baru','Disimpan','Psikotest','Interview','Join','Reject'];
-
   const stages = [
-    { label:'CV Masuk',   key:null,        color:'#4a3728' },
-    { label:'Psikotest',  key:'Psikotest', color:'#2471a3' },
-    { label:'Interview',  key:'Interview', color:'#8e44ad' },
-    { label:'Join',       key:'Join',      color:'#2d6a4f' },
+    { label:'CV Masuk',  key:null,        color:'#4a3728' },
+    { label:'Psikotest', key:'Psikotest', color:'#2471a3' },
+    { label:'Interview', key:'Interview', color:'#8e44ad' },
+    { label:'Join',      key:'Join',      color:'#2d6a4f' },
   ];
 
   const counts = stages.map(s => {
-    if (s.key === null) return total;
+    if (s.key===null) return total;
     return data.filter(k => {
       const st = k.rekStage || 'Baru';
       return order.indexOf(st) >= order.indexOf(s.key) && st !== 'Reject';
@@ -1089,51 +1068,40 @@ function drawFunnel(posFilter) {
   const maxCount = counts[0] || 1;
   let html = '';
 
-  counts.forEach((c, i) => {
+  counts.forEach((c,i) => {
     const pct  = Math.round(c/maxCount*100);
     const drop = i>0 && counts[i-1]
       ? Math.round((1-c/counts[i-1])*100)
       : null;
     const s = stages[i];
-    html += `
-      <div class="funnel-row">
-        <div class="funnel-lbl">${s.label}</div>
-        <div class="funnel-track">
-          <div class="funnel-fill"
-            style="width:${Math.max(pct,4)}%;background:${s.color}">
-            ${c}
-          </div>
-        </div>
-        <div class="funnel-pct">${pct}%</div>
-        ${drop!==null
-          ? `<div class="funnel-drop">↓${drop}%</div>`
-          : '<div class="funnel-drop"></div>'}
-      </div>`;
+    html += `<div class="funnel-row">
+      <div class="funnel-lbl">${s.label}</div>
+      <div class="funnel-track">
+        <div class="funnel-fill" style="width:${Math.max(pct,4)}%;background:${s.color}">${c}</div>
+      </div>
+      <div class="funnel-pct">${pct}%</div>
+      ${drop!==null
+        ? `<div class="funnel-drop">↓${drop}%</div>`
+        : '<div class="funnel-drop"></div>'}
+    </div>`;
   });
 
   const rejected = data.filter(k=>(k.rekStage||'Baru')==='Reject').length;
   if (rejected) {
     const pct = Math.round(rejected/maxCount*100);
-    html += `
-      <div class="funnel-row" style="margin-top:6px;opacity:0.7">
-        <div class="funnel-lbl" style="color:var(--red)">Ditolak</div>
-        <div class="funnel-track">
-          <div class="funnel-fill"
-            style="width:${Math.max(pct,4)}%;background:var(--red)">
-            ${rejected}
-          </div>
-        </div>
-        <div class="funnel-pct"></div>
-        <div class="funnel-drop"></div>
-      </div>`;
+    html += `<div class="funnel-row" style="margin-top:6px;opacity:0.7">
+      <div class="funnel-lbl" style="color:var(--red)">Ditolak</div>
+      <div class="funnel-track">
+        <div class="funnel-fill" style="width:${Math.max(pct,4)}%;background:var(--red)">${rejected}</div>
+      </div>
+      <div class="funnel-pct"></div>
+      <div class="funnel-drop"></div>
+    </div>`;
   }
 
-  // Info tanggal
   if (tglReq) {
-    html += `<div style="margin-top:12px;font-size:0.72rem;
-                         color:var(--muted);text-align:center">
-      Menampilkan kandidat yang mendaftar sejak
-      <strong>${fmtDate(tglReq)}</strong>
+    html += `<div style="margin-top:12px;font-size:0.72rem;color:var(--muted);text-align:center">
+      Kandidat yang mendaftar sejak <strong>${fmtDate(tglReq)}</strong>
     </div>`;
   }
 
@@ -1179,36 +1147,26 @@ function renderPosisiTable() {
   if (!tbody) return;
   if (!allPosisi.length) {
     tbody.innerHTML =
-      '<tr><td colspan="6" style="text-align:center;'+
-      'color:var(--muted);padding:16px">'+
-      'Belum ada data posisi. Klik "+ Tambah Posisi" untuk mulai.'+
-      '</td></tr>';
+      '<tr><td colspan="6" style="text-align:center;color:var(--muted);padding:16px">Belum ada data posisi. Klik "+ Tambah Posisi" untuk mulai.</td></tr>';
     return;
   }
   tbody.innerHTML = allPosisi.map(p => {
-    const d   = p.tglFulfil
-      ? calcDays(p.tglReq, p.tglFulfil)
-      : daysSince(p.tglReq);
-    const cls = !p.tglFulfil
-      ? (d<=30?'days-ok':d<=50?'days-warn':'days-bad')
-      : '';
+    const d      = p.tglFulfil ? calcDays(p.tglReq,p.tglFulfil) : daysSince(p.tglReq);
+    const cls    = !p.tglFulfil ? (d<=30?'days-ok':d<=50?'days-warn':'days-bad') : '';
+    const dColor = cls==='days-bad'?'var(--red)':cls==='days-warn'?'var(--yellow)':'var(--green)';
     const status = p.tglFulfil
       ? '<span class="badge badge-green">Terpenuhi</span>'
       : `<span class="badge badge-yellow" style="color:${d>50?'#7a2010':'#856404'};background:${d>50?'#fde8e4':'#fff3cd'}">Open · ${d} hr</span>`;
     const fulfilBtn = !p.tglFulfil
       ? `<button class="fulfil-btn" onclick="openFulfilPosisi(${p.row},'${escQ(p.nama)}')">✅ Penuhi</button>&nbsp;`
       : '';
-    const dColor = cls==='days-bad'?'var(--red)':cls==='days-warn'?'var(--yellow)':'var(--green)';
     return `<tr>
       <td class="fw6">${p.nama}</td>
       <td>${fmtDate(p.tglReq)}</td>
-      <td>${p.tglFulfil ? fmtDate(p.tglFulfil) : '—'}</td>
+      <td>${p.tglFulfil?fmtDate(p.tglFulfil):'—'}</td>
       <td><span style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:${dColor}">${d??'?'}</span></td>
       <td>${status}</td>
-      <td class="nowrap">
-        ${fulfilBtn}
-        <button class="btn-del" onclick="deletePosisi(${p.row},'${escQ(p.nama)}')">🗑</button>
-      </td>
+      <td class="nowrap">${fulfilBtn}<button class="btn-del" onclick="deletePosisi(${p.row},'${escQ(p.nama)}')">🗑</button></td>
     </tr>`;
   }).join('');
 }
@@ -1224,19 +1182,19 @@ function saveNewPosisi() {
   const nama   = document.getElementById('ap-nama').value.trim();
   const tglReq = document.getElementById('ap-tgl-req').value;
   const jumlah = document.getElementById('ap-jumlah').value || 1;
-  if (!nama||!tglReq) {
-    alert('Nama posisi dan tanggal permintaan wajib diisi.');
-    return;
-  }
-  const params = `action=addPosisi&nama=${encodeURIComponent(nama)}&tglReq=${encodeURIComponent(tglReq)}&jumlah=${jumlah}&t=${Date.now()}`;
-  jsonp(apiUrl+'?'+params, function(res) {
-    if (res.error) { alert('Gagal: '+res.error); return; }
-    allPosisi.push({ row:res.row||Date.now(), nama, tglReq, jumlah, tglFulfil:'' });
-    closeModal('modal-add-posisi');
-    showToast('Posisi berhasil ditambahkan ✓');
-    renderDashboard();
-    populateFilters();
-  }, function() { alert('Gagal menyimpan.'); });
+  if (!nama||!tglReq) { alert('Nama posisi dan tanggal permintaan wajib diisi.'); return; }
+  jsonp(apiUrl+'?action=addPosisi&nama='+encodeURIComponent(nama)+
+    '&tglReq='+encodeURIComponent(tglReq)+'&jumlah='+jumlah+'&t='+Date.now(),
+    function(res) {
+      if (res.error) { alert('Gagal: '+res.error); return; }
+      allPosisi.push({ row:res.row||Date.now(), nama, tglReq, jumlah, tglFulfil:'' });
+      closeModal('modal-add-posisi');
+      showToast('Posisi berhasil ditambahkan ✓');
+      renderDashboard();
+      populateFilters();
+    },
+    function() { alert('Gagal menyimpan.'); }
+  );
 }
 
 function openFulfilPosisi(row, nama) {
@@ -1250,38 +1208,42 @@ function saveFulfilPosisi() {
   const row = parseInt(document.getElementById('fulfil-posisi-row').value);
   const tgl = document.getElementById('fulfil-tgl').value;
   if (!tgl) { alert('Pilih tanggal terpenuhi.'); return; }
-  const params = `action=updatePosisi&row=${row}&tglFulfil=${encodeURIComponent(tgl)}&t=${Date.now()}`;
-  jsonp(apiUrl+'?'+params, function(res) {
-    if (res.error) { alert('Gagal: '+res.error); return; }
-    const p = allPosisi.find(x=>x.row===row);
-    if (p) p.tglFulfil = tgl;
-    closeModal('modal-fulfil-posisi');
-    showToast('Posisi ditandai terpenuhi ✓');
-    renderDashboard();
-  }, function() { alert('Gagal menyimpan.'); });
+  jsonp(apiUrl+'?action=updatePosisi&row='+row+'&tglFulfil='+encodeURIComponent(tgl)+'&t='+Date.now(),
+    function(res) {
+      if (res.error) { alert('Gagal: '+res.error); return; }
+      const p = allPosisi.find(x=>x.row===row);
+      if (p) p.tglFulfil = tgl;
+      closeModal('modal-fulfil-posisi');
+      showToast('Posisi ditandai terpenuhi ✓');
+      renderDashboard();
+    },
+    function() { alert('Gagal menyimpan.'); }
+  );
 }
 
 function deletePosisi(row, nama) {
   if (!confirm(`Hapus posisi "${nama}"?`)) return;
-  const params = `action=deletePosisi&row=${row}&t=${Date.now()}`;
-  jsonp(apiUrl+'?'+params, function(res) {
-    if (res.error) { alert('Gagal: '+res.error); return; }
-    allPosisi = allPosisi.filter(x=>x.row!==row);
-    showToast('Posisi dihapus ✓');
-    renderDashboard();
-    populateFilters();
-  }, function() { alert('Gagal.'); });
+  jsonp(apiUrl+'?action=deletePosisi&row='+row+'&t='+Date.now(),
+    function(res) {
+      if (res.error) { alert('Gagal: '+res.error); return; }
+      allPosisi = allPosisi.filter(x=>x.row!==row);
+      showToast('Posisi dihapus ✓');
+      renderDashboard();
+      populateFilters();
+    },
+    function() { alert('Gagal.'); }
+  );
 }
 
 // ═══════════════════════════════════════════
 // KANDIDAT
 // ═══════════════════════════════════════════
 function renderKandidat() {
-  const posFilter   = document.getElementById('k-filter-posisi')?.value    || '';
-  const stageFilter = document.getElementById('k-filter-stage')?.value     || 'pending';
+  const posFilter   = document.getElementById('k-filter-posisi')?.value     || '';
+  const stageFilter = document.getElementById('k-filter-stage')?.value      || 'pending';
   const pendFilter  = document.getElementById('k-filter-pendidikan')?.value || '';
-  const provFilter  = document.getElementById('k-filter-provinsi')?.value  || '';
-  const search      = (document.getElementById('k-search')?.value          || '').toLowerCase().trim();
+  const provFilter  = document.getElementById('k-filter-provinsi')?.value   || '';
+  const search      = (document.getElementById('k-search')?.value           || '').toLowerCase().trim();
   const PROCESSED   = ['Psikotest','Interview','Join','Reject'];
 
   const hasFilter = posFilter || stageFilter!=='pending' || pendFilter || provFilter || search;
@@ -1289,39 +1251,32 @@ function renderKandidat() {
   if (resetBtn) resetBtn.style.display = hasFilter ? 'block' : 'none';
 
   let data = allData.filter(k => {
-    const st    = k.rekStage || 'Baru';
-    const prov  = (k.provinsi||'').toLowerCase();
+    const st      = k.rekStage || 'Baru';
+    const prov    = (k.provinsi||'').toLowerCase();
     const isKepri = !prov.includes('luar kepri') &&
       (prov.includes('kepulauan riau')||prov.includes('kepri'));
-
     if (posFilter && k.posisi!==posFilter) return false;
-    if (stageFilter==='pending') {
-      if (PROCESSED.includes(st)) return false;
-    } else if (stageFilter && st!==stageFilter) return false;
+    if (stageFilter==='pending') { if (PROCESSED.includes(st)) return false; }
+    else if (stageFilter && st!==stageFilter) return false;
     if (pendFilter && (k.pendidikan||'')!==pendFilter) return false;
     if (provFilter==='kepri' && !isKepri) return false;
     if (provFilter==='luar'  &&  isKepri) return false;
     if (search) {
-      const matchNama    = (k.nama   ||'').toLowerCase().includes(search);
-      const matchJurusan = (k.jurusan||'').toLowerCase().includes(search);
-      if (!matchNama && !matchJurusan) return false;
+      const mNama    = (k.nama   ||'').toLowerCase().includes(search);
+      const mJurusan = (k.jurusan||'').toLowerCase().includes(search);
+      if (!mNama && !mJurusan) return false;
     }
     return true;
   });
 
   document.getElementById('kandidat-count').textContent = data.length+' kandidat';
-
   const chkAll = document.getElementById('k-check-all');
   if (chkAll) chkAll.checked = false;
   updateBulkBar();
 
   const tbody = document.getElementById('kandidat-body');
   if (!data.length) {
-    tbody.innerHTML =
-      '<tr><td colspan="11"><div class="empty-state">'+
-      '<div class="empty-icon">📭</div>'+
-      '<div class="empty-msg">Tidak ada kandidat ditemukan</div>'+
-      '</div></td></tr>';
+    tbody.innerHTML = '<tr><td colspan="11"><div class="empty-state"><div class="empty-icon">📭</div><div class="empty-msg">Tidak ada kandidat ditemukan</div></div></td></tr>';
     return;
   }
 
@@ -1334,35 +1289,24 @@ function renderKandidat() {
       (provLow.includes('kepulauan riau')||provLow.includes('kepri'));
     const provLabel = prov ? (isKepri?'Kepri':prov) : '';
     const provBadge = prov
-      ? `<span class="badge ${isKepri?'badge-kepri':'badge-luar'}"
-           title="${prov}">${provLabel}</span>`
+      ? `<span class="badge ${isKepri?'badge-kepri':'badge-luar'}" title="${prov}">${provLabel}</span>`
       : '<span class="text-muted">—</span>';
-
-    // CV — klik langsung preview
-    const cvLink = k.cvLink
+    const cvBtn = k.cvLink
       ? `<button onclick="previewCV('${escQ(k.cvLink)}','${escQ(k.nama)}')"
-           style="display:inline-flex;align-items:center;gap:4px;
-                  padding:3px 9px;background:#fef3c7;border:none;
-                  border-radius:4px;font-size:0.72rem;font-weight:600;
-                  color:#92400e;cursor:pointer" title="Preview CV">
-           📄 Lihat CV
-         </button>`
+           style="display:inline-flex;align-items:center;gap:4px;padding:3px 9px;
+                  background:#fef3c7;border:none;border-radius:4px;font-size:0.72rem;
+                  font-weight:600;color:#92400e;cursor:pointer">📄 Lihat CV</button>`
       : '<span class="text-muted">—</span>';
-
     const wa = k.wa
-      ? `<a href="https://wa.me/${k.wa.replace(/\D/g,'')}"
-           target="_blank" style="color:var(--green);font-weight:500">
-           📱 ${k.wa}
-         </a>`
+      ? `<a href="https://wa.me/${k.wa.replace(/\D/g,'')}" target="_blank"
+           style="color:var(--green);font-weight:500">📱 ${k.wa}</a>`
       : '—';
-
     const hlNama    = search ? hlText(k.nama   ||'—',search) : (k.nama   ||'—');
     const hlJurusan = search ? hlText(k.jurusan||'—',search) : (k.jurusan||'—');
 
     return `<tr id="row-k-${k.row}">
       <td style="text-align:center">
-        <input type="checkbox" class="k-row-check"
-          value="${k.row}" onchange="updateBulkBar()">
+        <input type="checkbox" class="k-row-check" value="${k.row}" onchange="updateBulkBar()">
       </td>
       <td class="fw6">${hlNama}</td>
       <td>${k.posisi||'—'}</td>
@@ -1371,11 +1315,10 @@ function renderKandidat() {
       <td style="font-size:0.76rem">${k.pendidikan||'—'}</td>
       <td style="font-size:0.76rem">${hlJurusan}</td>
       <td class="text-muted">${fmtDate(k.tanggal)}</td>
-      <td>${cvLink}</td>
+      <td>${cvBtn}</td>
       <td><span class="badge ${badgeCls}">${stage}</span></td>
       <td class="nowrap">
-        <select class="action-select"
-          onchange="handleKandidatAction(this,${k.row})">
+        <select class="action-select" onchange="handleKandidatAction(this,${k.row})">
           <option value="">— Pilih Tindakan —</option>
           <option value="Psikotest">→ Psikotest</option>
           <option value="Interview">→ Interview</option>
@@ -1400,10 +1343,8 @@ function resetFilterKandidat() {
   ['k-filter-posisi','k-filter-pendidikan','k-filter-provinsi'].forEach(id=>{
     const el=document.getElementById(id); if(el) el.value='';
   });
-  const stage=document.getElementById('k-filter-stage');
-  if(stage) stage.value='pending';
-  const search=document.getElementById('k-search');
-  if(search) search.value='';
+  const s=document.getElementById('k-filter-stage'); if(s) s.value='pending';
+  const q=document.getElementById('k-search');       if(q) q.value='';
   renderKandidat();
 }
 
@@ -1422,10 +1363,8 @@ function handleKandidatAction(sel, row) {
   });
 }
 
-// ── BULK SELECT ──
 function toggleCheckAll(master) {
-  document.querySelectorAll('.k-row-check')
-    .forEach(cb=>cb.checked=master.checked);
+  document.querySelectorAll('.k-row-check').forEach(cb=>cb.checked=master.checked);
   updateBulkBar();
 }
 
@@ -1439,8 +1378,7 @@ function updateBulkBar() {
     countEl.textContent=checked.length;
   } else {
     const undoWrap=document.getElementById('bulk-undo-wrap');
-    if (!undoWrap||undoWrap.style.display==='none')
-      bar.style.display='none';
+    if (!undoWrap||undoWrap.style.display==='none') bar.style.display='none';
   }
 }
 
@@ -1458,16 +1396,11 @@ function executeBulkReject() {
   if(!checked.length) return;
   const rows=checked.map(cb=>parseInt(cb.value));
   if(!confirm(`Yakin reject ${rows.length} kandidat? Bisa di-undo dalam 30 detik.`)) return;
-
   bulkUndoSnapshot=rows.map(row=>{
     const k=allData.find(x=>x.row===row);
     return {row, prevStage:k?(k.rekStage||'Baru'):'Baru'};
   });
-  rows.forEach(row=>{
-    const k=allData.find(x=>x.row===row);
-    if(k) k.rekStage='Reject';
-  });
-
+  rows.forEach(row=>{ const k=allData.find(x=>x.row===row); if(k) k.rekStage='Reject'; });
   if(apiUrl) {
     const cbName='bulkCb_'+Date.now();
     window[cbName]=function(){delete window[cbName];};
@@ -1475,13 +1408,11 @@ function executeBulkReject() {
     s.src=`${apiUrl}?action=bulkRejectKandidat&rows=${rows.join(',')}&callback=${cbName}&t=${Date.now()}`;
     document.head.appendChild(s);
   }
-
   clearBulkSelect();
   renderAll();
-
-  const bar      = document.getElementById('bulk-bar');
+  const  bar      = document.getElementById('bulk-bar');
   const undoWrap = document.getElementById('bulk-undo-wrap');
-  const undoTimer    = document.getElementById('bulk-undo-timer');
+  const undoTimer = document.getElementById('bulk-undo-timer');
   bar.style.display = 'flex';
   document.getElementById('bulk-count').textContent = rows.length;
   undoWrap.style.display = 'flex';
@@ -1534,7 +1465,9 @@ function renderPsikotest() {
   let data = allData.filter(k => {
     if ((k.rekStage||'Baru') !== 'Psikotest') return false;
     if (posFilter && k.posisi !== posFilter)   return false;
-    const hadir = k.psikotestHadir===true || k.psikotestHadir==='true' || k.psikotestHadir===1;
+    const hadirRaw = k.psikotestHadir ?? k.psiHadir ?? k.hadir ?? false;
+    const hadir    = hadirRaw===true || hadirRaw==='true' ||
+                     hadirRaw===1    || hadirRaw==='Hadir';
     if (hadirFilter==='hadir' && !hadir) return false;
     if (hadirFilter==='absen' &&  hadir) return false;
     if (search && !(k.nama||'').toLowerCase().includes(search)) return false;
@@ -1555,125 +1488,156 @@ function renderPsikotest() {
   }
 
   tbody.innerHTML = data.map(k => {
-    const hadir = k.psikotestHadir===true ||
-                  k.psikotestHadir==='true' ||
-                  k.psikotestHadir===1;
-
+    // ── HADIR ──
+    const hadirRaw = k.psikotestHadir ?? k.psiHadir ?? k.hadir ?? false;
+    const hadir    = hadirRaw===true || hadirRaw==='true' ||
+                     hadirRaw===1    || hadirRaw==='Hadir';
     const hadirBadge = hadir
       ? `<span class="hadir-auto hadir">✅ Hadir</span>`
       : `<span class="hadir-auto absen">❌ Tidak Hadir</span>`;
 
-    // IQ
-    const iqNum   = hadir && k.psikotestIQ!=null
-                    ? parseFloat(k.psikotestIQ) : NaN;
+    // ── IQ ──
+    const iqRaw   = k.psikotestIQ ?? k.psiIQ ?? k.iq ?? k.IQ ?? null;
+    const iqNum   = (iqRaw!==null && iqRaw!=='') ? parseFloat(iqRaw) : NaN;
     const iqColor = !isNaN(iqNum)
-                    ? (iqNum>=110?'#155724':iqNum>=90?'#856404':'#7a2010')
-                    : '#999';
+      ? (iqNum>=110?'#155724':iqNum>=90?'#856404':'#7a2010')
+      : '#999';
     const iqBadge = !isNaN(iqNum)
-      ? `<span class="iq-score" style="color:${iqColor}">${iqNum}</span>
-         <br><span style="font-size:0.68rem;color:#888">${iqKat(iqNum)}</span>`
+      ? `<div>
+           <span class="iq-score" style="color:${iqColor}">${iqNum}</span><br>
+           <span style="font-size:0.68rem;color:#888">${iqKat(iqNum)}</span>
+         </div>`
       : '<span class="text-muted">—</span>';
 
-    // PAPI N, G, A — mini bar
-    const papi  = k.psikotestPAPI || {};
+    // ── PAPI ──
+    const papi  = k.psikotestPAPI || k.papi || k.papiScores || {};
     const N     = parseInt(papi.N)||0;
     const G     = parseInt(papi.G)||0;
     const A     = parseInt(papi.A)||0;
 
-    function papiCell(code, val) {
+    function papiCell(val) {
       const pct   = Math.round(val/9*100);
       const color = val>=7?'#2d6a4f':val<=3?'#c0392b':'#e8920a';
-      return `<td style="text-align:center">
+      const bg    = val>=7?'#f0faf4':val<=3?'#fff5f5':'#fff8ec';
+      return `<td style="text-align:center;background:${bg};padding:6px 8px">
         <div style="display:flex;flex-direction:column;align-items:center;gap:2px">
-          <div style="width:20px;height:40px;background:var(--cream);
-                      border-radius:3px;overflow:hidden;display:flex;
-                      flex-direction:column;justify-content:flex-end;
-                      border:1px solid var(--border)">
-            <div style="width:100%;height:${pct}%;background:${color};
-                        border-radius:2px;transition:height 0.3s"></div>
+          <div style="width:20px;height:40px;background:var(--cream);border-radius:3px;
+                      overflow:hidden;display:flex;flex-direction:column;
+                      justify-content:flex-end;border:1px solid var(--border)">
+            <div style="width:100%;height:${pct}%;background:${color};border-radius:2px"></div>
           </div>
-          <span style="font-size:0.72rem;font-weight:700;color:${color}">${val||'—'}</span>
+          <span style="font-size:0.75rem;font-weight:700;color:${color}">${val||0}</span>
         </div>
       </td>`;
     }
 
-    // Tgl Lahir format
-    const tglLahir = k.tglLahir ? fmtDate(k.tglLahir) : '—';
+    // ── TGL LAHIR ──
+    const tglLahir = k.tglLahir || k.tanggalLahir || k.tgl_lahir || '';
 
     return `<tr id="row-ps-${k.row}">
-      <td class="fw6" style="cursor:pointer;color:var(--orange)"
-        onclick="showPAPIDetail(${k.row})"
-        title="Klik untuk detail PAPI lengkap">
-        ${k.nama||'—'}
+      <td class="fw6">
+        <span style="cursor:pointer;color:var(--orange);text-decoration:underline"
+          onclick="showPAPIDetail(${k.row})"
+          title="Klik untuk detail PAPI lengkap">
+          ${k.nama||'—'}
+        </span>
       </td>
       <td>${k.posisi||'—'}</td>
       <td style="font-size:0.76rem">${k.jurusan||'—'}</td>
-      <td class="nowrap">${k.wa||'—'}</td>
+      <td class="nowrap" style="font-size:0.78rem">${k.wa||k.noHp||k.hp||'—'}</td>
       <td class="text-muted" style="font-size:0.75rem">${k.email||'—'}</td>
-      <td class="text-muted">${tglLahir}</td>
+      <td class="text-muted" style="font-size:0.75rem">${tglLahir?fmtDate(tglLahir):'—'}</td>
       <td>${hadirBadge}</td>
       <td>${iqBadge}</td>
-      ${papiCell('N',N)}
-      ${papiCell('G',G)}
-      ${papiCell('A',A)}
-      <td class="nowrap" style="display:flex;gap:4px;flex-wrap:wrap;padding:10px 8px">
-        ${hadir
-          ? `<button class="save-btn sm" style="background:var(--green)"
-               onclick="advancePsikotest(${k.row})">→ Interview</button>
-             <button class="save-btn sm" style="background:var(--red)"
-               onclick="rejectPs(${k.row})">✕</button>`
-          : '<span class="text-muted" style="font-size:0.72rem">Belum hadir</span>'
-        }
+      ${papiCell(N)}
+      ${papiCell(G)}
+      ${papiCell(A)}
+      <td class="nowrap">
+        <div style="display:flex;gap:4px;flex-wrap:wrap;padding:2px 0">
+          <button class="save-btn sm" style="background:var(--green);white-space:nowrap"
+            onclick="advancePsikotest(${k.row})">→ Interview</button>
+          <button class="save-btn sm" style="background:var(--red)"
+            onclick="rejectPs(${k.row})">✕</button>
+        </div>
       </td>
     </tr>`;
   }).join('');
+}
+
+// ── IQ KATEGORI ──
+function iqKat(iq) {
+  if (iq>=130) return 'Sangat Superior';
+  if (iq>=120) return 'Superior';
+  if (iq>=110) return 'Di atas Rata-rata';
+  if (iq>=90)  return 'Rata-rata';
+  if (iq>=80)  return 'Di bawah Rata-rata';
+  if (iq>=70)  return 'Lambat Belajar';
+  return 'Keterbelakangan Mental';
+}
+
+// ── SYNC PSIKOTEST ──
+function syncPsikotest(overwrite) {
+  const statusEl = document.getElementById('sync-psiko-status');
+  const btnEls   = document.querySelectorAll('.ps-sync-info .save-btn');
+  if (!apiUrl) { alert('URL Apps Script belum diisi!'); return; }
+  statusEl.textContent = '⏳ Sedang menghitung... (bisa 30-60 detik)';
+  statusEl.style.color = '#856404';
+  btnEls.forEach(b=>b.disabled=true);
+  jsonp(apiUrl+'?action=syncLevelOfficer'+(overwrite?'&overwrite=true':'')+'&t='+Date.now(),
+    function(res) {
+      btnEls.forEach(b=>b.disabled=false);
+      if (res.error) {
+        statusEl.textContent = '❌ Error: '+res.error;
+        statusEl.style.color = '#c0392b';
+        return;
+      }
+      statusEl.textContent = `✅ Selesai! ${res.scored||res.processed||0} diproses`+
+        (res.errors>0?`, ⚠️ ${res.errors} error`:'');
+      statusEl.style.color = res.errors>0?'#f57f17':'#2d6a4f';
+      loadData();
+    },
+    function() {
+      btnEls.forEach(b=>b.disabled=false);
+      statusEl.textContent = '❌ Gagal: timeout atau error koneksi';
+      statusEl.style.color = '#c0392b';
+    }
+  );
 }
 
 // ── PAPI DETAIL MODAL ──
 function showPAPIDetail(row) {
   const k = allData.find(x=>x.row===row);
   if (!k) return;
+  const papi    = k.psikotestPAPI || k.papi || k.papiScores || {};
+  const iqRaw   = k.psikotestIQ ?? k.psiIQ ?? k.iq ?? null;
+  const iqNum   = iqRaw!==null ? parseFloat(iqRaw) : NaN;
+  const codes   = ['N','G','A','L','P','I','T','V','X','S','B','O','F','W','R','D','C','Z','E','K'];
+  const highs   = codes.filter(c=>(parseInt(papi[c])||0)>=7);
+  const lows    = codes.filter(c=>(parseInt(papi[c])||0)<=3);
 
-  const papi   = k.psikotestPAPI || {};
-  const codes  = ['N','G','A','L','P','I','T','V','X','S',
-                  'B','O','F','W','R','D','C','Z','E','K'];
-
-  document.getElementById('papi-detail-nama').textContent =
-    'PAPI Kostick — '+k.nama;
-  document.getElementById('papi-detail-sub').textContent =
-    k.posisi+' · IQ: '+(k.psikotestIQ||'—')+' · '+iqKat(parseFloat(k.psikotestIQ)||0);
-
-  const highs = codes.filter(c=>(parseInt(papi[c])||0)>=7);
-  const lows  = codes.filter(c=>(parseInt(papi[c])||0)<=3);
+  document.getElementById('papi-detail-nama').textContent = 'PAPI Kostick — '+k.nama;
+  document.getElementById('papi-detail-sub').textContent  =
+    (k.posisi||'—')+' · IQ: '+(!isNaN(iqNum)?iqNum:'—')+
+    (!isNaN(iqNum)?' ('+iqKat(iqNum)+')':'');
 
   let html = '';
 
-  // Summary
+  // Summary high/low
   if (highs.length||lows.length) {
     html += `<div style="display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap">`;
     if (highs.length) {
-      html += `<div style="flex:1;min-width:180px;background:#f0faf4;
-                            border:1px solid #74c69d;border-radius:8px;padding:10px 14px">
-        <div style="font-size:0.68rem;font-weight:700;color:#2d6a4f;
-                    text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px">
-          ⬆ Faktor Tinggi (≥7)
-        </div>
+      html += `<div style="flex:1;min-width:160px;background:#f0faf4;border:1px solid #74c69d;border-radius:8px;padding:10px 14px">
+        <div style="font-size:0.68rem;font-weight:700;color:#2d6a4f;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px">⬆ Tinggi (≥7)</div>
         <div style="display:flex;flex-wrap:wrap;gap:4px">
-          ${highs.map(c=>`<span style="background:#2d6a4f;color:#fff;
-            padding:2px 8px;border-radius:4px;font-size:0.72rem;font-weight:700">${c}</span>`).join('')}
+          ${highs.map(c=>`<span style="background:#2d6a4f;color:#fff;padding:2px 8px;border-radius:4px;font-size:0.72rem;font-weight:700" title="${PAPI_META[c]?PAPI_META[c].name:''}">${c}</span>`).join('')}
         </div>
       </div>`;
     }
     if (lows.length) {
-      html += `<div style="flex:1;min-width:180px;background:#fff5f5;
-                            border:1px solid #e88;border-radius:8px;padding:10px 14px">
-        <div style="font-size:0.68rem;font-weight:700;color:#c0392b;
-                    text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px">
-          ⬇ Faktor Rendah (≤3)
-        </div>
+      html += `<div style="flex:1;min-width:160px;background:#fff5f5;border:1px solid #e88;border-radius:8px;padding:10px 14px">
+        <div style="font-size:0.68rem;font-weight:700;color:#c0392b;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px">⬇ Rendah (≤3)</div>
         <div style="display:flex;flex-wrap:wrap;gap:4px">
-          ${lows.map(c=>`<span style="background:#c0392b;color:#fff;
-            padding:2px 8px;border-radius:4px;font-size:0.72rem;font-weight:700">${c}</span>`).join('')}
+          ${lows.map(c=>`<span style="background:#c0392b;color:#fff;padding:2px 8px;border-radius:4px;font-size:0.72rem;font-weight:700" title="${PAPI_META[c]?PAPI_META[c].name:''}">${c}</span>`).join('')}
         </div>
       </div>`;
     }
@@ -1686,11 +1650,11 @@ function showPAPIDetail(row) {
     const val  = parseInt(papi[c])||0;
     const pct  = Math.round(val/9*100);
     const meta = PAPI_META[c]||{name:c,desc:''};
-    const cls  = val>=7?'papi-high':val<=3?'papi-low':'';
+    const cls  = val>=7?'papi-high':val<=3&&val>0?'papi-low':'';
     html += `<div class="papi-detail-item ${cls}">
       <div class="papi-detail-code">${c}</div>
       <div class="papi-detail-name">${meta.name}</div>
-      <div class="papi-detail-val">${val}</div>
+      <div class="papi-detail-val">${val||'—'}</div>
       <div class="papi-detail-bar">
         <div class="papi-detail-bar-fill" style="width:${pct}%"></div>
       </div>
@@ -1699,69 +1663,20 @@ function showPAPIDetail(row) {
   html += `</div>`;
 
   // DISC jika ada
-  if (k.psikotestDISC) {
-    html += `<div style="margin-top:16px;padding:12px 16px;
-                          background:var(--cream);border-radius:8px;
-                          border:1px solid var(--border)">
+  const disc    = k.psikotestDISC || k.psiDisc || k.discDominant || '';
+  const discPat = k.psikotestDISCPattern || k.discPattern || '';
+  if (disc) {
+    html += `<div style="margin-top:16px;padding:12px 16px;background:var(--cream);
+                          border-radius:8px;border:1px solid var(--border)">
       <div style="font-size:0.72rem;font-weight:700;color:var(--muted);
-                  text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px">
-        DISC
-      </div>
-      <span style="font-size:1rem;font-weight:700;color:var(--brown)">
-        ${k.psikotestDISC}
-      </span>
-      ${k.psikotestDISCPattern
-        ? `<span style="font-size:0.8rem;color:var(--muted);margin-left:8px">
-             ${k.psikotestDISCPattern}
-           </span>`
-        : ''}
+                  text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px">DISC</div>
+      <span style="font-size:1rem;font-weight:700;color:var(--brown)">${disc}</span>
+      ${discPat?`<span style="font-size:0.8rem;color:var(--muted);margin-left:8px">${discPat}</span>`:''}
     </div>`;
   }
 
   document.getElementById('papi-detail-content').innerHTML = html;
   openModal('modal-papi-detail');
-}
-
-function iqKat(iq) {
-  if (iq>=130) return 'Sangat Superior';
-  if (iq>=120) return 'Superior';
-  if (iq>=110) return 'Di atas Rata-rata';
-  if (iq>=90)  return 'Rata-rata';
-  if (iq>=80)  return 'Di bawah Rata-rata';
-  if (iq>=70)  return 'Lambat Belajar';
-  return 'Keterbelakangan Mental';
-}
-
-function syncPsikotest(overwrite) {
-  const statusEl = document.getElementById('sync-psiko-status');
-  const btnEls   = document.querySelectorAll('.ps-sync-info .save-btn');
-  if (!apiUrl) { alert('URL Apps Script belum diisi!'); return; }
-
-  statusEl.textContent = '⏳ Sedang menghitung... (bisa 30-60 detik)';
-  statusEl.style.color = '#856404';
-  btnEls.forEach(b=>b.disabled=true);
-
-  const params = 'action=syncLevelOfficer'+(overwrite?'&overwrite=true':'')+'&t='+Date.now();
-  jsonp(apiUrl+'?'+params,
-    function(res) {
-      btnEls.forEach(b=>b.disabled=false);
-      if (res.error) {
-        statusEl.textContent = '❌ Error: '+res.error;
-        statusEl.style.color = '#c0392b';
-        return;
-      }
-      const msg = `✅ Selesai! ${res.scored||0} diproses`+
-                  (res.errors>0?`, ⚠️ ${res.errors} error`:'');
-      statusEl.textContent = msg;
-      statusEl.style.color = res.errors>0?'#f57f17':'#2d6a4f';
-      loadData();
-    },
-    function() {
-      btnEls.forEach(b=>b.disabled=false);
-      statusEl.textContent = '❌ Gagal: timeout atau error';
-      statusEl.style.color = '#c0392b';
-    }
-  );
 }
 
 function advancePsikotest(row) {
@@ -1812,11 +1727,12 @@ function renderInterview() {
   tbody.innerHTML = data.map(k => {
     const ivHasil   = k.interviewHasil   || '';
     const ivCatatan = k.interviewCatatan || '';
-    const ivHadir   = k.ivHadir===true ||
+    const ivHadir   = k.ivHadir===true   ||
                       k.ivHadir==='true' ||
-                      k.ivHadir==='Hadir';
-    const ivHadirTgl = k.ivHadirTgl || '';
-
+                      k.ivHadir==='Hadir'||
+                      k.interviewHadir===true||
+                      k.interviewHadir==='Hadir';
+    const ivHadirTgl = k.ivHadirTgl || k.interviewHadirTgl || '';
     const hadirBadge = ivHadir
       ? `<span class="iv-hadir-badge hadir" title="${ivHadirTgl}">✅ Hadir</span>`
       : `<span class="iv-hadir-badge belum">⏳ Belum Hadir</span>`;
@@ -1824,18 +1740,15 @@ function renderInterview() {
     return `<tr id="row-iv-${k.row}">
       <td class="fw6">${k.nama||'—'}</td>
       <td>${k.posisi||'—'}</td>
-      <td class="nowrap">${k.wa||'—'}</td>
+      <td class="nowrap">${k.wa||k.noHp||'—'}</td>
       <td>${hadirBadge}</td>
       <td>
         <select class="action-select" style="min-width:160px"
           onchange="saveIVHasil(this,${k.row})">
           <option value="" ${!ivHasil?'selected':''}>— Hasil Interview —</option>
-          <option value="Lolos"
-            ${ivHasil==='Lolos'?'selected':''}>✅ Lolos</option>
-          <option value="Dipertimbangkan"
-            ${ivHasil==='Dipertimbangkan'?'selected':''}>🟡 Dipertimbangkan</option>
-          <option value="Gagal"
-            ${ivHasil==='Gagal'?'selected':''}>❌ Gagal</option>
+          <option value="Lolos"           ${ivHasil==='Lolos'?'selected':''}>✅ Lolos</option>
+          <option value="Dipertimbangkan" ${ivHasil==='Dipertimbangkan'?'selected':''}>🟡 Dipertimbangkan</option>
+          <option value="Gagal"           ${ivHasil==='Gagal'?'selected':''}>❌ Gagal</option>
         </select>
       </td>
       <td>
@@ -1847,16 +1760,14 @@ function renderInterview() {
           onchange="saveIVCatatan(this,${k.row})">
       </td>
       <td>
-        <select class="action-select"
-          onchange="handleIVAction(this,${k.row})">
+        <select class="action-select" onchange="handleIVAction(this,${k.row})">
           <option value="">— Tindak Lanjut —</option>
           <option value="Join">✅ Offering / Join</option>
           <option value="Reject">✕ Reject</option>
         </select>
       </td>
       <td>
-        <button class="save-btn sm"
-          onclick="saveIVAll(${k.row})">💾 Simpan</button>
+        <button class="save-btn sm" onclick="saveIVAll(${k.row})">💾 Simpan</button>
       </td>
     </tr>`;
   }).join('');
@@ -1875,11 +1786,10 @@ function saveIVCatatan(input, row) {
 function saveIVAll(row) {
   const k = allData.find(x=>x.row===row);
   if (!k||!apiUrl) return;
-  const params = `action=updateInterview&row=${row}`+
-    `&hasil=${encodeURIComponent(k.interviewHasil||'')}`+
-    `&catatan=${encodeURIComponent(k.interviewCatatan||'')}`+
-    `&t=${Date.now()}`;
-  jsonp(apiUrl+'?'+params,
+  jsonp(apiUrl+'?action=updateInterview&row='+row+
+    '&hasil='+encodeURIComponent(k.interviewHasil||'')+
+    '&catatan='+encodeURIComponent(k.interviewCatatan||'')+
+    '&t='+Date.now(),
     function(res) {
       if (res.error) { alert('Gagal: '+res.error); return; }
       showToast('Data Interview tersimpan ✓');
@@ -1909,9 +1819,8 @@ function handleIVAction(sel, row) {
 // ═══════════════════════════════════════════
 function updateStage(row, stage, cb) {
   if (!apiUrl) { alert('Sambungkan sheet dulu.'); return; }
-  const params = `action=updateRekStage&row=${row}`+
-    `&stage=${encodeURIComponent(stage)}&t=${Date.now()}`;
-  jsonp(apiUrl+'?'+params,
+  jsonp(apiUrl+'?action=updateRekStage&row='+row+
+    '&stage='+encodeURIComponent(stage)+'&t='+Date.now(),
     function(res) {
       if (res.error) { alert('Gagal: '+res.error); return; }
       if (cb) cb();
@@ -1924,17 +1833,36 @@ function updateStage(row, stage, cb) {
 // CV PREVIEW
 // ═══════════════════════════════════════════
 function previewCV(url, nama) {
-  if (!url) return;
+  if (!url) { alert('Link CV tidak tersedia'); return; }
   document.getElementById('cv-preview-title').textContent = 'CV — '+(nama||'');
   document.getElementById('cv-preview-link').href = url;
 
   let embedUrl = url;
-  const driveMatch = url.match(/\/file\/d\/([^/]+)/);
+
+  // Google Drive file/d/ID
+  const driveMatch = url.match(/\/file\/d\/([^\/\?]+)/);
   if (driveMatch) {
     embedUrl = 'https://drive.google.com/file/d/'+driveMatch[1]+'/preview';
-  } else if (url.includes('docs.google.com')) {
-    embedUrl = url.replace(/\/edit.*$/,'/preview');
   }
+  // Google Drive open?id=ID
+  else if (url.includes('drive.google.com/open?id=')) {
+    const id = url.split('id=')[1].split('&')[0];
+    embedUrl  = 'https://drive.google.com/file/d/'+id+'/preview';
+  }
+  // Google Drive uc?id=ID
+  else if (url.includes('drive.google.com/uc?')) {
+    const m = url.match(/id=([^&]+)/);
+    if (m) embedUrl = 'https://drive.google.com/file/d/'+m[1]+'/preview';
+  }
+  // Google Docs
+  else if (url.includes('docs.google.com/document')) {
+    embedUrl = url.split('/edit')[0]+'/preview';
+  }
+  // Google Sheets
+  else if (url.includes('docs.google.com/spreadsheets')) {
+    embedUrl = url.split('/edit')[0]+'/preview';
+  }
+
   document.getElementById('cv-preview-iframe').src = embedUrl;
   openModal('modal-cv-preview');
 }
@@ -1942,18 +1870,17 @@ function previewCV(url, nama) {
 // ═══════════════════════════════════════════
 // MODAL HELPERS
 // ═══════════════════════════════════════════
-function openModal(id)  {
+function openModal(id) {
   document.getElementById(id).classList.add('open');
 }
+
 function closeModal(id) {
   document.getElementById(id).classList.remove('open');
-  // Reset iframe saat tutup CV preview
   if (id==='modal-cv-preview') {
-    document.getElementById('cv-preview-iframe').src='about:blank';
+    document.getElementById('cv-preview-iframe').src = 'about:blank';
   }
 }
 
-// Klik overlay untuk tutup modal
 document.querySelectorAll('.modal-overlay').forEach(el => {
   el.addEventListener('click', function(e) {
     if (e.target===this) {
@@ -1985,17 +1912,17 @@ function fmtDate(d) {
 }
 
 function escQ(s) {
-  return (s||'').replace(/'/g,"&#39;").replace(/"/g,'&quot;');
+  return (s||'').replace(/\\/g,'\\\\').replace(/'/g,"\\'").replace(/"/g,'&quot;');
 }
 
 function stageBadge(stage) {
   const map = {
-    'Baru'      : 'badge-brown',
-    'Disimpan'  : 'badge-gray',
-    'Psikotest' : 'badge-blue',
-    'Interview' : 'badge-blue',
-    'Join'      : 'badge-green',
-    'Reject'    : 'badge-red',
+    'Baru'      :'badge-brown',
+    'Disimpan'  :'badge-gray',
+    'Psikotest' :'badge-blue',
+    'Interview' :'badge-blue',
+    'Join'      :'badge-green',
+    'Reject'    :'badge-red',
   };
   return map[stage] || 'badge-gray';
 }
@@ -2004,20 +1931,20 @@ function showToast(msg) {
   const t = document.createElement('div');
   t.textContent = msg;
   Object.assign(t.style, {
-    position   : 'fixed',
-    bottom     : '24px',
-    right      : '24px',
-    background : 'var(--brown)',
-    color      : '#fff',
-    padding    : '10px 20px',
-    borderRadius: '8px',
-    fontSize   : '0.82rem',
-    fontWeight : '600',
-    boxShadow  : '0 4px 16px rgba(0,0,0,0.2)',
-    zIndex     : '99999',
-    opacity    : '0',
-    transform  : 'translateY(20px)',
-    transition : 'all 0.3s',
+    position    :'fixed',
+    bottom      :'24px',
+    right       :'24px',
+    background  :'var(--brown)',
+    color       :'#fff',
+    padding     :'10px 20px',
+    borderRadius:'8px',
+    fontSize    :'0.82rem',
+    fontWeight  :'600',
+    boxShadow   :'0 4px 16px rgba(0,0,0,0.2)',
+    zIndex      :'99999',
+    opacity     :'0',
+    transform   :'translateY(20px)',
+    transition  :'all 0.3s',
   });
   document.body.appendChild(t);
   requestAnimationFrame(() => {
